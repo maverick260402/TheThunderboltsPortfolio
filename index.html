@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Thunderbolts - Elite AI & ML Engineering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="font-sans overflow-x-hidden" style="background-color: var(--bg-primary); color: var(--text-primary);">
+    <!-- Matrix Background Effect -->
+    <div class="matrix-bg" id="matrixBg"></div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-bg backdrop-blur-md border-b" style="border-bottom-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <div class="terminal px-4 py-2">
+                        <span class="font-mono text-matrix-green text-sm">~/thunderbolts$</span>
+                        <span class="font-mono text-sm ml-2 typing" style="color: var(--text-muted);">whoami</span>
+                    </div>
+                </div>
+                
+                <!-- Mobile Theme Toggle -->
+                <div class="md:hidden">
+                    <div class="mobile-theme-switch-container">
+                        <span id="mobileLightLabel" class="theme-switch-label">Light</span>
+                        <div class="mobile-theme-switch" id="mobileThemeSwitch">
+                            <span class="mobile-theme-switch-pointer"></span>
+                        </div>
+                        <span id="mobileDarkLabel" class="theme-switch-label active">Dark</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#tech" class="font-mono text-sm hover:text-matrix-green transition-all duration-300" style="color: var(--text-muted);">capabilities</a>
+                    <a href="#experience" class="font-mono text-sm hover:text-terminal-blue transition-all duration-300" style="color: var(--text-muted);">projects</a>
+                    <div class="theme-switch-container">
+                        <span id="lightLabel" class="theme-switch-label">Light Mode</span>
+                        <div class="theme-switch" id="themeSwitch">
+                            <span class="theme-switch-pointer"></span>
+                        </div>
+                        <span id="darkLabel" class="theme-switch-label active">Dark Mode</span>
+                    </div>
+                    <a href="#contact" class="font-mono text-sm border border-matrix-green text-matrix-green px-4 py-2 hover:bg-matrix-green transition-all duration-300">
+                        contact
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-20 pb-12 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="animate-slide-up">
+                    <div class="mb-8">
+                        <h1 class="glitch text-4xl lg:text-6xl font-bold leading-tight mb-4" data-text="THE THUNDERBOLTS">
+                            THE THUNDERBOLTS
+                        </h1>
+                        <div class="font-mono text-lg text-gray-400 mb-8">
+                            <div class="mb-2">
+                                <span class="text-matrix-green">WHO:</span> 
+                                <span style="color: var(--text-primary);">Full-Stack AI & Web Engineers</span>
+                            </div>
+                            <div class="mb-2">
+                                <span class="text-terminal-blue">WHAT:</span> 
+                                <span style="color: var(--text-primary);">AI Agents, Web Apps & ML Systems</span>
+                            </div>
+                            <div class="mb-2">
+                                <span class="text-code-purple">SCALE:</span> 
+                                <span style="color: var(--text-primary);">Enterprise Web & AI Solutions</span>
+                            </div>
+                            <div class="mb-2">
+                                <span class="text-syntax-orange">RESULT:</span> 
+                                <span style="color: var(--text-primary);">Autonomous Systems & 10x Growth</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <p class="text-xl leading-relaxed" style="color: var(--text-secondary);">
+                            We create autonomous AI agents, modern web applications, and ML systems that work 24/7. 
+                            <span class="text-matrix-green font-mono">From web development to agentic AI</span> 
+                            - we build intelligent systems that scale your business automatically.
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                        <button class="bg-matrix-green text-dark-bg font-mono font-semibold px-8 py-4 hover:bg-terminal-blue transition-all duration-300">
+                            View Our Work
+                        </button>
+                        <button class="border border-matrix-green text-matrix-green font-mono font-semibold px-8 py-4 hover:bg-matrix-green hover:text-dark-bg transition-all duration-300">
+                            Start Project
+                        </button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm font-mono">
+                        <div class="flex items-center space-x-2 text-gray-400">
+                            <span class="text-matrix-green">●</span> 
+                            <span>Senior Level</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-gray-400">
+                            <span class="text-terminal-blue">●</span> 
+                            <span>Production Ready</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-gray-400">
+                            <span class="text-code-purple">●</span> 
+                            <span>Enterprise Scale</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Code Terminal Display -->
+                <div class="animate-fade-in">
+                    <div class="terminal p-6 h-96 overflow-hidden relative">
+                        <div class="pt-4 font-mono text-sm">
+                            <div class="text-gray-500 mb-2">~/thunderbolts/active-systems</div>
+                            <div class="text-matrix-green mb-1">$ show portfolio --all</div>
+                            <div class="text-gray-400 mb-4">
+                                <div class="mb-3"><span class="text-matrix-green">🤖 AI AGENTS</span></div>
+                                <div class="ml-4 mb-1"><span class="text-terminal-blue">• Sales Assistant Agent</span> - Converting 40% more leads</div>
+                                <div class="ml-4 mb-1"><span class="text-code-purple">• Content Generation Agent</span> - Writing 50+ blogs/day</div>
+                                <div class="ml-4 mb-2"><span class="text-syntax-orange">• Data Analysis Agent</span> - 24/7 insights</div>
+                                
+                                <div class="mb-3 mt-4"><span class="text-matrix-green">🌐 WEB APPLICATIONS</span></div>
+                                <div class="ml-4 mb-1"><span class="text-terminal-blue">• React/Next.js Dashboards</span> - Real-time analytics</div>
+                                <div class="ml-4 mb-1"><span class="text-code-purple">• Node.js APIs</span> - Processing millions of requests</div>
+                                <div class="ml-4 mb-2"><span class="text-syntax-orange">• Full-stack SaaS Platforms</span> - End-to-end solutions</div>
+                                
+                                <div class="mb-2 mt-4"><span class="text-matrix-green">📊 ML MODELS</span></div>
+                                <div class="ml-4 mb-1"><span class="text-terminal-blue">• Predictive Analytics</span> - 95% accuracy</div>
+                            </div>
+                            <div class="text-matrix-green mb-2 animate-pulse-subtle">$ deploy_autonomous_systems</div>
+                            <div class="text-gray-400 text-xs mb-1">✓ AI agents deployed</div>
+                            <div class="text-gray-400 text-xs mb-1">✓ Web apps scaled</div>
+                            <div class="text-gray-400 text-xs mb-2">✓ ML models optimized</div>
+                            <div class="text-matrix-green typing">Systems running autonomously_</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Business Stats -->
+                    <div class="mt-8 grid grid-cols-2 gap-4">
+                        <div class="border border-dark-border p-4 bg-dark-surface/50">
+                            <div class="text-2xl font-mono text-matrix-green">25+</div>
+                            <div class="text-sm text-gray-400 font-mono">AI Agents Deployed</div>
+                        </div>
+                        <div class="border border-dark-border p-4 bg-dark-surface/50">
+                            <div class="text-2xl font-mono text-terminal-blue">40+</div>
+                            <div class="text-sm text-gray-400 font-mono">Web Apps Built</div>
+                        </div>
+                        <div class="border border-dark-border p-4 bg-dark-surface/50">
+                            <div class="text-2xl font-mono text-code-purple">15+</div>
+                            <div class="text-sm text-gray-400 font-mono">ML Models Trained</div>
+                        </div>
+                        <div class="border border-dark-border p-4 bg-dark-surface/50">
+                            <div class="text-2xl font-mono text-syntax-orange">24/7</div>
+                            <div class="text-sm text-gray-400 font-mono">Systems Running</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech" class="py-20" style="background-color: var(--bg-secondary);">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-center mb-4">
+                    <span class="font-mono text-matrix-green">OUR</span> CAPABILITIES
+                </h2>
+                <p class="text-center text-gray-400 font-mono text-sm">What we deliver for your business</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="terminal p-6 hover:border-matrix-green transition-all duration-300">
+                    <div class="mb-4">
+                        <h3 class="font-mono text-lg text-matrix-green mb-2">🤖 Agentic AI Systems</h3>
+                        <div class="space-y-2 font-mono text-sm text-gray-400">
+                            <div>• Autonomous Sales & Marketing Agents</div>
+                            <div>• 24/7 Customer Service Bots</div>
+                            <div>• Content Creation & SEO Agents</div>
+                            <div>• Data Analysis & Reporting Agents</div>
+                        </div>
+                    </div>
+                    <div class="font-mono text-xs text-terminal-blue">AI that works while you sleep</div>
+                </div>
+
+                <div class="terminal p-6 hover:border-terminal-blue transition-all duration-300">
+                    <div class="mb-4">
+                        <h3 class="font-mono text-lg text-terminal-blue mb-2">🌐 Full-Stack Web Development</h3>
+                        <div class="space-y-2 font-mono text-sm text-gray-400">
+                            <div>• React/Next.js & Node.js Applications</div>
+                            <div>• E-commerce & SaaS Platforms</div>
+                            <div>• Progressive Web Apps (PWAs)</div>
+                            <div>• Real-time Dashboards & Analytics</div>
+                        </div>
+                    </div>
+                    <div class="font-mono text-xs text-terminal-blue">Modern web experiences that convert</div>
+                </div>
+
+                <div class="terminal p-6 hover:border-code-purple transition-all duration-300">
+                    <div class="mb-4">
+                        <h3 class="font-mono text-lg text-code-purple mb-2">📊 Machine Learning & AI</h3>
+                        <div class="space-y-2 font-mono text-sm text-gray-400">
+                            <div>• Predictive Analytics & Forecasting</div>
+                            <div>• Natural Language Processing</div>
+                            <div>• Computer Vision & Image Recognition</div>
+                            <div>• Recommendation Systems</div>
+                        </div>
+                    </div>
+                    <div class="font-mono text-xs text-terminal-blue">Smart decisions powered by data</div>
+                </div>
+            </div>
+
+            <!-- Tech Stack Ribbon -->
+            <div class="mb-8">
+                <div class="text-center mb-8">
+                    <h3 class="font-mono text-xl text-terminal-blue mb-2">Technologies We Master</h3>
+                    <p class="text-gray-400 font-mono text-sm">The tools that power our solutions</p>
+                </div>
+                <div class="tech-ribbon">
+                    <div class="tech-scroll">
+                        <!-- First set of technologies -->
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Python</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <span class="font-mono text-sm">React.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Node.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                            </svg>
+                            <span class="font-mono text-sm">TensorFlow</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 3h18v18H3V3zm2 2v14h14V5H5z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Docker</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Git</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                            </svg>
+                            <span class="font-mono text-sm">AWS</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14.5 2A12.5 12.5 0 0 0 2 14.5a12.5 12.5 0 0 0 25 0A12.5 12.5 0 0 0 14.5 2zM14.5 5a9.5 9.5 0 0 1 0 19 9.5 9.5 0 0 1 0-19z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Azure</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M1.5 6.09L12 1l10.5 5.09L12 11.18 1.5 6.09zM1.5 9.91L12 15l10.5-5.09v2.18L12 17.18 1.5 12.09v-2.18zM1.5 15.91L12 21l10.5-5.09v2.18L12 23.18 1.5 18.09v-2.18z"/>
+                            </svg>
+                            <span class="font-mono text-sm">PostgreSQL</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 17.56l4.07 2.43-.77-4.61 3.32-3.26-4.61-.67L12 7.5l-2.01 3.95-4.61.67 3.32 3.26-.77 4.61L12 17.56z"/>
+                            </svg>
+                            <span class="font-mono text-sm">HTML</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M5 3l2.2 19.68L12 24l4.8-1.32L19 3H5zm3.13 4.4h7.74l-.15 1.81H9.27l.15 1.8h5.52l-.44 4.93-2.5.69-2.5-.69-.16-1.81H7.53l.31 3.42L12 17.4l4.16-1.15.58-6.49H8.13V4.4z"/>
+                            </svg>
+                            <span class="font-mono text-sm">CSS</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 3h18l-1.68 18.9L12 24l-7.32-2.1L3 3zm14.5 6.1H8.77l.26 2.8h8.21l-.78 8.8-4.46 1.24-4.46-1.24-.3-3.4h2.18l.15 1.7 2.43.66 2.43-.66.25-2.8H6.96l-.77-8.8h11.62l-.31-2.8z"/>
+                            </svg>
+                            <span class="font-mono text-sm">JavaScript</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10.9 13.02l.99 2.47 2.96-1.01-.99-2.47-1.98.51-.98.5zm.49-2.99c.33-.33.49-.49 1.02-.16l1.48.82c.49.33.66.49.33.98l-.99 1.81c-.33.49-.66.33-.99 0l-1.48-.82c-.49-.33-.66-.49-.33-.98l.99-1.81c.33-.49.66-.33.99 0z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Kubernetes</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Flask</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/>
+                            </svg>
+                            <span class="font-mono text-sm">FastAPI</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0L1.608 6v12L12 24l10.392-6V6L12 0z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Google Cloud</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.4 8.1c0 .6-.1 1.2-.3 1.8h-2.4c.1-.6.2-1.2.2-1.8s-.1-1.2-.2-1.8h2.4c.2.6.3 1.2.3 1.8z"/>
+                            </svg>
+                            <span class="font-mono text-sm">PyTorch</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 20c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm-4-8c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4z"/>
+                            </svg>
+                            <span class="font-mono text-sm">OpenCV</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Scikit-Learn</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 3.2c-4.9 0-8.8 3.9-8.8 8.8s3.9 8.8 8.8 8.8 8.8-3.9 8.8-8.8-3.9-8.8-8.8-8.8zm0 15.6c-3.7 0-6.8-3.1-6.8-6.8s3.1-6.8 6.8-6.8 6.8 3.1 6.8 6.8-3.1 6.8-6.8 6.8z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Hugging Face</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Transformers</span>
+                        </div>
+                        <!-- Duplicate set for seamless loop -->
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Python</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <span class="font-mono text-sm">React.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Node.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                            </svg>
+                            <span class="font-mono text-sm">TensorFlow</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 3h18v18H3V3zm2 2v14h14V5H5z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Docker</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Git</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                            </svg>
+                            <span class="font-mono text-sm">AWS</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14.5 2A12.5 12.5 0 0 0 2 14.5a12.5 12.5 0 0 0 25 0A12.5 12.5 0 0 0 14.5 2zM14.5 5a9.5 9.5 0 0 1 0 19 9.5 9.5 0 0 1 0-19z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Azure</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M1.5 6.09L12 1l10.5 5.09L12 11.18 1.5 6.09zM1.5 9.91L12 15l10.5-5.09v2.18L12 17.18 1.5 12.09v-2.18zM1.5 15.91L12 21l10.5-5.09v2.18L12 23.18 1.5 18.09v-2.18z"/>
+                            </svg>
+                            <span class="font-mono text-sm">PostgreSQL</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 17.56l4.07 2.43-.77-4.61 3.32-3.26-4.61-.67L12 7.5l-2.01 3.95-4.61.67 3.32 3.26-.77 4.61L12 17.56z"/>
+                            </svg>
+                            <span class="font-mono text-sm">HTML</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M5 3l2.2 19.68L12 24l4.8-1.32L19 3H5zm3.13 4.4h7.74l-.15 1.81H9.27l.15 1.8h5.52l-.44 4.93-2.5.69-2.5-.69-.16-1.81H7.53l.31 3.42L12 17.4l4.16-1.15.58-6.49H8.13V4.4z"/>
+                            </svg>
+                            <span class="font-mono text-sm">CSS</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 3h18l-1.68 18.9L12 24l-7.32-2.1L3 3zm14.5 6.1H8.77l.26 2.8h8.21l-.78 8.8-4.46 1.24-4.46-1.24-.3-3.4h2.18l.15 1.7 2.43.66 2.43-.66.25-2.8H6.96l-.77-8.8h11.62l-.31-2.8z"/>
+                            </svg>
+                            <span class="font-mono text-sm">JavaScript</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10.9 13.02l.99 2.47 2.96-1.01-.99-2.47-1.98.51-.98.5zm.49-2.99c.33-.33.49-.49 1.02-.16l1.48.82c.49.33.66.49.33.98l-.99 1.81c-.33.49-.66.33-.99 0l-1.48-.82c-.49-.33-.66-.49-.33-.98l.99-1.81c.33-.49.66-.33.99 0z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Kubernetes</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Flask</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/>
+                            </svg>
+                            <span class="font-mono text-sm">FastAPI</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0L1.608 6v12L12 24l10.392-6V6L12 0z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Google Cloud</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.4 8.1c0 .6-.1 1.2-.3 1.8h-2.4c.1-.6.2-1.2.2-1.8s-.1-1.2-.2-1.8h2.4c.2.6.3 1.2.3 1.8z"/>
+                            </svg>
+                            <span class="font-mono text-sm">PyTorch</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 20c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm-4-8c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4z"/>
+                            </svg>
+                            <span class="font-mono text-sm">OpenCV</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Scikit-Learn</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 3.2c-4.9 0-8.8 3.9-8.8 8.8s3.9 8.8 8.8 8.8 8.8-3.9 8.8-8.8-3.9-8.8-8.8-8.8zm0 15.6c-3.7 0-6.8-3.1-6.8-6.8s3.1-6.8 6.8-6.8 6.8 3.1 6.8 6.8-3.1 6.8-6.8 6.8z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Hugging Face</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <span class="font-mono text-sm">Transformers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-center mb-8">
+                    <span class="font-mono text-terminal-blue">RECENT</span> SUCCESS STORIES
+                </h2>
+                <p class="text-center text-gray-400 font-mono text-sm">Real projects, real results for our clients</p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Project 1 -->
+                <div class="terminal p-8 hover:border-matrix-green transition-all duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="font-mono text-xl text-matrix-green mb-2">🤖 Autonomous Sales Agent Network</h3>
+                            <p class="text-gray-400 font-mono text-sm mb-4">AI agents that research leads, write emails, and book meetings automatically</p>
+                        </div>
+                        <div class="font-mono text-sm text-gray-500">2024</div>
+                    </div>
+                    <div class="font-mono text-sm text-gray-400 mb-4">
+                        <div class="mb-2"><span class="text-code-purple">Challenge:</span> Sales team spending 80% time on admin, low conversion rates</div>
+                        <div class="mb-2"><span class="text-code-purple">Solution:</span> Agentic AI system handling lead research, outreach & scheduling</div>
+                        <div class="mb-4"><span class="text-code-purple">Result:</span> 300% increase in qualified leads, 24/7 operation</div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-matrix-green/20 text-matrix-green px-3 py-1 font-mono text-xs">Agentic AI</span>
+                        <span class="bg-terminal-blue/20 text-terminal-blue px-3 py-1 font-mono text-xs">Sales Automation</span>
+                        <span class="bg-code-purple/20 text-code-purple px-3 py-1 font-mono text-xs">Lead Generation</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="terminal p-8 hover:border-terminal-blue transition-all duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="font-mono text-xl text-terminal-blue mb-2">🌐 SaaS Platform & Web Application</h3>
+                            <p class="text-gray-400 font-mono text-sm mb-4">Full-stack React/Node.js platform serving 50K+ users with real-time features</p>
+                        </div>
+                        <div class="font-mono text-sm text-gray-500">2024</div>
+                    </div>
+                    <div class="font-mono text-sm text-gray-400 mb-4">
+                        <div class="mb-2"><span class="text-code-purple">Challenge:</span> Legacy system slow, no mobile support, frequent crashes</div>
+                        <div class="mb-2"><span class="text-code-purple">Solution:</span> Modern React/Next.js frontend, Node.js APIs, cloud infrastructure</div>
+                        <div class="mb-4"><span class="text-code-purple">Result:</span> 5x faster load times, 99.9% uptime, mobile-first experience</div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-matrix-green/20 text-matrix-green px-3 py-1 font-mono text-xs">React/Next.js</span>
+                        <span class="bg-terminal-blue/20 text-terminal-blue px-3 py-1 font-mono text-xs">Full-Stack</span>
+                        <span class="bg-code-purple/20 text-code-purple px-3 py-1 font-mono text-xs">SaaS Platform</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="terminal p-8 hover:border-code-purple transition-all duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="font-mono text-xl text-code-purple mb-2">📊 ML-Powered Content Creation System</h3>
+                            <p class="text-gray-400 font-mono text-sm mb-4">AI agents creating blogs, social media, and marketing content at scale</p>
+                        </div>
+                        <div class="font-mono text-sm text-gray-500">2024</div>
+                    </div>
+                    <div class="font-mono text-sm text-gray-400 mb-4">
+                        <div class="mb-2"><span class="text-code-purple">Challenge:</span> Content team bottleneck, inconsistent quality, SEO optimization</div>
+                        <div class="mb-2"><span class="text-code-purple">Solution:</span> ML models + agentic workflow for research, writing & optimization</div>
+                        <div class="mb-4"><span class="text-code-purple">Result:</span> 100+ articles/month, 400% organic traffic increase</div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-matrix-green/20 text-matrix-green px-3 py-1 font-mono text-xs">Content AI</span>
+                        <span class="bg-terminal-blue/20 text-terminal-blue px-3 py-1 font-mono text-xs">SEO Optimization</span>
+                        <span class="bg-code-purple/20 text-code-purple px-3 py-1 font-mono text-xs">Marketing ML</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How We Work Section -->
+    <section id="pipeline" class="py-20" style="background-color: var(--bg-secondary);">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-center mb-4">
+                    <span class="font-mono text-matrix-green">HOW WE</span> WORK TOGETHER
+                </h2>
+                <p class="text-center text-gray-400 text-lg mb-4">From your idea to a thriving business solution</p>
+                <p class="text-center text-gray-500 font-mono text-sm">Simple, transparent, results-driven</p>
+            </div>
+            
+            <!-- Business-Friendly Process Display -->
+            <div class="terminal p-8 mb-12">
+                <div class="terminal-header mb-6">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="font-mono text-xs text-gray-500 ml-4">your-project-journey.md</span>
+                    </div>
+                    <div class="font-mono text-sm text-gray-400">
+                        <div>From concept to success story...</div>
+                        <div class="text-matrix-green">Let's build something amazing together →</div>
+                    </div>
+                </div>
+                
+                <!-- Business-Friendly Pipeline Steps -->
+                <div class="pipeline-container">
+                    <div class="space-y-8">
+                        <!-- Step 1: Discovery -->
+                        <div class="pipeline-step-enhanced group" data-step="1">
+                            <div class="flex items-center space-x-4">
+                                <div class="step-indicator">
+                                    <div class="w-12 h-12 border-2 border-matrix-green rounded-full flex items-center justify-center font-mono text-matrix-green font-bold bg-matrix-green/10 group-hover:bg-matrix-green/20 transition-all duration-300">
+                                        01
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="terminal-output">
+                                        <div class="font-mono text-matrix-green text-sm mb-2"># STEP 1: Let's Talk</div>
+                                        <div class="text-2xl font-bold text-white mb-3">💬 Discovery & Strategy</div>
+                                        <div class="text-gray-300 text-lg mb-4">
+                                            We start with a conversation about <strong>your vision, goals, and challenges</strong>. 
+                                            No technical jargon - just understanding what success looks like for you.
+                                        </div>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                            <div class="bg-matrix-green/10 border border-matrix-green/20 rounded p-3">
+                                                <div class="text-matrix-green font-semibold mb-1">What We Learn:</div>
+                                                <div class="text-gray-400">
+                                                    • Your business goals<br>
+                                                    • Current challenges<br>
+                                                    • Budget & timeline
+                                                </div>
+                                            </div>
+                                            <div class="bg-matrix-green/10 border border-matrix-green/20 rounded p-3">
+                                                <div class="text-matrix-green font-semibold mb-1">What You Get:</div>
+                                                <div class="text-gray-400">
+                                                    • Clear project roadmap<br>
+                                                    • Honest cost estimate<br>
+                                                    • Risk-free consultation
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-time font-mono text-xs text-gray-500 bg-matrix-green/10 px-3 py-2 rounded">1-2 weeks</div>
+                            </div>
+                            <div class="pipeline-connector"></div>
+                        </div>
+                        
+                        <!-- Step 2: Planning -->
+                        <div class="pipeline-step-enhanced group" data-step="2">
+                            <div class="flex items-center space-x-4">
+                                <div class="step-indicator">
+                                    <div class="w-12 h-12 border-2 border-terminal-blue rounded-full flex items-center justify-center font-mono text-terminal-blue font-bold bg-terminal-blue/10 group-hover:bg-terminal-blue/20 transition-all duration-300">
+                                        02
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="terminal-output">
+                                        <div class="font-mono text-terminal-blue text-sm mb-2"># STEP 2: Blueprint Creation</div>
+                                        <div class="text-2xl font-bold text-white mb-3">📋 Planning & Design</div>
+                                        <div class="text-gray-300 text-lg mb-4">
+                                            We create a detailed plan and visual mockups so <strong>you can see exactly what we'll build</strong> 
+                                            before we write any code. No surprises, just clarity.
+                                        </div>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                            <div class="bg-terminal-blue/10 border border-terminal-blue/20 rounded p-3">
+                                                <div class="text-terminal-blue font-semibold mb-1">What We Create:</div>
+                                                <div class="text-gray-400">
+                                                    • Visual mockups & wireframes<br>
+                                                    • User experience flow<br>
+                                                    • Project timeline
+                                                </div>
+                                            </div>
+                                            <div class="bg-terminal-blue/10 border border-terminal-blue/20 rounded p-3">
+                                                <div class="text-terminal-blue font-semibold mb-1">Your Involvement:</div>
+                                                <div class="text-gray-400">
+                                                    • Review & feedback sessions<br>
+                                                    • Design iterations<br>
+                                                    • Final approval before build
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-time font-mono text-xs text-gray-500 bg-terminal-blue/10 px-3 py-2 rounded">2-3 weeks</div>
+                            </div>
+                            <div class="pipeline-connector"></div>
+                        </div>
+                        
+                        <!-- Step 3: Building -->
+                        <div class="pipeline-step-enhanced group" data-step="3">
+                            <div class="flex items-center space-x-4">
+                                <div class="step-indicator">
+                                    <div class="w-12 h-12 border-2 border-code-purple rounded-full flex items-center justify-center font-mono text-code-purple font-bold bg-code-purple/10 group-hover:bg-code-purple/20 transition-all duration-300">
+                                        03
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="terminal-output">
+                                        <div class="font-mono text-code-purple text-sm mb-2"># STEP 3: Building Your Solution</div>
+                                        <div class="text-2xl font-bold text-white mb-3">🔨 Development & Testing</div>
+                                        <div class="text-gray-300 text-lg mb-4">
+                                            We build your solution in short sprints, <strong>showing you progress every week</strong>. 
+                                            You'll see your project come to life and can request changes along the way.
+                                        </div>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                            <div class="bg-code-purple/10 border border-code-purple/20 rounded p-3">
+                                                <div class="text-code-purple font-semibold mb-1">How We Build:</div>
+                                                <div class="text-gray-400">
+                                                    • Weekly progress demos<br>
+                                                    • Regular check-ins<br>
+                                                    • Quality testing throughout
+                                                </div>
+                                            </div>
+                                            <div class="bg-code-purple/10 border border-code-purple/20 rounded p-3">
+                                                <div class="text-code-purple font-semibold mb-1">Your Peace of Mind:</div>
+                                                <div class="text-gray-400">
+                                                    • See progress in real-time<br>
+                                                    • Request changes anytime<br>
+                                                    • No hidden costs or surprises
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-time font-mono text-xs text-gray-500 bg-code-purple/10 px-3 py-2 rounded">4-10 weeks</div>
+                            </div>
+                            <div class="pipeline-connector"></div>
+                        </div>
+                        
+                        <!-- Step 4: Launch -->
+                        <div class="pipeline-step-enhanced group" data-step="4">
+                            <div class="flex items-center space-x-4">
+                                <div class="step-indicator">
+                                    <div class="w-12 h-12 border-2 border-syntax-orange rounded-full flex items-center justify-center font-mono text-syntax-orange font-bold bg-syntax-orange/10 group-hover:bg-syntax-orange/20 transition-all duration-300">
+                                        04
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="terminal-output">
+                                        <div class="font-mono text-syntax-orange text-sm mb-2"># STEP 4: Go Live & Grow</div>
+                                        <div class="text-2xl font-bold text-white mb-3">🚀 Launch & Support</div>
+                                        <div class="text-gray-300 text-lg mb-4">
+                                            We launch your solution and <strong>make sure everything runs smoothly</strong>. 
+                                            Plus, we train your team and provide ongoing support so you're never left hanging.
+                                        </div>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                            <div class="bg-syntax-orange/10 border border-syntax-orange/20 rounded p-3">
+                                                <div class="text-syntax-orange font-semibold mb-1">Launch Day:</div>
+                                                <div class="text-gray-400">
+                                                    • Smooth deployment<br>
+                                                    • Performance monitoring<br>
+                                                    • Immediate support available
+                                                </div>
+                                            </div>
+                                            <div class="bg-syntax-orange/10 border border-syntax-orange/20 rounded p-3">
+                                                <div class="text-syntax-orange font-semibold mb-1">Ongoing Success:</div>
+                                                <div class="text-gray-400">
+                                                    • Team training included<br>
+                                                    • 30-day support guarantee<br>
+                                                    • Future growth planning
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-time font-mono text-xs text-gray-500 bg-syntax-orange/10 px-3 py-2 rounded">1-2 weeks</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Success Message -->
+                        <div class="mt-8 p-6 border border-matrix-green/30 rounded bg-gradient-to-r from-matrix-green/10 to-terminal-blue/10">
+                            <div class="text-center">
+                                <div class="text-3xl mb-3">🎉</div>
+                                <div class="text-xl font-bold text-white mb-3">Your Business Solution is Live!</div>
+                                <div class="text-gray-300 mb-4">
+                                    Ready to scale your business, delight your customers, and achieve your goals.
+                                </div>
+                                <div class="font-mono text-sm text-matrix-green typing-demo">Success story in progress..._</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Business Benefits Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="terminal p-6 hover:border-matrix-green transition-all duration-300">
+                    <div class="text-3xl mb-2">💰</div>
+                    <div class="font-bold text-lg text-white mb-2">ROI Focus</div>
+                    <div class="text-sm text-gray-400">Every feature built to grow your revenue</div>
+                </div>
+                <div class="terminal p-6 hover:border-terminal-blue transition-all duration-300">
+                    <div class="text-3xl mb-2">🤝</div>
+                    <div class="font-bold text-lg text-white mb-2">Partnership</div>
+                    <div class="text-sm text-gray-400">We're invested in your long-term success</div>
+                </div>
+                <div class="terminal p-6 hover:border-code-purple transition-all duration-300">
+                    <div class="text-3xl mb-2">⚡</div>
+                    <div class="font-bold text-lg text-white mb-2">Fast Results</div>
+                    <div class="text-sm text-gray-400">See progress every single week</div>
+                </div>
+                <div class="terminal p-6 hover:border-syntax-orange transition-all duration-300">
+                    <div class="text-3xl mb-2">🛡️</div>
+                    <div class="font-bold text-lg text-white mb-2">Peace of Mind</div>
+                    <div class="text-sm text-gray-400">Fixed pricing, no surprises, guaranteed quality</div>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="mt-12 text-center">
+                <div class="terminal p-8 max-w-2xl mx-auto">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-white mb-3">Ready to Start Your Success Story?</h3>
+                        <p class="text-gray-300 text-lg">
+                            Let's have a no-pressure conversation about your business goals. 
+                            <strong class="text-matrix-green">Free consultation, honest advice, clear next steps.</strong>
+                        </p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button class="bg-matrix-green text-dark-bg font-semibold px-8 py-4 hover:bg-terminal-blue transition-all duration-300 font-mono">
+                            Start Free Consultation
+                        </button>
+                        <button class="border border-matrix-green text-matrix-green font-semibold px-8 py-4 hover:bg-matrix-green hover:text-dark-bg transition-all duration-300 font-mono">
+                            See Our Work
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20" style="background-color: var(--bg-secondary);">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">
+                    <span class="font-mono text-matrix-green">LET'S</span> WORK TOGETHER
+                </h2>
+                <p class="text-gray-400 font-mono text-sm">Ready to transform your business with AI?</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="terminal p-8 mb-8">
+                        <div class="font-mono text-sm text-gray-400 mb-4">
+                            <div class="mb-2"><span class="text-matrix-green">Name:</span> The Thunderbolts</div>
+                            <div class="mb-2"><span class="text-terminal-blue">Specialization:</span> Agentic AI, Web Dev & ML</div>
+                            <div class="mb-2"><span class="text-code-purple">Location:</span> Remote-First Team</div>
+                            <div class="mb-2"><span class="text-syntax-orange">Availability:</span> Ready for Your Project</div>
+                        </div>
+                        <div class="font-mono text-xs text-gray-500">// Ready for your next challenge</div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-2 h-2 bg-matrix-green rounded-full animate-pulse-subtle"></div>
+                            <div class="font-mono text-sm text-gray-400">
+                                <span class="text-matrix-green">Email:</span> 
+                                <a href="mailto:hello@thunderbolts.dev" class="text-terminal-blue hover:underline">
+                                    hello@thunderbolts.dev
+                                </a>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-2 h-2 bg-terminal-blue rounded-full animate-pulse-subtle"></div>
+                            <div class="font-mono text-sm text-gray-400">
+                                <span class="text-terminal-blue">LinkedIn:</span> 
+                                <a href="#" class="text-code-purple hover:underline">
+                                    /company/thunderbolts-ai
+                                </a>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-2 h-2 bg-code-purple rounded-full animate-pulse-subtle"></div>
+                            <div class="font-mono text-sm text-gray-400">
+                                <span class="text-code-purple">GitHub:</span> 
+                                <a href="#" class="text-syntax-orange hover:underline">
+                                    github.com/thunderbolts-ai
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="terminal p-8">
+                        <div class="mb-6">
+                            <h3 class="font-mono text-lg text-terminal-blue mb-4">Enterprise Inquiry</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="font-mono text-sm text-gray-400 block mb-2">Project Scope:</label>
+                                    <select class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-matrix-green focus:outline-none">
+                                        <option>ML Model Development</option>
+                                        <option>System Architecture</option>
+                                        <option>Performance Optimization</option>
+                                        <option>Full Stack Solution</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="font-mono text-sm text-gray-400 block mb-2">Timeline:</label>
+                                    <input type="text" placeholder="3-6 months" class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-terminal-blue focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="font-mono text-sm text-gray-400 block mb-2">Requirements:</label>
+                                    <textarea rows="4" placeholder="Describe your technical requirements..." class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-code-purple focus:outline-none resize-none"></textarea>
+                                </div>
+                                <button class="w-full bg-matrix-green text-dark-bg font-mono font-semibold py-3 hover:bg-terminal-blue transition-all duration-300">
+                                    Send Inquiry
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t" style="background-color: var(--bg-primary); border-top-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center">
+                <div class="font-mono text-gray-500 text-sm mb-4">
+                    <span class="text-matrix-green">© 2024 The Thunderbolts</span> 
+                    · Built with precision and performance in mind
+                </div>
+                <div class="flex justify-center space-x-8 font-mono text-xs text-gray-600">
+                    <span>Senior Engineers</span>
+                    <span>Enterprise Ready</span>
+                    <span>Production Tested</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
