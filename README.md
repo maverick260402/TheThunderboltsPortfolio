@@ -178,4 +178,4 @@ The "How We Work Together" section is specifically designed for non-technical au
 
 ## License
 
-This project is for portfolio demonstration purposes.
+This project is for portfolio demonstration purposes.No license is added
