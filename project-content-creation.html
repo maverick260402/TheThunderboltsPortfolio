@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ML-Powered Content Creation System - The Thunderbolts</title>
+    <script>
+        // Prevent flash of dark theme - set theme immediately before page renders
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+            document.body?.setAttribute('data-theme', theme);
+        })();
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -25,23 +33,23 @@
                 <!-- Mobile Theme Toggle -->
                 <div class="md:hidden">
                     <div class="mobile-theme-switch-container">
-                        <span id="mobileLightLabel" class="theme-switch-label">Light</span>
+                        <span id="mobileLightLabel" class="theme-switch-label active">Light</span>
                         <div class="mobile-theme-switch" id="mobileThemeSwitch">
                             <span class="mobile-theme-switch-pointer"></span>
                         </div>
-                        <span id="mobileDarkLabel" class="theme-switch-label active">Dark</span>
+                        <span id="mobileDarkLabel" class="theme-switch-label">Dark</span>
                     </div>
                 </div>
-                
+
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html#tech" class="font-mono text-sm hover:text-matrix-green transition-all duration-300" style="color: var(--text-muted);">capabilities</a>
                     <a href="index.html#experience" class="font-mono text-sm hover:text-terminal-blue transition-all duration-300" style="color: var(--text-muted);">projects</a>
                     <div class="theme-switch-container">
-                        <span id="lightLabel" class="theme-switch-label">Light Mode</span>
+                        <span id="lightLabel" class="theme-switch-label active">Light Mode</span>
                         <div class="theme-switch" id="themeSwitch">
                             <span class="theme-switch-pointer"></span>
                         </div>
-                        <span id="darkLabel" class="theme-switch-label active">Dark Mode</span>
+                        <span id="darkLabel" class="theme-switch-label">Dark Mode</span>
                     </div>
                     <a href="index.html#contact" class="font-mono text-sm border border-matrix-green text-matrix-green px-4 py-2 hover:bg-matrix-green transition-all duration-300">
                         contact

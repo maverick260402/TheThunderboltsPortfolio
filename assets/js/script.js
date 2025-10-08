@@ -40,11 +40,10 @@ function initThemeToggle() {
     const darkLabel = document.getElementById('darkLabel');
     const mobileLightLabel = document.getElementById('mobileLightLabel');
     const mobileDarkLabel = document.getElementById('mobileDarkLabel');
-    const body = document.body;
-    
-    // Check for saved theme or default to dark
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    
+
+    // Check for saved theme or default to light
+    const currentTheme = localStorage.getItem('theme') || 'light';
+
     // Function to update switch position and labels
     function updateSwitch(theme) {
         if (theme === 'light') {
@@ -63,24 +62,26 @@ function initThemeToggle() {
             mobileDarkLabel.classList.add('active');
         }
     }
-    
-    // Apply initial theme
-    body.setAttribute('data-theme', currentTheme);
+
+    // Apply initial theme to both html and body
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    document.body.setAttribute('data-theme', currentTheme);
     updateSwitch(currentTheme);
-    
+
     // Function to toggle theme
     function toggleTheme() {
-        const currentTheme = body.getAttribute('data-theme');
+        const currentTheme = document.documentElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        body.setAttribute('data-theme', newTheme);
+
+        document.documentElement.setAttribute('data-theme', newTheme);
+        document.body.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         updateSwitch(newTheme);
-        
+
         // Recreate matrix effect with new theme
         createMatrixEffect();
     }
-    
+
     // Add event listeners to both switches
     themeSwitch.addEventListener('click', toggleTheme);
     mobileThemeSwitch.addEventListener('click', toggleTheme);
