@@ -9,6 +9,8 @@
     --matrix-bg: #0d1117;
     --surface-bg: #161b22;
     --scrollbar-track: #0d1117;
+    /* background used to mask the timeline under step circles (matches terminal/step bg) */
+    --timeline-bg: var(--bg-primary);
 }
 
 [data-theme="light"] {
@@ -21,6 +23,8 @@
     --matrix-bg: #f8fafc;
     --surface-bg: #ffffff;
     --scrollbar-track: #e5e7eb;
+    /* in light theme the pipeline-step background is var(--surface-bg) so use it for masking */
+    --timeline-bg: var(--surface-bg);
 }
 
 /* Transition for smooth theme switching */
@@ -514,7 +518,7 @@
     border-radius: 4px;
     white-space: nowrap;
     min-width: 140px;
-    justify-content: center;
+    
     transition: all 0.3s ease;
 }
 
@@ -556,9 +560,52 @@
     position: relative;
 }
 
+/* Grey background line (full height) connecting all circles */
+.pipeline-container::before {
+    content: '';
+    position: absolute;
+    left: 62px;
+    top: 0px; /* Start from top of first circle */
+    width: 3px;
+    height: 101px; /* Fixed height for vertical line */
+    background: var(--border-color); /* Grey line */
+    z-index: 1;
+    border-radius: 2px;
+}
+
+/* Scrolling pointer circle that moves along the timeline */
+.pipeline-container::after {
+    content: '';
+    position: absolute;
+    left: 53.5px; /* centered on the line (38px - 8.5px) */
+    top: var(--pointer-top, 0px);
+    width: 17px;
+    height: 17px;
+    background: radial-gradient(circle, #00ff41 0%, #64ffda 100%);
+    border: 3px solid var(--bg-primary);
+    border-radius: 50%;
+    z-index: 100;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.7), 0 0 25px rgba(0, 255, 65, 0.4);
+    transition: top 0.15s ease-out;
+    pointer-events: none;
+}
+
+/* Green progress line (grows from top to scroll position) - dynamically created in JS */
+.pipeline-timeline-progress {
+    position: absolute;
+    left: 62px;
+    top: 0px;
+    width: 3px;
+    height: var(--line-height, 0px); /* Dynamic height based on scroll */
+    background: linear-gradient(to bottom, #00ff41, #64ffda);
+    z-index: 2;
+    border-radius: 2px;
+    transition: height 0.15s ease-out;
+}
+
 .pipeline-step-enhanced {
     position: relative;
-    padding: 20px 0;
+    padding: 0px 0 20px 80px; /* reduced vertical space between steps */
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -582,6 +629,7 @@
 }
 
 .pipeline-connector {
+    display: none; /* hide per-step connectors because we use a single continuous line */
     position: absolute;
     left: 24px;
     top: 60px;
@@ -600,8 +648,13 @@
 }
 
 .step-indicator {
-    position: relative;
-    z-index: 2;
+    position: absolute;
+    left: 1px; /* moved left to avoid overlapping with the vertical line */
+    top: 0px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .step-time {
@@ -655,6 +708,49 @@
     position: relative;
     overflow: hidden;
 }
+    /* Reveal animation initial state (matches JS) */
+    .pipeline-step-enhanced {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    .pipeline-step-enhanced.reveal-step {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    /* Ensure the circular number visuals are centered and readable */
+    .step-indicator > div {
+        width: 48px;
+        height: 48px;
+            z-index: 1; /* keep it above the line (z-index:1) but below the circle content */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-family: 'JetBrains Mono', monospace;
+        background: rgba(0,0,0,0.04);
+        position: relative; /* required for masking pseudo-element */
+    z-index: 3; /* ensure the number and circle sit above the mask */
+    }
+
+    /* mask placed on the wrapper so it doesn't cover the number inside the circle */
+    .step-indicator {
+        position: absolute; /* already set elsewhere but keep for safety */
+    }
+
+    .step-indicator::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 56px; /* slightly larger than circle to mask the line under it */
+        height: 56px;
+        border-radius: 50%;
+        background: var(--timeline-bg);
+        z-index: 2; /* above the line (z-index:1) but below the circle (z-index:4) */
+        pointer-events: none;
+    }
 
 .pipeline-step-enhanced .terminal-output::before {
     content: '';
@@ -742,10 +838,30 @@
     color: var(--text-secondary);
 }
 
+/* Light mode scrolling pointer adjustments */
+[data-theme="light"] .pipeline-container::after {
+    background: radial-gradient(circle, #059669 0%, #0ea5e9 100%);
+    border-color: var(--bg-primary);
+    box-shadow: 0 0 12px rgba(5, 150, 105, 0.4), 0 0 20px rgba(5, 150, 105, 0.2);
+}
+
 /* Responsive adjustments for mobile-first design */
 @media (max-width: 768px) {
+    /* Hide the individual line segments on mobile - we'll use a simple vertical layout */
+    .pipeline-connector {
+        display: none;
+    }
+    
+    /* Scrolling pointer for mobile stays vertical but smaller */
+    .pipeline-container::after {
+        left: 32px;
+        width: 12px;
+        height: 12px;
+    }
+
     .pipeline-step-enhanced {
-        padding: 16px 0;
+        padding: 24px 16px 8px 16px; /* more vertical spacing for stacked layout */
+        display: block;
     }
     
     .pipeline-step-enhanced:hover {
@@ -803,12 +919,23 @@
     }
     
     .step-indicator {
-        order: 1;
+        /* place the step indicator above each step in the horizontal layout */
+        position: relative;
+        left: 0;
+        top: -18px;
+        order: 0;
         align-self: center;
+        margin: 0 auto 8px auto;
     }
 }
 
 @media (max-width: 480px) {
+    /* Hide the decorative timeline line and pointer on very small screens to save space */
+    .pipeline-container::before,
+    .pipeline-container::after {
+        display: none;
+    }
+
     .terminal {
         margin: 0 -16px;
         border-radius: 0;
@@ -824,5 +951,18 @@
     .pipeline-step-enhanced .terminal-output {
         margin: 4px;
         padding: 12px;
+    }
+    
+    /* Make the step indicator flow inline and smaller on very small screens */
+    .step-indicator {
+        position: relative;
+        left: 0;
+        top: 0;
+        margin: 0 0 8px 0;
+    }
+    .step-indicator > div {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
     }
 }

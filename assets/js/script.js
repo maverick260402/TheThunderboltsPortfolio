@@ -158,25 +158,35 @@ document.querySelectorAll('[class*="animate-"]').forEach(el => {
 // Enhanced Pipeline Interactivity
 function initPipelineInteractivity() {
     const pipelineSteps = document.querySelectorAll('.pipeline-step-enhanced');
-    
+    const pipelineContainer = document.querySelector('.pipeline-container');
+
+    if (!pipelineContainer || !pipelineSteps.length) {
+        return;
+    }
+
+    // Create the green progress line element
+    const progressLine = document.createElement('div');
+    progressLine.className = 'pipeline-timeline-progress';
+    pipelineContainer.appendChild(progressLine);
+
     pipelineSteps.forEach((step, index) => {
         // Add click interaction for mobile
         step.addEventListener('click', () => {
             // Remove active class from all steps
             pipelineSteps.forEach(s => s.classList.remove('active-step'));
-            
+
             // Add active class to clicked step
             step.classList.add('active-step');
-            
+
             // Optional: Scroll step into view on mobile
             if (window.innerWidth <= 768) {
-                step.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'center' 
+                step.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
                 });
             }
         });
-        
+
         // Add sequential reveal animation on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -190,9 +200,89 @@ function initPipelineInteractivity() {
             threshold: 0.3,
             rootMargin: '0px 0px -100px 0px'
         });
-        
+
         observer.observe(step);
     });
+
+    // Timeline scroll progress functionality
+    function updateTimelineProgress() {
+        const containerRect = pipelineContainer.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+
+        // Calculate how much of the container is visible and scrolled
+        const containerTop = containerRect.top;
+        const containerHeight = containerRect.height;
+
+        // Progress starts when container enters viewport and ends when it leaves
+        let scrollProgress = 0;
+
+        if (containerTop < viewportHeight && containerTop + containerHeight > 0) {
+            // Container is in viewport
+            const visibleTop = Math.max(0, viewportHeight - containerTop);
+            const scrollableHeight = containerHeight + viewportHeight;
+            scrollProgress = Math.min(1, Math.max(0, visibleTop / scrollableHeight));
+        } else if (containerTop + containerHeight <= 0) {
+            // Container has scrolled past
+            scrollProgress = 1;
+        }
+
+        // Get step 4 position to cap the progress
+        const step4 = pipelineSteps[3]; // 0-indexed, so step 4 is index 3
+        if (step4) {
+            const step4Rect = step4.getBoundingClientRect();
+            const step4Top = step4Rect.top - containerRect.top;
+            const step4Center = step4Top + 24; // Offset to center of circle
+
+            // Calculate the max progress percentage based on step 4 position
+            const maxProgressDistance = step4Center;
+            const totalDistance = containerHeight;
+            const maxScrollProgress = maxProgressDistance / totalDistance;
+
+            // Cap the scroll progress at step 4
+            scrollProgress = Math.min(scrollProgress, maxScrollProgress);
+        }
+
+        // Calculate pointer position (starts at top, stops at step 4)
+        const firstCircleOffset = 0; // start from top aligned with first circle
+        const totalDistance = containerHeight;
+        const pointerTop = firstCircleOffset + (scrollProgress * totalDistance);
+
+        // Update pointer position
+        pipelineContainer.style.setProperty('--pointer-top', `${pointerTop}px`);
+
+        // Update green line height (from top to pointer)
+        const lineHeight = Math.max(0, pointerTop);
+        pipelineContainer.style.setProperty('--line-height', `${lineHeight}px`);
+
+        // Update active step highlighting
+        pipelineSteps.forEach((step) => {
+            const stepRect = step.getBoundingClientRect();
+            const stepCenter = stepRect.top + stepRect.height / 2;
+
+            // Highlight step when it's in the center portion of viewport
+            if (stepCenter >= viewportHeight * 0.3 && stepCenter <= viewportHeight * 0.7) {
+                step.classList.add('active-step');
+            } else {
+                step.classList.remove('active-step');
+            }
+        });
+    }
+
+    // Throttled scroll handler for performance
+    let scrollTimeout;
+    function handleScroll() {
+        if (scrollTimeout) {
+            cancelAnimationFrame(scrollTimeout);
+        }
+        scrollTimeout = requestAnimationFrame(updateTimelineProgress);
+    }
+
+    // Initialize scroll listener
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', updateTimelineProgress);
+
+    // Initial update
+    updateTimelineProgress();
 }
 
 // Initialize enhanced pipeline functionality
