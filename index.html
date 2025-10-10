@@ -802,28 +802,32 @@
                     <div class="terminal p-8">
                         <div class="mb-6">
                             <h3 class="font-mono text-lg text-terminal-blue mb-4">Enterprise Inquiry</h3>
-                            <div class="space-y-4">
+
+                            <!-- Success/Error Messages -->
+                            <div id="formMessage" class="hidden mb-4 p-3 rounded font-mono text-sm"></div>
+
+                            <form id="enterpriseForm" class="space-y-4">
                                 <div>
                                     <label class="font-mono text-sm text-gray-400 block mb-2">Project Scope:</label>
-                                    <select class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-matrix-green focus:outline-none">
-                                        <option>ML Model Development</option>
-                                        <option>System Architecture</option>
-                                        <option>Performance Optimization</option>
-                                        <option>Full Stack Solution</option>
+                                    <select id="projectScope" name="projectScope" required class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-matrix-green focus:outline-none">
+                                        <option value="ML Model Development">ML Model Development</option>
+                                        <option value="System Architecture">System Architecture</option>
+                                        <option value="Performance Optimization">Performance Optimization</option>
+                                        <option value="Full Stack Solution">Full Stack Solution</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label class="font-mono text-sm text-gray-400 block mb-2">Timeline:</label>
-                                    <input type="text" placeholder="3-6 months" class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-terminal-blue focus:outline-none">
+                                    <input type="text" id="timeline" name="timeline" placeholder="3-6 months" required class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-terminal-blue focus:outline-none">
                                 </div>
                                 <div>
                                     <label class="font-mono text-sm text-gray-400 block mb-2">Requirements:</label>
-                                    <textarea rows="4" placeholder="Describe your technical requirements..." class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-code-purple focus:outline-none resize-none"></textarea>
+                                    <textarea id="requirements" name="requirements" rows="4" placeholder="Describe your technical requirements..." required class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-code-purple focus:outline-none resize-none"></textarea>
                                 </div>
-                                <button class="w-full bg-matrix-green text-dark-bg font-mono font-semibold py-3 hover:bg-terminal-blue transition-all duration-300">
+                                <button type="submit" id="submitBtn" class="w-full bg-matrix-green text-dark-bg font-mono font-semibold py-3 hover:bg-terminal-blue transition-all duration-300">
                                     Send Inquiry
                                 </button>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

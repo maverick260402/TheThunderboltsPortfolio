@@ -289,7 +289,7 @@ function initPipelineInteractivity() {
 // Initialize enhanced pipeline functionality
 document.addEventListener('DOMContentLoaded', () => {
     initPipelineInteractivity();
-    
+
     // Add reveal animation styles dynamically
     const style = document.createElement('style');
     style.textContent = `
@@ -298,23 +298,23 @@ document.addEventListener('DOMContentLoaded', () => {
             transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
-        
+
         .pipeline-step-enhanced.reveal-step {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .pipeline-step-enhanced.active-step .terminal-output {
             border-left: 3px solid var(--matrix-green);
             background: rgba(0, 255, 65, 0.1);
             transform: scale(1.02);
         }
-        
+
         .pipeline-step-enhanced.active-step .step-indicator > div {
             box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
             transform: scale(1.1);
         }
-        
+
         @media (max-width: 768px) {
             .pipeline-step-enhanced.active-step .terminal-output {
                 transform: scale(1.01);
@@ -322,4 +322,85 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     document.head.appendChild(style);
+});
+
+// Form Submission Handler
+function initFormSubmission() {
+    const form = document.getElementById('enterpriseForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formMessage = document.getElementById('formMessage');
+
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Get form values
+        const projectScope = document.getElementById('projectScope').value;
+        const timeline = document.getElementById('timeline').value;
+        const requirements = document.getElementById('requirements').value;
+
+        // Validate fields
+        if (!projectScope || !timeline || !requirements) {
+            showMessage('Please fill in all fields', 'error');
+            return;
+        }
+
+        // Disable submit button and show loading state
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        try {
+            // Send data to Vercel serverless function
+            const response = await fetch('/api/submit-form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    projectScope,
+                    timeline,
+                    requirements
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.success) {
+                showMessage(data.message || 'Form submitted successfully! We will get back to you soon.', 'success');
+                form.reset(); // Clear the form
+            } else {
+                showMessage(data.message || 'Failed to submit form. Please try again.', 'error');
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            showMessage('Network error. Please check your connection and try again.', 'error');
+        } finally {
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Inquiry';
+        }
+    });
+
+    function showMessage(message, type) {
+        formMessage.textContent = message;
+        formMessage.className = `mb-4 p-3 rounded font-mono text-sm ${
+            type === 'success'
+                ? 'bg-matrix-green/20 text-matrix-green border border-matrix-green/40'
+                : 'bg-error-red/20 text-error-red border border-error-red/40'
+        }`;
+        formMessage.classList.remove('hidden');
+
+        // Auto-hide success message after 5 seconds
+        if (type === 'success') {
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        }
+    }
+}
+
+// Initialize form submission on page load
+document.addEventListener('DOMContentLoaded', () => {
+    initFormSubmission();
 });

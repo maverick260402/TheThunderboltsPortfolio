@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(do echo \"=== $file ===\")",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(mkdir:*)"
     ],
     "deny": [],
     "ask": []
