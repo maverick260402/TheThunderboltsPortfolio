@@ -1,8 +1,9 @@
-// Vercel Serverless Function - Google Sheets Form Submission
-// This function handles form submissions and appends data to Google Sheets
+// Vercel Serverless Function - Google Sheets Form Submission & Email Notification
+// This function handles form submissions, appends data to Google Sheets, and sends email notifications
 
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const { JWT } = require('google-auth-library');
+const { Resend } = require('resend');
 
 module.exports = async (req, res) => {
   // Enable CORS
@@ -103,6 +104,69 @@ module.exports = async (req, res) => {
       'Timeline': timeline,
       'Requirements': requirements
     });
+
+    // Send email notification via Resend
+    try {
+      const RESEND_API_KEY = process.env.RESEND_API_KEY;
+      const NOTIFICATION_EMAIL = process.env.NOTIFICATION_EMAIL;
+
+      if (RESEND_API_KEY && NOTIFICATION_EMAIL) {
+        const resend = new Resend(RESEND_API_KEY);
+
+        await resend.emails.send({
+          from: 'Enterprise Inquiry <onboarding@resend.dev>',
+          to: [NOTIFICATION_EMAIL],
+          subject: `New Enterprise Inquiry - ${projectScope}`,
+          html: `
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <style>
+                body { font-family: 'Courier New', monospace; background-color: #0d1117; color: #c9d1d9; padding: 20px; }
+                .container { max-width: 600px; margin: 0 auto; background-color: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 30px; }
+                .header { color: #00ff41; font-size: 24px; margin-bottom: 20px; border-bottom: 2px solid #00ff41; padding-bottom: 10px; }
+                .field { margin-bottom: 20px; }
+                .label { color: #58a6ff; font-weight: bold; margin-bottom: 5px; }
+                .value { background-color: #0d1117; padding: 10px; border-left: 3px solid #00ff41; margin-top: 5px; }
+                .timestamp { color: #8b949e; font-size: 12px; margin-top: 20px; padding-top: 20px; border-top: 1px solid #30363d; }
+              </style>
+            </head>
+            <body>
+              <div class="container">
+                <div class="header">⚡ New Enterprise Inquiry</div>
+
+                <div class="field">
+                  <div class="label">Project Scope:</div>
+                  <div class="value">${projectScope}</div>
+                </div>
+
+                <div class="field">
+                  <div class="label">Timeline:</div>
+                  <div class="value">${timeline}</div>
+                </div>
+
+                <div class="field">
+                  <div class="label">Requirements:</div>
+                  <div class="value">${requirements.replace(/\n/g, '<br>')}</div>
+                </div>
+
+                <div class="timestamp">
+                  Received: ${timestamp}
+                </div>
+              </div>
+            </body>
+            </html>
+          `,
+        });
+
+        console.log('Email notification sent successfully');
+      } else {
+        console.warn('Email notification skipped: Missing RESEND_API_KEY or NOTIFICATION_EMAIL');
+      }
+    } catch (emailError) {
+      // Log email error but don't fail the request
+      console.error('Failed to send email notification:', emailError);
+    }
 
     // Return success response
     return res.status(200).json({
