@@ -8,10 +8,10 @@
     "build": "echo 'No build step required for static site'"
   },
   "dependencies": {
+    "google-auth-library": "^9.6.3",
     "google-spreadsheet": "^4.1.2",
-    "google-auth-library": "^9.6.3"
+    "resend": "^6.1.2"
   },
-  "devDependencies": {},
   "keywords": [
     "portfolio",
     "ai",
