@@ -1,6 +1,6 @@
 # The Thunderbolts Portfolio
 
-A dark-themed, matrix-inspired portfolio website showcasing AI & ML engineering capabilities with terminal aesthetics and animated effects. Now organized with a clean, maintainable file structure
+A dark-themed, matrix-inspired portfolio website showcasing AI & ML engineering capabilities with terminal aesthetics and animated effects. Now organized with a clean, maintainable file structure.
 
 ## Features
 
