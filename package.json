@@ -1,0 +1,23 @@
+{
+  "name": "thunderbolts-portfolio",
+  "version": "1.0.0",
+  "description": "The Thunderbolts - AI & ML Engineering Portfolio",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required for static site'"
+  },
+  "dependencies": {
+    "google-spreadsheet": "^4.1.2",
+    "google-auth-library": "^9.6.3"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "portfolio",
+    "ai",
+    "ml",
+    "thunderbolts"
+  ],
+  "author": "The Thunderbolts",
+  "license": "MIT"
+}
