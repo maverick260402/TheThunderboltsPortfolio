@@ -106,10 +106,55 @@ function createMatrixEffect() {
     }
 }
 
+// Mobile menu functionality
+function initMobileMenu() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+    if (!mobileMenuBtn || !mobileMenu) return;
+
+    // Open mobile menu with slide animation
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        // Trigger animation after a small delay to ensure display change is applied
+        setTimeout(() => {
+            mobileMenu.classList.remove('mobile-menu-hidden');
+        }, 10);
+    });
+
+    // Close mobile menu with slide animation
+    function closeMenu() {
+        mobileMenu.classList.add('mobile-menu-hidden');
+        // Wait for animation to complete before hiding
+        setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+        }, 300);
+    }
+
+    closeMobileMenu.addEventListener('click', closeMenu);
+    mobileMenuOverlay.addEventListener('click', closeMenu);
+
+    // Close menu when clicking on a link
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+            closeMenu();
+        }
+    });
+}
+
 // Initialize theme toggle and matrix effect
 document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
     createMatrixEffect();
+    initMobileMenu();
 });
 
 // Smooth scroll for navigation links
@@ -165,10 +210,16 @@ function initPipelineInteractivity() {
         return;
     }
 
-    // Create the green progress line element
-    const progressLine = document.createElement('div');
-    progressLine.className = 'pipeline-timeline-progress';
-    pipelineContainer.appendChild(progressLine);
+    // Skip timeline functionality on mobile devices
+    const isMobile = window.innerWidth <= 768;
+
+    // Create the green progress line element only on desktop
+    let progressLine;
+    if (!isMobile) {
+        progressLine = document.createElement('div');
+        progressLine.className = 'pipeline-timeline-progress';
+        pipelineContainer.appendChild(progressLine);
+    }
 
     pipelineSteps.forEach((step, index) => {
         // Add click interaction for mobile
@@ -205,91 +256,93 @@ function initPipelineInteractivity() {
         observer.observe(step);
     });
 
-    // Timeline scroll progress functionality
-    function updateTimelineProgress() {
-        const containerRect = pipelineContainer.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
+    // Timeline scroll progress functionality - ONLY ON DESKTOP
+    if (!isMobile) {
+        function updateTimelineProgress() {
+            const containerRect = pipelineContainer.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
 
-        // Calculate how much of the container is visible and scrolled
-        const containerTop = containerRect.top;
-        const containerHeight = containerRect.height;
+            // Calculate how much of the container is visible and scrolled
+            const containerTop = containerRect.top;
+            const containerHeight = containerRect.height;
 
-        // Progress starts when container enters viewport and ends when it leaves
-        let scrollProgress = 0;
+            // Progress starts when container enters viewport and ends when it leaves
+            let scrollProgress = 0;
 
-        if (containerTop < viewportHeight && containerTop + containerHeight > 0) {
-            // Container is in viewport
-            const visibleTop = Math.max(0, viewportHeight - containerTop);
-            const scrollableHeight = containerHeight + viewportHeight;
-            scrollProgress = Math.min(1, Math.max(0, visibleTop / scrollableHeight));
-        } else if (containerTop + containerHeight <= 0) {
-            // Container has scrolled past
-            scrollProgress = 1;
-        }
-
-        // Get step 4 position to cap the progress
-        const step4 = pipelineSteps[3]; // 0-indexed, so step 4 is index 3
-        if (step4) {
-            const step4Rect = step4.getBoundingClientRect();
-            const step4Top = step4Rect.top - containerRect.top;
-            const step4Center = step4Top + 24; // Offset to center of circle
-
-            // Calculate the max progress percentage based on step 4 position
-            const maxProgressDistance = step4Center;
-            const totalDistance = containerHeight;
-            const maxScrollProgress = maxProgressDistance / totalDistance;
-
-            // Cap the scroll progress at step 4
-            scrollProgress = Math.min(scrollProgress, maxScrollProgress);
-        }
-
-        // Calculate pointer position (starts at top, stops at step 4)
-        const firstCircleOffset = 0; // start from top aligned with first circle
-        const totalDistance = containerHeight;
-        const pointerTop = firstCircleOffset + (scrollProgress * totalDistance);
-
-        // Update pointer position
-        pipelineContainer.style.setProperty('--pointer-top', `${pointerTop}px`);
-
-        // Update green line height (from top to pointer)
-        const lineHeight = Math.max(0, pointerTop);
-        pipelineContainer.style.setProperty('--line-height', `${lineHeight}px`);
-
-        // Update active step highlighting
-        pipelineSteps.forEach((step) => {
-            const stepRect = step.getBoundingClientRect();
-            const stepCenter = stepRect.top + stepRect.height / 2;
-
-            // Highlight step when it's in the center portion of viewport
-            if (stepCenter >= viewportHeight * 0.3 && stepCenter <= viewportHeight * 0.7) {
-                step.classList.add('active-step');
-            } else {
-                step.classList.remove('active-step');
+            if (containerTop < viewportHeight && containerTop + containerHeight > 0) {
+                // Container is in viewport
+                const visibleTop = Math.max(0, viewportHeight - containerTop);
+                const scrollableHeight = containerHeight + viewportHeight;
+                scrollProgress = Math.min(1, Math.max(0, visibleTop / scrollableHeight));
+            } else if (containerTop + containerHeight <= 0) {
+                // Container has scrolled past
+                scrollProgress = 1;
             }
-        });
-    }
 
-    // Throttled scroll handler for performance
-    let scrollTimeout;
-    function handleScroll() {
-        if (scrollTimeout) {
-            cancelAnimationFrame(scrollTimeout);
+            // Get step 4 position to cap the progress
+            const step4 = pipelineSteps[3]; // 0-indexed, so step 4 is index 3
+            if (step4) {
+                const step4Rect = step4.getBoundingClientRect();
+                const step4Top = step4Rect.top - containerRect.top;
+                const step4Center = step4Top + 24; // Offset to center of circle
+
+                // Calculate the max progress percentage based on step 4 position
+                const maxProgressDistance = step4Center;
+                const totalDistance = containerHeight;
+                const maxScrollProgress = maxProgressDistance / totalDistance;
+
+                // Cap the scroll progress at step 4
+                scrollProgress = Math.min(scrollProgress, maxScrollProgress);
+            }
+
+            // Calculate pointer position (starts at top, stops at step 4)
+            const firstCircleOffset = 0; // start from top aligned with first circle
+            const totalDistance = containerHeight;
+            const pointerTop = firstCircleOffset + (scrollProgress * totalDistance);
+
+            // Update pointer position
+            pipelineContainer.style.setProperty('--pointer-top', `${pointerTop}px`);
+
+            // Update green line height (from top to pointer)
+            const lineHeight = Math.max(0, pointerTop);
+            pipelineContainer.style.setProperty('--line-height', `${lineHeight}px`);
+
+            // Update active step highlighting
+            pipelineSteps.forEach((step) => {
+                const stepRect = step.getBoundingClientRect();
+                const stepCenter = stepRect.top + stepRect.height / 2;
+
+                // Highlight step when it's in the center portion of viewport
+                if (stepCenter >= viewportHeight * 0.3 && stepCenter <= viewportHeight * 0.7) {
+                    step.classList.add('active-step');
+                } else {
+                    step.classList.remove('active-step');
+                }
+            });
         }
-        scrollTimeout = requestAnimationFrame(updateTimelineProgress);
+
+        // Throttled scroll handler for performance
+        let scrollTimeout;
+        function handleScroll() {
+            if (scrollTimeout) {
+                cancelAnimationFrame(scrollTimeout);
+            }
+            scrollTimeout = requestAnimationFrame(updateTimelineProgress);
+        }
+
+        // Initialize scroll listener only on desktop
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', updateTimelineProgress);
+
+        // Initial update
+        updateTimelineProgress();
     }
-
-    // Initialize scroll listener
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', updateTimelineProgress);
-
-    // Initial update
-    updateTimelineProgress();
 }
 
 // Initialize enhanced pipeline functionality
 document.addEventListener('DOMContentLoaded', () => {
     initPipelineInteractivity();
-    
+
     // Add reveal animation styles dynamically
     const style = document.createElement('style');
     style.textContent = `
@@ -298,23 +351,23 @@ document.addEventListener('DOMContentLoaded', () => {
             transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
-        
+
         .pipeline-step-enhanced.reveal-step {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .pipeline-step-enhanced.active-step .terminal-output {
             border-left: 3px solid var(--matrix-green);
             background: rgba(0, 255, 65, 0.1);
             transform: scale(1.02);
         }
-        
+
         .pipeline-step-enhanced.active-step .step-indicator > div {
             box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
             transform: scale(1.1);
         }
-        
+
         @media (max-width: 768px) {
             .pipeline-step-enhanced.active-step .terminal-output {
                 transform: scale(1.01);
@@ -322,4 +375,85 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     document.head.appendChild(style);
+});
+
+// Form Submission Handler
+function initFormSubmission() {
+    const form = document.getElementById('enterpriseForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formMessage = document.getElementById('formMessage');
+
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Get form values
+        const projectScope = document.getElementById('projectScope').value;
+        const timeline = document.getElementById('timeline').value;
+        const requirements = document.getElementById('requirements').value;
+
+        // Validate fields
+        if (!projectScope || !timeline || !requirements) {
+            showMessage('Please fill in all fields', 'error');
+            return;
+        }
+
+        // Disable submit button and show loading state
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        try {
+            // Send data to Vercel serverless function
+            const response = await fetch('/api/submit-form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    projectScope,
+                    timeline,
+                    requirements
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.success) {
+                showMessage(data.message || 'Form submitted successfully! We will get back to you soon.', 'success');
+                form.reset(); // Clear the form
+            } else {
+                showMessage(data.message || 'Failed to submit form. Please try again.', 'error');
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            showMessage('Network error. Please check your connection and try again.', 'error');
+        } finally {
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Inquiry';
+        }
+    });
+
+    function showMessage(message, type) {
+        formMessage.textContent = message;
+        formMessage.className = `mb-4 p-3 rounded font-mono text-sm ${
+            type === 'success'
+                ? 'bg-matrix-green/20 text-matrix-green border border-matrix-green/40'
+                : 'bg-error-red/20 text-error-red border border-error-red/40'
+        }`;
+        formMessage.classList.remove('hidden');
+
+        // Auto-hide success message after 5 seconds
+        if (type === 'success') {
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        }
+    }
+}
+
+// Initialize form submission on page load
+document.addEventListener('DOMContentLoaded', () => {
+    initFormSubmission();
 });

@@ -24,14 +24,16 @@
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-4">
+                    <!-- Company Logo -->
+                    <img src="The Thunderbolts (5).png" alt="The Thunderbolts Logo" class="object-contain" style="width: 80px; height: 80px;">
                     <div class="terminal px-4 py-2">
                         <span class="font-mono text-matrix-green text-sm">~/thunderbolts$</span>
                         <span class="font-mono text-sm ml-2 typing" style="color: var(--text-muted);">whoami</span>
                     </div>
                 </div>
                 
-                <!-- Mobile Theme Toggle -->
-                <div class="md:hidden">
+                <!-- Mobile Controls -->
+                <div class="md:hidden flex items-center gap-3">
                     <div class="mobile-theme-switch-container">
                         <span id="mobileLightLabel" class="theme-switch-label active">Light</span>
                         <div class="mobile-theme-switch" id="mobileThemeSwitch">
@@ -39,6 +41,11 @@
                         </div>
                         <span id="mobileDarkLabel" class="theme-switch-label">Dark</span>
                     </div>
+                    <button id="mobileMenuBtn" class="text-matrix-green p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#tech" class="font-mono text-sm hover:text-matrix-green transition-all duration-300" style="color: var(--text-muted);">capabilities</a>
@@ -57,6 +64,26 @@
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="fixed inset-0 z-40 hidden md:hidden mobile-menu-hidden">
+        <div class="absolute inset-0 bg-black opacity-50" id="mobileMenuOverlay"></div>
+        <div id="mobileMenuPanel" class="absolute left-0 w-64 terminal shadow-2xl mobile-menu-panel" style="top: 70px; height: calc(100vh - 70px); background-color: var(--bg-primary); border-right: 2px solid var(--border-color);">
+            <button id="closeMobileMenu" class="absolute top-4 right-4 text-matrix-green hover:text-terminal-blue transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <nav class="flex flex-col space-y-6 mt-16 px-6">
+                <a href="#tech" class="font-mono text-lg hover:text-matrix-green transition-all duration-300 mobile-menu-link py-2 border-b border-dark-border" style="color: var(--text-muted);">capabilities</a>
+                <a href="#experience" class="font-mono text-lg hover:text-terminal-blue transition-all duration-300 mobile-menu-link py-2 border-b border-dark-border" style="color: var(--text-muted);">projects</a>
+                <a href="#pipeline" class="font-mono text-lg hover:text-code-purple transition-all duration-300 mobile-menu-link py-2 border-b border-dark-border" style="color: var(--text-muted);">how we work</a>
+                <a href="#contact" class="font-mono text-base border-2 border-matrix-green text-matrix-green px-6 py-3 hover:bg-matrix-green hover:text-dark-bg transition-all duration-300 text-center mobile-menu-link mt-6">
+                    contact us
+                </a>
+            </nav>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="min-h-screen flex items-center pt-20 pb-12 relative">
@@ -802,28 +829,32 @@
                     <div class="terminal p-8">
                         <div class="mb-6">
                             <h3 class="font-mono text-lg text-terminal-blue mb-4">Enterprise Inquiry</h3>
-                            <div class="space-y-4">
+
+                            <!-- Success/Error Messages -->
+                            <div id="formMessage" class="hidden mb-4 p-3 rounded font-mono text-sm"></div>
+
+                            <form id="enterpriseForm" class="space-y-4">
                                 <div>
                                     <label class="font-mono text-sm text-gray-400 block mb-2">Project Scope:</label>
-                                    <select class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-matrix-green focus:outline-none">
-                                        <option>ML Model Development</option>
-                                        <option>System Architecture</option>
-                                        <option>Performance Optimization</option>
-                                        <option>Full Stack Solution</option>
+                                    <select id="projectScope" name="projectScope" required class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-matrix-green focus:outline-none">
+                                        <option value="ML Model Development">ML Model Development</option>
+                                        <option value="System Architecture">System Architecture</option>
+                                        <option value="Performance Optimization">Performance Optimization</option>
+                                        <option value="Full Stack Solution">Full Stack Solution</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label class="font-mono text-sm text-gray-400 block mb-2">Timeline:</label>
-                                    <input type="text" placeholder="3-6 months" class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-terminal-blue focus:outline-none">
+                                    <input type="text" id="timeline" name="timeline" placeholder="3-6 months" required class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-terminal-blue focus:outline-none">
                                 </div>
                                 <div>
                                     <label class="font-mono text-sm text-gray-400 block mb-2">Requirements:</label>
-                                    <textarea rows="4" placeholder="Describe your technical requirements..." class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-code-purple focus:outline-none resize-none"></textarea>
+                                    <textarea id="requirements" name="requirements" rows="4" placeholder="Describe your technical requirements..." required class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-code-purple focus:outline-none resize-none"></textarea>
                                 </div>
-                                <button class="w-full bg-matrix-green text-dark-bg font-mono font-semibold py-3 hover:bg-terminal-blue transition-all duration-300">
+                                <button type="submit" id="submitBtn" class="w-full bg-matrix-green text-dark-bg font-mono font-semibold py-3 hover:bg-terminal-blue transition-all duration-300">
                                     Send Inquiry
                                 </button>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
