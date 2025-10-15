@@ -245,49 +245,89 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-16">
                 <h2 class="text-3xl lg:text-4xl font-bold text-center mb-4">
-                    <span class="font-mono text-matrix-green">OUR</span> CAPABILITIES
+                    OUR <span style="color:#00FF66">Capabilities</span>
                 </h2>
                 <p class="text-center text-gray-400 font-mono text-sm">What we deliver for your business</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                <div class="terminal p-6 hover:border-matrix-green transition-all duration-300">
-                    <div class="mb-4">
-                        <h3 class="font-mono text-lg text-matrix-green mb-2">🤖 Agentic AI Systems</h3>
-                        <div class="space-y-2 font-mono text-sm text-gray-400">
-                            <div>• Autonomous Sales & Marketing Agents</div>
-                            <div>• 24/7 Customer Service Bots</div>
-                            <div>• Content Creation & SEO Agents</div>
-                            <div>• Data Analysis & Reporting Agents</div>
+                <!-- Agentic AI Systems Card -->
+                <div class="capability-card terminal p-6 hover:border-matrix-green transition-all duration-300">
+                    <div class="flex items-start mb-4">
+                        <!-- Minimalist Robot/AI Icon -->
+                        <svg class="capability-icon mr-3" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="6" y="8" width="12" height="10" stroke="#00FF66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="9" cy="11" r="1" fill="#00FF66"/>
+                            <circle cx="15" cy="11" r="1" fill="#00FF66"/>
+                            <path d="M9 15h6" stroke="#00FF66" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 8V6M12 6l-2-2M12 6l2-2" stroke="#00FF66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6 12H4M18 12h2" stroke="#00FF66" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-matrix-green mb-3">Agentic AI Systems</h3>
                         </div>
                     </div>
-                    <div class="font-mono text-xs text-terminal-blue">AI that works while you sleep</div>
+                    <div class="space-y-2 text-sm" style="color: var(--text-secondary);">
+                        <div>• Autonomous Marketing & Sales Agents</div>
+                        <div>• 24/7 Customer Support Bots</div>
+                        <div>• Content & SEO Automation</div>
+                        <div>• Data Insights & Reporting Agents</div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-opacity-20" style="border-color: var(--border-color);">
+                        <p class="font-mono text-xs text-matrix-green italic">AI that works for you — even while you sleep.</p>
+                    </div>
                 </div>
 
-                <div class="terminal p-6 hover:border-terminal-blue transition-all duration-300">
-                    <div class="mb-4">
-                        <h3 class="font-mono text-lg text-terminal-blue mb-2">🌐 Full-Stack Web Development</h3>
-                        <div class="space-y-2 font-mono text-sm text-gray-400">
-                            <div>• React/Next.js & Node.js Applications</div>
-                            <div>• E-commerce & SaaS Platforms</div>
-                            <div>• Progressive Web Apps (PWAs)</div>
-                            <div>• Real-time Dashboards & Analytics</div>
+                <!-- Full-Stack Web Development Card -->
+                <div class="capability-card terminal p-6 hover:border-terminal-blue transition-all duration-300">
+                    <div class="flex items-start mb-4">
+                        <!-- Minimalist Code/Browser Icon -->
+                        <svg class="capability-icon mr-3" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="4" width="18" height="16" rx="2" stroke="#0ea5e9" stroke-width="2"/>
+                            <path d="M3 8h18" stroke="#0ea5e9" stroke-width="2"/>
+                            <path d="M8 12l2 2-2 2" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 16h4" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-terminal-blue mb-3">Full-Stack Web Development</h3>
                         </div>
                     </div>
-                    <div class="font-mono text-xs text-terminal-blue">Modern web experiences that convert</div>
+                    <div class="space-y-2 text-sm" style="color: var(--text-secondary);">
+                        <div>• React / Next.js & Node.js Applications</div>
+                        <div>• E-commerce & SaaS Platforms</div>
+                        <div>• Progressive Web Apps (PWAs)</div>
+                        <div>• Real-time Dashboards & Analytics</div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-opacity-20" style="border-color: var(--border-color);">
+                        <p class="font-mono text-xs text-terminal-blue italic">Modern web experiences that drive conversions.</p>
+                    </div>
                 </div>
 
-                <div class="terminal p-6 hover:border-code-purple transition-all duration-300">
-                    <div class="mb-4">
-                        <h3 class="font-mono text-lg text-code-purple mb-2">📊 Machine Learning & AI</h3>
-                        <div class="space-y-2 font-mono text-sm text-gray-400">
-                            <div>• Predictive Analytics & Forecasting</div>
-                            <div>• Natural Language Processing</div>
-                            <div>• Computer Vision & Image Recognition</div>
-                            <div>• Recommendation Systems</div>
+                <!-- Machine Learning & AI Card -->
+                <div class="capability-card terminal p-6 hover:border-code-purple transition-all duration-300">
+                    <div class="flex items-start mb-4">
+                        <!-- Minimalist Brain/Neural Network Icon -->
+                        <svg class="capability-icon mr-3" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="3" stroke="#8b5cf6" stroke-width="2"/>
+                            <circle cx="6" cy="8" r="2" stroke="#8b5cf6" stroke-width="2"/>
+                            <circle cx="18" cy="8" r="2" stroke="#8b5cf6" stroke-width="2"/>
+                            <circle cx="6" cy="16" r="2" stroke="#8b5cf6" stroke-width="2"/>
+                            <circle cx="18" cy="16" r="2" stroke="#8b5cf6" stroke-width="2"/>
+                            <path d="M9.5 10.5L7.5 9M14.5 10.5L16.5 9M9.5 13.5L7.5 15M14.5 13.5L16.5 15" stroke="#8b5cf6" stroke-width="1.5"/>
+                        </svg>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-code-purple mb-3">Machine Learning & AI</h3>
                         </div>
                     </div>
-                    <div class="font-mono text-xs text-terminal-blue">Smart decisions powered by data</div>
+                    <div class="space-y-2 text-sm" style="color: var(--text-secondary);">
+                        <div>• Predictive Analytics & Forecasting</div>
+                        <div>• Natural Language Processing (NLP)</div>
+                        <div>• Computer Vision & Image Recognition</div>
+                        <div>• Intelligent Recommendation Systems</div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-opacity-20" style="border-color: var(--border-color);">
+                        <p class="font-mono text-xs text-code-purple italic">Smarter decisions, powered by data.</p>
+                    </div>
                 </div>
             </div>
 
@@ -598,26 +638,26 @@
                                 <div class="flex-1">
                                     <div class="terminal-output">
                                         <div class="font-mono text-matrix-green text-sm mb-2"># STEP 1: Let's Talk</div>
-                                        <div class="text-2xl font-bold text-white mb-3">💬 Discovery & Strategy</div>
+                                        <div class="text-2xl font-bold text-white mb-3">Discovery & Strategy</div>
                                         <div class="text-gray-300 text-lg mb-4">
                                             We start with a conversation about <strong>your vision, goals, and challenges</strong>. 
                                             No technical jargon - just understanding what success looks like for you.
                                         </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                                             <div class="bg-matrix-green/10 border border-matrix-green/20 rounded p-3">
-                                                <div class="text-matrix-green font-semibold mb-1">What We Learn:</div>
+                                                <div class="text-matrix-green font-semibold mb-1">What We Learn</div>
                                                 <div class="text-gray-400">
-                                                    • Your business goals<br>
-                                                    • Current challenges<br>
-                                                    • Budget & timeline
+                                                    • Your vision, goals, and what drives your business<br>
+                                                    • Core challenges and opportunities to automate or optimize<br>
+                                                    • The "why" behind your project — so we solve the right problem
                                                 </div>
                                             </div>
                                             <div class="bg-matrix-green/10 border border-matrix-green/20 rounded p-3">
-                                                <div class="text-matrix-green font-semibold mb-1">What You Get:</div>
+                                                <div class="text-matrix-green font-semibold mb-1">What You Get</div>
                                                 <div class="text-gray-400">
-                                                    • Clear project roadmap<br>
-                                                    • Honest cost estimate<br>
-                                                    • Risk-free consultation
+                                                    • A crystal-clear roadmap that aligns tech with business goals<br>
+                                                    • Transparent timeline, deliverables, and budget expectations<br>
+                                                    • Confidence that we're building the right solution from Day 1
                                                 </div>
                                             </div>
                                         </div>
@@ -639,26 +679,26 @@
                                 <div class="flex-1">
                                     <div class="terminal-output">
                                         <div class="font-mono text-terminal-blue text-sm mb-2"># STEP 2: Blueprint Creation</div>
-                                        <div class="text-2xl font-bold text-white mb-3">📋 Planning & Design</div>
+                                        <div class="text-2xl font-bold text-white mb-3">Planning & Design</div>
                                         <div class="text-gray-300 text-lg mb-4">
-                                            We create a detailed plan and visual mockups so <strong>you can see exactly what we'll build</strong> 
+                                            We create a detailed plan and visual mockups so <strong>you can see exactly what we'll build</strong>
                                             before we write any code. No surprises, just clarity.
                                         </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                                             <div class="bg-terminal-blue/10 border border-terminal-blue/20 rounded p-3">
-                                                <div class="text-terminal-blue font-semibold mb-1">What We Create:</div>
+                                                <div class="text-terminal-blue font-semibold mb-1">What We Create</div>
                                                 <div class="text-gray-400">
-                                                    • Visual mockups & wireframes<br>
-                                                    • User experience flow<br>
-                                                    • Project timeline
+                                                    • Visual mockups showing every screen and interaction<br>
+                                                    • User journey maps for seamless experiences<br>
+                                                    • Technical architecture designed for scale and performance
                                                 </div>
                                             </div>
                                             <div class="bg-terminal-blue/10 border border-terminal-blue/20 rounded p-3">
-                                                <div class="text-terminal-blue font-semibold mb-1">Your Involvement:</div>
+                                                <div class="text-terminal-blue font-semibold mb-1">Your Involvement</div>
                                                 <div class="text-gray-400">
-                                                    • Review & feedback sessions<br>
-                                                    • Design iterations<br>
-                                                    • Final approval before build
+                                                    • Collaborative review sessions with real-time feedback<br>
+                                                    • Design iterations until it's exactly right<br>
+                                                    • Final sign-off before any development begins
                                                 </div>
                                             </div>
                                         </div>
@@ -680,26 +720,26 @@
                                 <div class="flex-1">
                                     <div class="terminal-output">
                                         <div class="font-mono text-code-purple text-sm mb-2"># STEP 3: Building Your Solution</div>
-                                        <div class="text-2xl font-bold text-white mb-3">🔨 Development & Testing</div>
+                                        <div class="text-2xl font-bold text-white mb-3">Development & Testing</div>
                                         <div class="text-gray-300 text-lg mb-4">
-                                            We build your solution in short sprints, <strong>showing you progress every week</strong>. 
+                                            We build your solution in short sprints, <strong>showing you progress every week</strong>.
                                             You'll see your project come to life and can request changes along the way.
                                         </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                                             <div class="bg-code-purple/10 border border-code-purple/20 rounded p-3">
-                                                <div class="text-code-purple font-semibold mb-1">How We Build:</div>
+                                                <div class="text-code-purple font-semibold mb-1">How We Build</div>
                                                 <div class="text-gray-400">
-                                                    • Weekly progress demos<br>
-                                                    • Regular check-ins<br>
-                                                    • Quality testing throughout
+                                                    • Weekly live demos of working features<br>
+                                                    • Continuous integration with automated quality checks<br>
+                                                    • Rigorous testing at every milestone
                                                 </div>
                                             </div>
                                             <div class="bg-code-purple/10 border border-code-purple/20 rounded p-3">
-                                                <div class="text-code-purple font-semibold mb-1">Your Peace of Mind:</div>
+                                                <div class="text-code-purple font-semibold mb-1">Your Peace of Mind</div>
                                                 <div class="text-gray-400">
-                                                    • See progress in real-time<br>
-                                                    • Request changes anytime<br>
-                                                    • No hidden costs or surprises
+                                                    • Real-time access to staging environments<br>
+                                                    • Direct communication channel for questions or changes<br>
+                                                    • Fixed-price milestones with zero surprise fees
                                                 </div>
                                             </div>
                                         </div>
@@ -721,26 +761,26 @@
                                 <div class="flex-1">
                                     <div class="terminal-output">
                                         <div class="font-mono text-syntax-orange text-sm mb-2"># STEP 4: Go Live & Grow</div>
-                                        <div class="text-2xl font-bold text-white mb-3">🚀 Launch & Support</div>
+                                        <div class="text-2xl font-bold text-white mb-3">Launch & Support</div>
                                         <div class="text-gray-300 text-lg mb-4">
-                                            We launch your solution and <strong>make sure everything runs smoothly</strong>. 
+                                            We launch your solution and <strong>make sure everything runs smoothly</strong>.
                                             Plus, we train your team and provide ongoing support so you're never left hanging.
                                         </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                                             <div class="bg-syntax-orange/10 border border-syntax-orange/20 rounded p-3">
-                                                <div class="text-syntax-orange font-semibold mb-1">Launch Day:</div>
+                                                <div class="text-syntax-orange font-semibold mb-1">Launch Day</div>
                                                 <div class="text-gray-400">
-                                                    • Smooth deployment<br>
-                                                    • Performance monitoring<br>
-                                                    • Immediate support available
+                                                    • Zero-downtime deployment with rollback safety<br>
+                                                    • Real-time performance monitoring from minute one<br>
+                                                    • Dedicated support team standing by
                                                 </div>
                                             </div>
                                             <div class="bg-syntax-orange/10 border border-syntax-orange/20 rounded p-3">
-                                                <div class="text-syntax-orange font-semibold mb-1">Ongoing Success:</div>
+                                                <div class="text-syntax-orange font-semibold mb-1">Ongoing Success</div>
                                                 <div class="text-gray-400">
-                                                    • Team training included<br>
-                                                    • 30-day support guarantee<br>
-                                                    • Future growth planning
+                                                    • Comprehensive team training and documentation<br>
+                                                    • 30-day priority support with rapid response times<br>
+                                                    • Strategic roadmap sessions for future enhancements
                                                 </div>
                                             </div>
                                         </div>
@@ -1016,21 +1056,35 @@
 
                             <form id="enterpriseForm" class="space-y-4">
                                 <div>
-                                    <label class="font-mono text-sm text-gray-400 block mb-2">Project Scope:</label>
+                                    <label class="font-mono text-sm text-gray-400 block mb-2">Name: <span class="text-red-500">*</span></label>
+                                    <input type="text" id="name" name="name" placeholder="Your full name" required class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-matrix-green focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="font-mono text-sm text-gray-400 block mb-2">Phone Number: <span class="text-red-500">*</span></label>
+                                    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" required class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-matrix-green focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="font-mono text-sm text-gray-400 block mb-2">Email Address: <span class="text-red-500">*</span></label>
+                                    <input type="email" id="email" name="email" placeholder="you@company.com" required class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-matrix-green focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="font-mono text-sm text-gray-400 block mb-2">Project Scope: <span class="text-red-500">*</span></label>
                                     <select id="projectScope" name="projectScope" required class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-matrix-green focus:outline-none">
-                                        <option value="ML Model Development">ML Model Development</option>
-                                        <option value="System Architecture">System Architecture</option>
-                                        <option value="Performance Optimization">Performance Optimization</option>
-                                        <option value="Full Stack Solution">Full Stack Solution</option>
+                                        <option value="">Select a service...</option>
+                                        <option value="Web & E-commerce Development">Web & E-commerce Development</option>
+                                        <option value="Full Stack Software Development">Full Stack Software Development</option>
+                                        <option value="AI & Machine Learning Solutions">AI & Machine Learning Solutions</option>
+                                        <option value="Agentic AI & Automation">Agentic AI & Automation</option>
+                                        <option value="Comprehensive Project Consultation">Comprehensive Project Consultation</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label class="font-mono text-sm text-gray-400 block mb-2">Timeline:</label>
-                                    <input type="text" id="timeline" name="timeline" placeholder="3-6 months" required class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-terminal-blue focus:outline-none">
+                                    <input type="text" id="timeline" name="timeline" placeholder="e.g., 3-6 months" class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-terminal-blue focus:outline-none">
                                 </div>
                                 <div>
-                                    <label class="font-mono text-sm text-gray-400 block mb-2">Requirements:</label>
-                                    <textarea id="requirements" name="requirements" rows="4" placeholder="Describe your technical requirements..." required class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-code-purple focus:outline-none resize-none"></textarea>
+                                    <label class="font-mono text-sm text-gray-400 block mb-2">Project Details:</label>
+                                    <textarea id="requirements" name="requirements" rows="4" placeholder="Tell us about your project goals and requirements..." class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-code-purple focus:outline-none resize-none"></textarea>
                                 </div>
                                 <button type="submit" id="submitBtn" class="w-full bg-matrix-green text-dark-bg font-mono font-semibold py-3 hover:bg-terminal-blue transition-all duration-300">
                                     Send Inquiry
