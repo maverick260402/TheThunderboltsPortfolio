@@ -471,13 +471,16 @@ function initFormSubmission() {
         e.preventDefault();
 
         // Get form values
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const email = document.getElementById('email').value;
         const projectScope = document.getElementById('projectScope').value;
         const timeline = document.getElementById('timeline').value;
         const requirements = document.getElementById('requirements').value;
 
-        // Validate fields
-        if (!projectScope || !timeline || !requirements) {
-            showMessage('Please fill in all fields', 'error');
+        // Validate required fields (Name, Phone, Email, Project Scope are required)
+        if (!name || !phone || !email || !projectScope) {
+            showMessage('Please fill in all required fields (Name, Phone, Email, Project Scope)', 'error');
             return;
         }
 
@@ -493,6 +496,9 @@ function initFormSubmission() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
+                    name,
+                    phone,
+                    email,
                     projectScope,
                     timeline,
                     requirements
