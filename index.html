@@ -25,11 +25,7 @@
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-4">
                     <!-- Company Logo -->
-                    <img src="The Thunderbolts (5).png" alt="The Thunderbolts Logo" class="object-contain" style="width: 80px; height: 80px;">
-                    <div class="terminal px-4 py-2">
-                        <span class="font-mono text-matrix-green text-sm">~/thunderbolts$</span>
-                        <span class="font-mono text-sm ml-2 typing" style="color: var(--text-muted);">whoami</span>
-                    </div>
+                    <img src="The Thunderbolts (5).png" alt="The Thunderbolts Logo" class="object-contain">
                 </div>
                 
                 <!-- Mobile Controls -->
@@ -50,6 +46,29 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#tech" class="font-mono text-sm hover:text-matrix-green transition-all duration-300" style="color: var(--text-muted);">capabilities</a>
                     <a href="#experience" class="font-mono text-sm hover:text-terminal-blue transition-all duration-300" style="color: var(--text-muted);">projects</a>
+
+                    <!-- Our Work Dropdown -->
+                    <div class="relative dropdown-container">
+                        <button id="ourWorkDropdown" class="font-mono text-sm hover:text-code-purple transition-all duration-300 flex items-center space-x-1" style="color: var(--text-muted);">
+                            <span>our work</span>
+                            <svg class="w-4 h-4 transition-transform duration-300 dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="ourWorkMenu" class="absolute top-full mt-2 w-64 terminal hidden opacity-0 transform translate-y-2 transition-all duration-300 dropdown-menu"
+                             style="background: var(--surface-bg); border-color: var(--border-color);">
+                            <a href="project-sales-agent.html" class="block px-4 py-3 font-mono text-sm hover:bg-matrix-green/10 border-b transition-all duration-200" style="color: var(--text-secondary); border-color: var(--border-color);">
+                                <span class="text-matrix-green">01</span> Sales Agent Network
+                            </a>
+                            <a href="project-saas-platform.html" class="block px-4 py-3 font-mono text-sm hover:bg-terminal-blue/10 border-b transition-all duration-200" style="color: var(--text-secondary); border-color: var(--border-color);">
+                                <span class="text-terminal-blue">02</span> SaaS Platform
+                            </a>
+                            <a href="project-content-creation.html" class="block px-4 py-3 font-mono text-sm hover:bg-code-purple/10 transition-all duration-200" style="color: var(--text-secondary);">
+                                <span class="text-code-purple">03</span> Content Creation AI
+                            </a>
+                        </div>
+                    </div>
+
                     <div class="theme-switch-container">
                         <span id="lightLabel" class="theme-switch-label active">Light Mode</span>
                         <div class="theme-switch" id="themeSwitch">
@@ -77,6 +96,28 @@
             <nav class="flex flex-col space-y-6 mt-16 px-6">
                 <a href="#tech" class="font-mono text-lg hover:text-matrix-green transition-all duration-300 mobile-menu-link py-2 border-b border-dark-border" style="color: var(--text-muted);">capabilities</a>
                 <a href="#experience" class="font-mono text-lg hover:text-terminal-blue transition-all duration-300 mobile-menu-link py-2 border-b border-dark-border" style="color: var(--text-muted);">projects</a>
+
+                <!-- Mobile Our Work Section -->
+                <div class="mobile-dropdown-container">
+                    <button id="mobileOurWorkDropdown" class="font-mono text-lg hover:text-code-purple transition-all duration-300 flex items-center justify-between w-full py-2 border-b border-dark-border" style="color: var(--text-muted);">
+                        <span>our work</span>
+                        <svg class="w-4 h-4 transition-transform duration-300 mobile-dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="mobileOurWorkMenu" class="mobile-projects-list">
+                        <a href="project-sales-agent.html" class="block font-mono text-base hover:text-matrix-green transition-all duration-200 mobile-menu-link py-3 pl-4 border-b border-dark-border" style="color: var(--text-muted);">
+                            <span class="text-matrix-green">01</span> Sales Agent
+                        </a>
+                        <a href="project-saas-platform.html" class="block font-mono text-base hover:text-terminal-blue transition-all duration-200 mobile-menu-link py-3 pl-4 border-b border-dark-border" style="color: var(--text-muted);">
+                            <span class="text-terminal-blue">02</span> SaaS Platform
+                        </a>
+                        <a href="project-content-creation.html" class="block font-mono text-base hover:text-code-purple transition-all duration-200 mobile-menu-link py-3 pl-4 border-b border-dark-border" style="color: var(--text-muted);">
+                            <span class="text-code-purple">03</span> Content AI
+                        </a>
+                    </div>
+                </div>
+
                 <a href="#pipeline" class="font-mono text-lg hover:text-code-purple transition-all duration-300 mobile-menu-link py-2 border-b border-dark-border" style="color: var(--text-muted);">how we work</a>
                 <a href="#contact" class="font-mono text-base border-2 border-matrix-green text-matrix-green px-6 py-3 hover:bg-matrix-green hover:text-dark-bg transition-all duration-300 text-center mobile-menu-link mt-6">
                     contact us
@@ -709,15 +750,42 @@
                             </div>
                         </div>
                         
-                        <!-- Success Message -->
-                        <div class="mt-8 p-6 border border-matrix-green/30 rounded bg-gradient-to-r from-matrix-green/10 to-terminal-blue/10">
-                            <div class="text-center">
-                                <div class="text-3xl mb-3">🎉</div>
-                                <div class="text-xl font-bold text-white mb-3">Your Business Solution is Live!</div>
-                                <div class="text-gray-300 mb-4">
-                                    Ready to scale your business, delight your customers, and achieve your goals.
+                        <!-- Deployment Status -->
+                        <div class="mt-12 terminal p-6 border transition-all duration-300"
+                             style="border-color: var(--border-color); background: var(--surface-bg);">
+                            <div class="space-y-4">
+                                <!-- Status Header -->
+                                <div class="flex items-center justify-between border-b pb-3"
+                                     style="border-color: var(--border-color);">
+                                    <h3 class="font-bold text-lg tracking-tight"
+                                        style="color: var(--text-primary);">
+                                        Deployment Complete
+                                    </h3>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2 h-2 rounded-full bg-matrix-green animate-pulse-subtle"></div>
+                                        <span class="font-mono text-xs uppercase tracking-wider"
+                                              style="color: var(--text-muted);">
+                                            Live
+                                        </span>
+                                    </div>
                                 </div>
-                                <div class="font-mono text-sm text-matrix-green typing-demo">Success story in progress..._</div>
+
+                                <!-- Status Description -->
+                                <p class="text-sm leading-relaxed"
+                                   style="color: var(--text-secondary);">
+                                    Your business solution is now live and operational. Systems are running autonomously with continuous monitoring and support.
+                                </p>
+
+                                <!-- System Status Line -->
+                                <div class="pt-3 border-t"
+                                     style="border-color: var(--border-color);">
+                                    <div class="font-mono text-sm flex items-center space-x-2"
+                                         style="color: var(--text-muted);">
+                                        <span>status:</span>
+                                        <span class="text-matrix-green">running</span>
+                                        <span class="text-matrix-green">✓</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -725,27 +793,140 @@
             </div>
             
             <!-- Business Benefits Stats -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div class="terminal p-6 hover:border-matrix-green transition-all duration-300">
-                    <div class="text-3xl mb-2">💰</div>
-                    <div class="font-bold text-lg text-white mb-2">ROI Focus</div>
-                    <div class="text-sm text-gray-400">Every feature built to grow your revenue</div>
-                </div>
-                <div class="terminal p-6 hover:border-terminal-blue transition-all duration-300">
-                    <div class="text-3xl mb-2">🤝</div>
-                    <div class="font-bold text-lg text-white mb-2">Partnership</div>
-                    <div class="text-sm text-gray-400">We're invested in your long-term success</div>
-                </div>
-                <div class="terminal p-6 hover:border-code-purple transition-all duration-300">
-                    <div class="text-3xl mb-2">⚡</div>
-                    <div class="font-bold text-lg text-white mb-2">Fast Results</div>
-                    <div class="text-sm text-gray-400">See progress every single week</div>
-                </div>
-                <div class="terminal p-6 hover:border-syntax-orange transition-all duration-300">
-                    <div class="text-3xl mb-2">🛡️</div>
-                    <div class="font-bold text-lg text-white mb-2">Peace of Mind</div>
-                    <div class="text-sm text-gray-400">Fixed pricing, no surprises, guaranteed quality</div>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 benefit-grid">
+
+                <!-- Card 1: ROI Focus -->
+                <article class="benefit-card group relative overflow-hidden terminal"
+                         style="border-color: var(--border-color); background: var(--surface-bg);">
+                    <!-- Accent Border Indicator -->
+                    <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-matrix-green to-transparent
+                                opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                    <!-- Card Content -->
+                    <div class="relative z-10 p-6 space-y-4">
+                        <!-- Numerical Badge -->
+                        <div class="w-12 h-12 rounded-lg border-2 flex items-center justify-center font-mono text-xl font-bold
+                                    transition-all duration-300 group-hover:scale-110"
+                             style="border-color: #00ff41; color: #00ff41; background: rgba(0, 255, 65, 0.05);">
+                            01
+                        </div>
+
+                        <!-- Title -->
+                        <header>
+                            <h3 class="font-bold text-lg tracking-tight transition-colors duration-300"
+                                style="color: var(--text-primary);">
+                                ROI-Focused Development
+                            </h3>
+                        </header>
+
+                        <!-- Description -->
+                        <p class="text-sm leading-relaxed transition-colors duration-300"
+                           style="color: var(--text-secondary);">
+                            Every feature and system is engineered to drive measurable revenue growth and operational efficiency.
+                        </p>
+
+                        <!-- Meta Label -->
+                        <div class="pt-2 border-t transition-colors duration-300"
+                             style="border-color: var(--border-color);">
+                            <span class="font-mono text-xs uppercase tracking-wider"
+                                  style="color: var(--text-muted);">
+                                Strategic Implementation
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Hover Glow Effect -->
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                         style="background: radial-gradient(circle at 50% 50%, rgba(0, 255, 65, 0.03), transparent 70%);"></div>
+                </article>
+
+                <!-- Card 2: Partnership -->
+                <article class="benefit-card group relative overflow-hidden terminal"
+                         style="border-color: var(--border-color); background: var(--surface-bg);">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-terminal-blue to-transparent
+                                opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10 p-6 space-y-4">
+                        <div class="w-12 h-12 rounded-lg border-2 flex items-center justify-center font-mono text-xl font-bold
+                                    transition-all duration-300 group-hover:scale-110"
+                             style="border-color: #64ffda; color: #64ffda; background: rgba(100, 255, 218, 0.05);">
+                            02
+                        </div>
+                        <header>
+                            <h3 class="font-bold text-lg tracking-tight" style="color: var(--text-primary);">
+                                Long-Term Partnership
+                            </h3>
+                        </header>
+                        <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
+                            Committed to sustained collaboration and strategic alignment with your organizational objectives.
+                        </p>
+                        <div class="pt-2 border-t" style="border-color: var(--border-color);">
+                            <span class="font-mono text-xs uppercase tracking-wider" style="color: var(--text-muted);">
+                                Scalable Engagement
+                            </span>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                         style="background: radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.03), transparent 70%);"></div>
+                </article>
+
+                <!-- Card 3: Rapid Delivery -->
+                <article class="benefit-card group relative overflow-hidden terminal"
+                         style="border-color: var(--border-color); background: var(--surface-bg);">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-code-purple to-transparent
+                                opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10 p-6 space-y-4">
+                        <div class="w-12 h-12 rounded-lg border-2 flex items-center justify-center font-mono text-xl font-bold
+                                    transition-all duration-300 group-hover:scale-110"
+                             style="border-color: #bb86fc; color: #bb86fc; background: rgba(187, 134, 252, 0.05);">
+                            03
+                        </div>
+                        <header>
+                            <h3 class="font-bold text-lg tracking-tight" style="color: var(--text-primary);">
+                                Accelerated Delivery
+                            </h3>
+                        </header>
+                        <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
+                            Iterative development cycles with continuous deployment ensuring rapid time-to-market.
+                        </p>
+                        <div class="pt-2 border-t" style="border-color: var(--border-color);">
+                            <span class="font-mono text-xs uppercase tracking-wider" style="color: var(--text-muted);">
+                                Agile Methodology
+                            </span>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                         style="background: radial-gradient(circle at 50% 50%, rgba(187, 134, 252, 0.03), transparent 70%);"></div>
+                </article>
+
+                <!-- Card 4: Quality Assurance -->
+                <article class="benefit-card group relative overflow-hidden terminal"
+                         style="border-color: var(--border-color); background: var(--surface-bg);">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-syntax-orange to-transparent
+                                opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10 p-6 space-y-4">
+                        <div class="w-12 h-12 rounded-lg border-2 flex items-center justify-center font-mono text-xl font-bold
+                                    transition-all duration-300 group-hover:scale-110"
+                             style="border-color: #ffab40; color: #ffab40; background: rgba(255, 171, 64, 0.05);">
+                            04
+                        </div>
+                        <header>
+                            <h3 class="font-bold text-lg tracking-tight" style="color: var(--text-primary);">
+                                Guaranteed Quality
+                            </h3>
+                        </header>
+                        <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
+                            Transparent pricing models with comprehensive testing protocols ensuring production-grade reliability.
+                        </p>
+                        <div class="pt-2 border-t" style="border-color: var(--border-color);">
+                            <span class="font-mono text-xs uppercase tracking-wider" style="color: var(--text-muted);">
+                                Enterprise Standards
+                            </span>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                         style="background: radial-gradient(circle at 50% 50%, rgba(255, 171, 64, 0.03), transparent 70%);"></div>
+                </article>
+
             </div>
             
             <!-- Call to Action -->

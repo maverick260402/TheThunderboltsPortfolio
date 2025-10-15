@@ -38,6 +38,20 @@
     opacity: 0.95;
 }
 
+/* Fix navbar height - independent of logo size */
+nav {
+    height: 80px;
+}
+
+nav .max-w-7xl {
+    height: 100%;
+}
+
+nav .flex.justify-between {
+    height: 100%;
+    align-items: center;
+}
+
 /* Enhanced light mode navigation */
 [data-theme="light"] .nav-bg {
     background: rgba(248, 250, 252, 0.95);
@@ -48,14 +62,17 @@
 
 /* Company Logo Styling */
 nav img[alt="The Thunderbolts Logo"] {
+    max-height: 200px;
+    width: auto;
+    object-fit: contain;    
     transition: transform 0.3s ease, filter 0.3s ease;
     /* Much more aggressive enhancement for dark mode */
     filter:
         brightness(3)
         contrast(2)
         saturate(2)
-        drop-shadow(0 0 20px rgba(249, 115, 22, 1))
-        drop-shadow(0 0 10px rgba(249, 115, 22, 0.8));
+        /*drop-shadow(0 0 20px rgba(249, 115, 22, 1))
+        drop-shadow(0 0 10px rgba(249, 115, 22, 0.8));*/
 }
 
 nav img[alt="The Thunderbolts Logo"]:hover {
@@ -64,8 +81,8 @@ nav img[alt="The Thunderbolts Logo"]:hover {
         brightness(3.5)
         contrast(2.2)
         saturate(2.2)
-        drop-shadow(0 0 25px rgba(249, 115, 22, 1))
-        drop-shadow(0 0 15px rgba(249, 115, 22, 0.9));
+        /*drop-shadow(0 0 25px rgba(249, 115, 22, 1))
+        drop-shadow(0 0 15px rgba(249, 115, 22, 0.9));*/
 }
 
 [data-theme="light"] nav img[alt="The Thunderbolts Logo"] {
@@ -74,8 +91,8 @@ nav img[alt="The Thunderbolts Logo"]:hover {
         brightness(0.3)
         contrast(3)
         saturate(3.5)
-        drop-shadow(0 2px 8px rgba(249, 115, 22, 0.9))
-        drop-shadow(0 0 4px rgba(249, 115, 22, 0.7))
+        /*drop-shadow(0 2px 8px rgba(249, 115, 22, 0.9))
+        drop-shadow(0 0 4px rgba(249, 115, 22, 0.7))*/
         invert(0.15);
 }
 
@@ -84,8 +101,8 @@ nav img[alt="The Thunderbolts Logo"]:hover {
         brightness(0.25)
         contrast(3.5)
         saturate(4)
-        drop-shadow(0 3px 12px rgba(249, 115, 22, 1))
-        drop-shadow(0 0 6px rgba(249, 115, 22, 0.9))
+        /*drop-shadow(0 3px 12px rgba(249, 115, 22, 1))
+        drop-shadow(0 0 6px rgba(249, 115, 22, 0.9))*/
         invert(0.15);
 }
 
@@ -103,6 +120,20 @@ nav img[alt="The Thunderbolts Logo"]:hover {
 [data-theme="light"] .text-gray-500,
 [data-theme="light"] .text-gray-600 {
     color: var(--text-secondary) !important;
+}
+
+/* FORCE navigation items to use --text-muted in light mode */
+[data-theme="light"] nav a[href="#tech"],
+[data-theme="light"] nav a[href="#experience"],
+[data-theme="light"] #ourWorkDropdown,
+[data-theme="light"] #ourWorkDropdown *,
+[data-theme="light"] button#ourWorkDropdown,
+[data-theme="light"] button#ourWorkDropdown *,
+[data-theme="light"] #mobileOurWorkDropdown,
+[data-theme="light"] #mobileOurWorkDropdown *,
+[data-theme="light"] button#mobileOurWorkDropdown,
+[data-theme="light"] button#mobileOurWorkDropdown * {
+    color: #6b7280 !important;
 }
 
 /* Ensure all text elements have good contrast in light mode */
@@ -391,6 +422,8 @@ nav img[alt="The Thunderbolts Logo"]:hover {
 .mobile-menu-panel {
     transform: translateX(-100%);
     transition: transform 0.3s ease-out;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .mobile-menu-hidden .mobile-menu-panel {
@@ -399,6 +432,126 @@ nav img[alt="The Thunderbolts Logo"]:hover {
 
 #mobileMenu:not(.mobile-menu-hidden) .mobile-menu-panel {
     transform: translateX(0);
+}
+
+/* ===== DROPDOWN MENU STYLING ===== */
+
+/* Desktop Dropdown */
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown-menu {
+    z-index: 1000;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-menu.show {
+    display: block !important;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-arrow.rotate {
+    transform: rotate(180deg);
+}
+
+/* Dropdown hover effects */
+.dropdown-menu a:hover {
+    background: var(--bg-primary);
+}
+
+/* Fix navigation item colors in light mode */
+[data-theme="light"] #ourWorkDropdown,
+[data-theme="light"] #ourWorkDropdown span,
+[data-theme="light"] #mobileOurWorkDropdown,
+[data-theme="light"] #mobileOurWorkDropdown span {
+    color: var(--text-muted) !important;
+}
+
+[data-theme="light"] nav a[href="#tech"],
+[data-theme="light"] nav a[href="#experience"] {
+    color: var(--text-muted) !important;
+}
+
+/* ===== MOBILE PROJECTS LIST ===== */
+.mobile-dropdown-container {
+    position: relative;
+    margin-bottom: 0 !important;
+}
+
+.mobile-projects-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    opacity: 0;
+}
+
+.mobile-projects-list.show {
+    max-height: 300px;
+    opacity: 1;
+}
+
+.mobile-projects-list a {
+    display: block;
+    background: var(--bg-secondary);
+    transition: all 0.2s ease;
+}
+
+.mobile-projects-list a:hover {
+    background: var(--surface-bg);
+    padding-left: 24px;
+}
+
+.mobile-dropdown-arrow {
+    transition: transform 0.3s ease;
+}
+
+.mobile-dropdown-arrow.rotate {
+    transform: rotate(180deg);
+}
+
+/* ===== BENEFIT CARDS - FORMAL REDESIGN ===== */
+
+/* Fade-In Animation */
+@keyframes benefitFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.benefit-card {
+    opacity: 0;
+    animation: benefitFadeIn 0.6s ease-out forwards;
+}
+
+/* Staggered Animation Delays */
+.benefit-grid > .benefit-card:nth-child(1) { animation-delay: 0s; }
+.benefit-grid > .benefit-card:nth-child(2) { animation-delay: 0.1s; }
+.benefit-grid > .benefit-card:nth-child(3) { animation-delay: 0.2s; }
+.benefit-grid > .benefit-card:nth-child(4) { animation-delay: 0.3s; }
+
+/* Enhanced Hover State */
+.benefit-card:hover {
+    transform: translateY(-4px);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mobile Responsiveness for Benefit Cards */
+@media (max-width: 768px) {
+    .benefit-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .benefit-card:hover {
+        transform: translateY(-2px);
+    }
 }
 
 @keyframes typing {

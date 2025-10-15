@@ -150,11 +150,69 @@ function initMobileMenu() {
     });
 }
 
+// Dropdown menu functionality
+function initDropdowns() {
+    // Desktop dropdown
+    const dropdownBtn = document.getElementById('ourWorkDropdown');
+    const dropdownMenu = document.getElementById('ourWorkMenu');
+    const dropdownArrow = dropdownBtn?.querySelector('.dropdown-arrow');
+
+    if (dropdownBtn && dropdownMenu) {
+        dropdownBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('show');
+            dropdownMenu.classList.toggle('hidden');
+            dropdownArrow?.classList.toggle('rotate');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.add('hidden');
+                dropdownMenu.classList.remove('show');
+                dropdownArrow?.classList.remove('rotate');
+            }
+        });
+    }
+
+    // Mobile projects list toggle
+    const mobileDropdownBtn = document.getElementById('mobileOurWorkDropdown');
+    const mobileProjectsList = document.getElementById('mobileOurWorkMenu');
+    const mobileDropdownArrow = mobileDropdownBtn?.querySelector('.mobile-dropdown-arrow');
+
+    if (mobileDropdownBtn && mobileProjectsList) {
+        // Toggle projects list
+        mobileDropdownBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileProjectsList.classList.toggle('show');
+            mobileDropdownArrow?.classList.toggle('rotate');
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileDropdownBtn.contains(e.target) && !mobileProjectsList.contains(e.target)) {
+                mobileProjectsList.classList.remove('show');
+                mobileDropdownArrow?.classList.remove('rotate');
+            }
+        });
+
+        // Close when clicking on a project link
+        const projectLinks = mobileProjectsList.querySelectorAll('a');
+        projectLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileProjectsList.classList.remove('show');
+                mobileDropdownArrow?.classList.remove('rotate');
+            });
+        });
+    }
+}
+
 // Initialize theme toggle and matrix effect
 document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
     createMatrixEffect();
     initMobileMenu();
+    initDropdowns();
 });
 
 // Smooth scroll for navigation links
@@ -339,9 +397,33 @@ function initPipelineInteractivity() {
     }
 }
 
+// Initialize benefit cards scroll-triggered animation
+function initBenefitCards() {
+    const benefitCards = document.querySelectorAll('.benefit-card');
+
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Animation will trigger via CSS animation property
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    benefitCards.forEach(card => {
+        observer.observe(card);
+    });
+}
+
 // Initialize enhanced pipeline functionality
 document.addEventListener('DOMContentLoaded', () => {
     initPipelineInteractivity();
+    initBenefitCards();
 
     // Add reveal animation styles dynamically
     const style = document.createElement('style');
