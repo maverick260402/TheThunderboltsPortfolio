@@ -366,9 +366,9 @@ document.addEventListener('DOMContentLoaded', () => {
 - **[assets/css/styles.css](assets/css/styles.css)**: Lines 1-342 (theme variables & overrides)
 - **[assets/js/script.js](assets/js/script.js)**: Lines 36-88, 109-112 (toggle logic)
 - **[index.html](index.html)**: Lines 7-14 (inline script), 19 (body), 28-32 (mobile toggle), 39-43 (desktop toggle)
-- **[project-sales-agent.html](project-sales-agent.html)**: Lines 7-14 (inline script), 28-32 (mobile toggle), 40-44 (desktop toggle)
-- **[project-saas-platform.html](project-saas-platform.html)**: Lines 7-14 (inline script), 28-32 (mobile toggle), 40-44 (desktop toggle)
-- **[project-content-creation.html](project-content-creation.html)**: Lines 7-14 (inline script), 28-32 (mobile toggle), 40-44 (desktop toggle)
+- **[project-hft-trading.html](project-hft-trading.html)**: Lines 7-14 (inline script), 28-32 (mobile toggle), 40-44 (desktop toggle)
+- **[project-deepreach-saas.html](project-deepreach-saas.html)**: Lines 7-14 (inline script), 28-32 (mobile toggle), 40-44 (desktop toggle)
+- **[project-smart-website.html](project-smart-website.html)**: Lines 7-14 (inline script), 28-32 (mobile toggle), 40-44 (desktop toggle)
 
 ---
 
