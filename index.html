@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Thunderbolts - Elite AI & ML Engineering</title>
     <script>
         // Prevent flash of dark theme - set theme immediately before page renders
-        (function() {
+        (function () {
             const theme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', theme);
             document.body?.setAttribute('data-theme', theme);
         })();
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body class="font-sans overflow-x-hidden" style="background-color: var(--bg-primary); color: var(--text-primary);">
     <!-- Matrix Background Effect -->
     <div class="matrix-bg" id="matrixBg"></div>
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 nav-bg backdrop-blur-md border-b" style="border-bottom-color: var(--border-color);">
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-bg backdrop-blur-md border-b"
+        style="border-bottom-color: var(--border-color);">
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-4">
                     <!-- Company Logo -->
                     <img src="The Thunderbolts (5).png" alt="The Thunderbolts Logo" class="object-contain">
                 </div>
-                
+
                 <!-- Mobile Controls -->
                 <div class="md:hidden flex items-center gap-3">
                     <div class="mobile-theme-switch-container">
@@ -39,31 +44,45 @@
                     </div>
                     <button id="mobileMenuBtn" class="text-matrix-green p-2">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#tech" class="font-mono text-sm hover:text-matrix-green transition-all duration-300" style="color: var(--text-muted);">capabilities</a>
-                    <a href="#experience" class="font-mono text-sm hover:text-terminal-blue transition-all duration-300" style="color: var(--text-muted);">projects</a>
+                    <a href="#tech" class="font-mono text-sm hover:text-matrix-green transition-all duration-300"
+                        style="color: var(--text-muted);">capabilities</a>
+                    <a href="#experience" class="font-mono text-sm hover:text-terminal-blue transition-all duration-300"
+                        style="color: var(--text-muted);">projects</a>
 
                     <!-- Our Work Dropdown -->
                     <div class="relative dropdown-container">
-                        <button id="ourWorkDropdown" class="font-mono text-sm hover:text-code-purple transition-all duration-300 flex items-center space-x-1" style="color: var(--text-muted);">
+                        <button id="ourWorkDropdown"
+                            class="font-mono text-sm hover:text-code-purple transition-all duration-300 flex items-center space-x-1"
+                            style="color: var(--text-muted);">
                             <span>our work</span>
-                            <svg class="w-4 h-4 transition-transform duration-300 dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            <svg class="w-4 h-4 transition-transform duration-300 dropdown-arrow" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
-                        <div id="ourWorkMenu" class="absolute top-full mt-2 w-64 terminal hidden opacity-0 transform translate-y-2 transition-all duration-300 dropdown-menu"
-                             style="background: var(--surface-bg); border-color: var(--border-color);">
-                            <a href="project-sales-agent.html" class="block px-4 py-3 font-mono text-sm hover:bg-matrix-green/10 border-b transition-all duration-200" style="color: var(--text-secondary); border-color: var(--border-color);">
+                        <div id="ourWorkMenu"
+                            class="absolute top-full mt-2 w-64 terminal hidden opacity-0 transform translate-y-2 transition-all duration-300 dropdown-menu"
+                            style="background: var(--surface-bg); border-color: var(--border-color);">
+                            <a href="project-sales-agent.html"
+                                class="block px-4 py-3 font-mono text-sm hover:bg-matrix-green/10 border-b transition-all duration-200"
+                                style="color: var(--text-secondary); border-color: var(--border-color);">
                                 <span class="text-matrix-green">01</span> Sales Agent Network
                             </a>
-                            <a href="project-saas-platform.html" class="block px-4 py-3 font-mono text-sm hover:bg-terminal-blue/10 border-b transition-all duration-200" style="color: var(--text-secondary); border-color: var(--border-color);">
+                            <a href="project-saas-platform.html"
+                                class="block px-4 py-3 font-mono text-sm hover:bg-terminal-blue/10 border-b transition-all duration-200"
+                                style="color: var(--text-secondary); border-color: var(--border-color);">
                                 <span class="text-terminal-blue">02</span> SaaS Platform
                             </a>
-                            <a href="project-content-creation.html" class="block px-4 py-3 font-mono text-sm hover:bg-code-purple/10 transition-all duration-200" style="color: var(--text-secondary);">
+                            <a href="project-content-creation.html"
+                                class="block px-4 py-3 font-mono text-sm hover:bg-code-purple/10 transition-all duration-200"
+                                style="color: var(--text-secondary);">
                                 <span class="text-code-purple">03</span> Content Creation AI
                             </a>
                         </div>
@@ -76,7 +95,8 @@
                         </div>
                         <span id="darkLabel" class="theme-switch-label">Dark Mode</span>
                     </div>
-                    <a href="#contact" class="font-mono text-sm border border-matrix-green text-matrix-green px-4 py-2 hover:bg-matrix-green transition-all duration-300">
+                    <a href="#contact"
+                        class="font-mono text-sm border border-matrix-green text-matrix-green px-4 py-2 hover:bg-matrix-green transition-all duration-300">
                         contact
                     </a>
                 </div>
@@ -87,39 +107,59 @@
     <!-- Mobile Menu Overlay -->
     <div id="mobileMenu" class="fixed inset-0 z-40 hidden md:hidden mobile-menu-hidden">
         <div class="absolute inset-0 bg-black opacity-50" id="mobileMenuOverlay"></div>
-        <div id="mobileMenuPanel" class="absolute left-0 w-64 terminal shadow-2xl mobile-menu-panel" style="top: 70px; height: calc(100vh - 70px); background-color: var(--bg-primary); border-right: 2px solid var(--border-color);">
-            <button id="closeMobileMenu" class="absolute top-4 right-4 text-matrix-green hover:text-terminal-blue transition-colors">
+        <div id="mobileMenuPanel" class="absolute left-0 w-64 terminal shadow-2xl mobile-menu-panel"
+            style="top: 70px; height: calc(100vh - 70px); background-color: var(--bg-primary); border-right: 2px solid var(--border-color);">
+            <button id="closeMobileMenu"
+                class="absolute top-4 right-4 text-matrix-green hover:text-terminal-blue transition-colors">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
                 </svg>
             </button>
             <nav class="flex flex-col space-y-6 mt-16 px-6">
-                <a href="#tech" class="font-mono text-lg hover:text-matrix-green transition-all duration-300 mobile-menu-link py-2 border-b border-dark-border" style="color: var(--text-muted);">capabilities</a>
-                <a href="#experience" class="font-mono text-lg hover:text-terminal-blue transition-all duration-300 mobile-menu-link py-2 border-b border-dark-border" style="color: var(--text-muted);">projects</a>
+                <a href="#tech"
+                    class="font-mono text-lg hover:text-matrix-green transition-all duration-300 mobile-menu-link py-2 border-b border-dark-border"
+                    style="color: var(--text-muted);">capabilities</a>
+                <a href="#experience"
+                    class="font-mono text-lg hover:text-terminal-blue transition-all duration-300 mobile-menu-link py-2 border-b border-dark-border"
+                    style="color: var(--text-muted);">projects</a>
 
                 <!-- Mobile Our Work Section -->
                 <div class="mobile-dropdown-container">
-                    <button id="mobileOurWorkDropdown" class="font-mono text-lg hover:text-code-purple transition-all duration-300 flex items-center justify-between w-full py-2 border-b border-dark-border" style="color: var(--text-muted);">
+                    <button id="mobileOurWorkDropdown"
+                        class="font-mono text-lg hover:text-code-purple transition-all duration-300 flex items-center justify-between w-full py-2 border-b border-dark-border"
+                        style="color: var(--text-muted);">
                         <span>our work</span>
-                        <svg class="w-4 h-4 transition-transform duration-300 mobile-dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        <svg class="w-4 h-4 transition-transform duration-300 mobile-dropdown-arrow" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
                         </svg>
                     </button>
                     <div id="mobileOurWorkMenu" class="mobile-projects-list">
-                        <a href="project-sales-agent.html" class="block font-mono text-base hover:text-matrix-green transition-all duration-200 mobile-menu-link py-3 pl-4 border-b border-dark-border" style="color: var(--text-muted);">
+                        <a href="project-sales-agent.html"
+                            class="block font-mono text-base hover:text-matrix-green transition-all duration-200 mobile-menu-link py-3 pl-4 border-b border-dark-border"
+                            style="color: var(--text-muted);">
                             <span class="text-matrix-green">01</span> Sales Agent
                         </a>
-                        <a href="project-saas-platform.html" class="block font-mono text-base hover:text-terminal-blue transition-all duration-200 mobile-menu-link py-3 pl-4 border-b border-dark-border" style="color: var(--text-muted);">
+                        <a href="project-saas-platform.html"
+                            class="block font-mono text-base hover:text-terminal-blue transition-all duration-200 mobile-menu-link py-3 pl-4 border-b border-dark-border"
+                            style="color: var(--text-muted);">
                             <span class="text-terminal-blue">02</span> SaaS Platform
                         </a>
-                        <a href="project-content-creation.html" class="block font-mono text-base hover:text-code-purple transition-all duration-200 mobile-menu-link py-3 pl-4 border-b border-dark-border" style="color: var(--text-muted);">
+                        <a href="project-content-creation.html"
+                            class="block font-mono text-base hover:text-code-purple transition-all duration-200 mobile-menu-link py-3 pl-4 border-b border-dark-border"
+                            style="color: var(--text-muted);">
                             <span class="text-code-purple">03</span> Content AI
                         </a>
                     </div>
                 </div>
 
-                <a href="#pipeline" class="font-mono text-lg hover:text-code-purple transition-all duration-300 mobile-menu-link py-2 border-b border-dark-border" style="color: var(--text-muted);">how we work</a>
-                <a href="#contact" class="font-mono text-base border-2 border-matrix-green text-matrix-green px-6 py-3 hover:bg-matrix-green hover:text-dark-bg transition-all duration-300 text-center mobile-menu-link mt-6">
+                <a href="#pipeline"
+                    class="font-mono text-lg hover:text-code-purple transition-all duration-300 mobile-menu-link py-2 border-b border-dark-border"
+                    style="color: var(--text-muted);">how we work</a>
+                <a href="#contact"
+                    class="font-mono text-base border-2 border-matrix-green text-matrix-green px-6 py-3 hover:bg-matrix-green hover:text-dark-bg transition-all duration-300 text-center mobile-menu-link mt-6">
                     contact us
                 </a>
             </nav>
@@ -131,108 +171,84 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="animate-slide-up">
-                    <div class="mb-8">
-                        <h1 class="glitch text-4xl lg:text-6xl font-bold leading-tight mb-4" data-text="THE THUNDERBOLTS">
-                            THE THUNDERBOLTS
+                    <div class="mb-12">
+                        <h1 class="font-sans text-2xl md:text-3xl lg:text-4xl font-bold leading-tight mb-6"
+                            style="color: var(--text-primary);">
+                            We build AI powered systems that multiply your revenue while you sit and relax
                         </h1>
-                        <div class="font-mono text-lg text-gray-400 mb-8">
-                            <div class="mb-2">
-                                <span class="text-matrix-green">WHO:</span> 
-                                <span style="color: var(--text-primary);">Full-Stack AI & Web Engineers</span>
-                            </div>
-                            <div class="mb-2">
-                                <span class="text-terminal-blue">WHAT:</span> 
-                                <span style="color: var(--text-primary);">AI Agents, Web Apps & ML Systems</span>
-                            </div>
-                            <div class="mb-2">
-                                <span class="text-code-purple">SCALE:</span> 
-                                <span style="color: var(--text-primary);">Enterprise Web & AI Solutions</span>
-                            </div>
-                            <div class="mb-2">
-                                <span class="text-syntax-orange">RESULT:</span> 
-                                <span style="color: var(--text-primary);">Autonomous Systems & 10x Growth</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-8">
-                        <p class="text-xl leading-relaxed" style="color: var(--text-secondary);">
-                            We create autonomous AI agents, modern web applications, and ML systems that work 24/7. 
-                            <span class="text-matrix-green font-mono">From web development to agentic AI</span> 
-                            - we build intelligent systems that scale your business automatically.
+                        <p class="font-sans text-lg leading-relaxed" style="color: var(--text-secondary);">
+                            We build systems that <span class="text-matrix-green font-semibold">bring leads</span>, <span class="text-terminal-blue font-semibold">convert customers</span>, and <span class="text-syntax-orange font-semibold">increase profit</span>. You do not need more employees or more management. You get an <span class="text-code-purple font-semibold">automated machine</span> that <span class="text-matrix-green font-semibold">works every hour</span> and <span class="text-terminal-blue font-semibold">grows your business</span>.
                         </p>
                     </div>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4 mb-12">
-                        <a href="#experience" class="bg-matrix-green text-dark-bg font-mono font-semibold px-8 py-4 hover:bg-terminal-blue transition-all duration-300 text-center">
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-16">
+                        <a href="#experience"
+                            class="bg-matrix-green text-dark-bg font-mono font-semibold px-8 py-4 hover:bg-terminal-blue transition-all duration-300 text-center">
                             View Our Work
                         </a>
-                        <a href="#contact" class="border border-matrix-green text-matrix-green font-mono font-semibold px-8 py-4 hover:bg-matrix-green hover:text-dark-bg transition-all duration-300 text-center">
+                        <a href="#contact"
+                            class="border border-matrix-green text-matrix-green font-mono font-semibold px-8 py-4 hover:bg-matrix-green hover:text-dark-bg transition-all duration-300 text-center">
                             Start Project
                         </a>
                     </div>
-                    
+
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm font-mono">
                         <div class="flex items-center space-x-2 text-gray-400">
-                            <span class="text-matrix-green">●</span> 
+                            <span class="text-matrix-green">●</span>
                             <span>Senior Level</span>
                         </div>
                         <div class="flex items-center space-x-2 text-gray-400">
-                            <span class="text-terminal-blue">●</span> 
+                            <span class="text-terminal-blue">●</span>
                             <span>Production Ready</span>
                         </div>
                         <div class="flex items-center space-x-2 text-gray-400">
-                            <span class="text-code-purple">●</span> 
+                            <span class="text-code-purple">●</span>
                             <span>Enterprise Scale</span>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Code Terminal Display -->
                 <div class="animate-fade-in">
                     <div class="terminal p-6 h-96 overflow-hidden relative">
-                        <div class="pt-4 font-mono text-sm">
+                        <div class="pt-4 font-mono text-xs">
                             <div class="text-gray-500 mb-2">~/thunderbolts/active-systems</div>
                             <div class="text-matrix-green mb-1">$ show portfolio --all</div>
-                            <div class="text-gray-400 mb-4">
-                                <div class="mb-3"><span class="text-matrix-green">🤖 AI AGENTS</span></div>
-                                <div class="ml-4 mb-1"><span class="text-terminal-blue">• Sales Assistant Agent</span> - Converting 40% more leads</div>
-                                <div class="ml-4 mb-1"><span class="text-code-purple">• Content Generation Agent</span> - Writing 50+ blogs/day</div>
-                                <div class="ml-4 mb-2"><span class="text-syntax-orange">• Data Analysis Agent</span> - 24/7 insights</div>
-                                
-                                <div class="mb-3 mt-4"><span class="text-matrix-green">🌐 WEB APPLICATIONS</span></div>
-                                <div class="ml-4 mb-1"><span class="text-terminal-blue">• React/Next.js Dashboards</span> - Real-time analytics</div>
-                                <div class="ml-4 mb-1"><span class="text-code-purple">• Node.js APIs</span> - Processing millions of requests</div>
-                                <div class="ml-4 mb-2"><span class="text-syntax-orange">• Full-stack SaaS Platforms</span> - End-to-end solutions</div>
-                                
-                                <div class="mb-2 mt-4"><span class="text-matrix-green">📊 ML MODELS</span></div>
-                                <div class="ml-4 mb-1"><span class="text-terminal-blue">• Predictive Analytics</span> - 95% accuracy</div>
+                            <div class="text-gray-400 mb-3">
+                                <div class="mb-2"><span class="text-matrix-green">► SMART_WEBSITE</span></div>
+                                <div class="ml-4 mb-2 text-terminal-blue">Dynamic site adapting to users, tracking conversions, auto-optimizing performance</div>
+
+                                <div class="mb-2 mt-3"><span class="text-matrix-green">► HFT_ALGORITHM_BOT</span></div>
+                                <div class="ml-4 mb-2 text-code-purple">High-frequency trading executing strategies at millisecond speed with live data</div>
+
+                                <div class="mb-2 mt-3"><span class="text-matrix-green">► FINDOC_AI</span></div>
+                                <div class="ml-4 mb-1 text-syntax-orange">Financial document parser extracting structured data, validating entries</div>
                             </div>
-                            <div class="text-matrix-green mb-2 animate-pulse-subtle">$ deploy_autonomous_systems</div>
-                            <div class="text-gray-400 text-xs mb-1">✓ AI agents deployed</div>
-                            <div class="text-gray-400 text-xs mb-1">✓ Web apps scaled</div>
-                            <div class="text-gray-400 text-xs mb-2">✓ ML models optimized</div>
+                            <div class="text-matrix-green mb-2 animate-pulse-subtle mt-3">$ deploy_autonomous_systems</div>
+                            <div class="text-gray-400 text-xs mb-1">✓ Smart website deployed</div>
+                            <div class="text-gray-400 text-xs mb-1">✓ HFT bot running</div>
+                            <div class="text-gray-400 text-xs mb-2">✓ FinDoc AI processing</div>
                             <div class="text-matrix-green typing">Systems running autonomously_</div>
                         </div>
                     </div>
-                    
+
                     <!-- Business Stats -->
                     <div class="mt-8 grid grid-cols-2 gap-4">
                         <div class="border border-dark-border p-4 bg-dark-surface/50">
-                            <div class="text-2xl font-mono text-matrix-green">25+</div>
-                            <div class="text-sm text-gray-400 font-mono">AI Agents Deployed</div>
+                            <div class="text-2xl font-mono text-matrix-green">50+</div>
+                            <div class="text-sm text-gray-400 font-mono">Businesses supported</div>
                         </div>
                         <div class="border border-dark-border p-4 bg-dark-surface/50">
                             <div class="text-2xl font-mono text-terminal-blue">40+</div>
-                            <div class="text-sm text-gray-400 font-mono">Web Apps Built</div>
+                            <div class="text-sm text-gray-400 font-mono">Custom AI systems and web apps delivered</div>
                         </div>
                         <div class="border border-dark-border p-4 bg-dark-surface/50">
-                            <div class="text-2xl font-mono text-code-purple">15+</div>
-                            <div class="text-sm text-gray-400 font-mono">ML Models Trained</div>
+                            <div class="text-2xl font-mono text-code-purple">95%+</div>
+                            <div class="text-sm text-gray-400 font-mono">Model accuracy in production</div>
                         </div>
                         <div class="border border-dark-border p-4 bg-dark-surface/50">
                             <div class="text-2xl font-mono text-syntax-orange">24/7</div>
-                            <div class="text-sm text-gray-400 font-mono">Systems Running</div>
+                            <div class="text-sm text-gray-400 font-mono">Systems running and improving</div>
                         </div>
                     </div>
                 </div>
@@ -255,13 +271,16 @@
                 <div class="capability-card terminal p-6 hover:border-matrix-green transition-all duration-300">
                     <div class="flex items-start mb-4">
                         <!-- Minimalist Robot/AI Icon -->
-                        <svg class="capability-icon mr-3" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="6" y="8" width="12" height="10" stroke="#00FF66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="9" cy="11" r="1" fill="#00FF66"/>
-                            <circle cx="15" cy="11" r="1" fill="#00FF66"/>
-                            <path d="M9 15h6" stroke="#00FF66" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M12 8V6M12 6l-2-2M12 6l2-2" stroke="#00FF66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M6 12H4M18 12h2" stroke="#00FF66" stroke-width="2" stroke-linecap="round"/>
+                        <svg class="capability-icon mr-3" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect x="6" y="8" width="12" height="10" stroke="#00FF66" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <circle cx="9" cy="11" r="1" fill="#00FF66" />
+                            <circle cx="15" cy="11" r="1" fill="#00FF66" />
+                            <path d="M9 15h6" stroke="#00FF66" stroke-width="2" stroke-linecap="round" />
+                            <path d="M12 8V6M12 6l-2-2M12 6l2-2" stroke="#00FF66" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M6 12H4M18 12h2" stroke="#00FF66" stroke-width="2" stroke-linecap="round" />
                         </svg>
                         <div class="flex-1">
                             <h3 class="text-xl font-bold text-matrix-green mb-3">Agentic AI Systems</h3>
@@ -274,7 +293,8 @@
                         <div>• Data Insights & Reporting Agents</div>
                     </div>
                     <div class="mt-4 pt-4 border-t border-opacity-20" style="border-color: var(--border-color);">
-                        <p class="font-mono text-xs text-matrix-green italic">AI that works for you — even while you sleep.</p>
+                        <p class="font-mono text-xs text-matrix-green italic">AI that works for you — even while you
+                            sleep.</p>
                     </div>
                 </div>
 
@@ -282,11 +302,13 @@
                 <div class="capability-card terminal p-6 hover:border-terminal-blue transition-all duration-300">
                     <div class="flex items-start mb-4">
                         <!-- Minimalist Code/Browser Icon -->
-                        <svg class="capability-icon mr-3" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="3" y="4" width="18" height="16" rx="2" stroke="#0ea5e9" stroke-width="2"/>
-                            <path d="M3 8h18" stroke="#0ea5e9" stroke-width="2"/>
-                            <path d="M8 12l2 2-2 2" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M12 16h4" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round"/>
+                        <svg class="capability-icon mr-3" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="4" width="18" height="16" rx="2" stroke="#0ea5e9" stroke-width="2" />
+                            <path d="M3 8h18" stroke="#0ea5e9" stroke-width="2" />
+                            <path d="M8 12l2 2-2 2" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M12 16h4" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" />
                         </svg>
                         <div class="flex-1">
                             <h3 class="text-xl font-bold text-terminal-blue mb-3">Full-Stack Web Development</h3>
@@ -299,7 +321,8 @@
                         <div>• Real-time Dashboards & Analytics</div>
                     </div>
                     <div class="mt-4 pt-4 border-t border-opacity-20" style="border-color: var(--border-color);">
-                        <p class="font-mono text-xs text-terminal-blue italic">Modern web experiences that drive conversions.</p>
+                        <p class="font-mono text-xs text-terminal-blue italic">Modern web experiences that drive
+                            conversions.</p>
                     </div>
                 </div>
 
@@ -307,13 +330,15 @@
                 <div class="capability-card terminal p-6 hover:border-code-purple transition-all duration-300">
                     <div class="flex items-start mb-4">
                         <!-- Minimalist Brain/Neural Network Icon -->
-                        <svg class="capability-icon mr-3" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12" cy="12" r="3" stroke="#8b5cf6" stroke-width="2"/>
-                            <circle cx="6" cy="8" r="2" stroke="#8b5cf6" stroke-width="2"/>
-                            <circle cx="18" cy="8" r="2" stroke="#8b5cf6" stroke-width="2"/>
-                            <circle cx="6" cy="16" r="2" stroke="#8b5cf6" stroke-width="2"/>
-                            <circle cx="18" cy="16" r="2" stroke="#8b5cf6" stroke-width="2"/>
-                            <path d="M9.5 10.5L7.5 9M14.5 10.5L16.5 9M9.5 13.5L7.5 15M14.5 13.5L16.5 15" stroke="#8b5cf6" stroke-width="1.5"/>
+                        <svg class="capability-icon mr-3" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="3" stroke="#8b5cf6" stroke-width="2" />
+                            <circle cx="6" cy="8" r="2" stroke="#8b5cf6" stroke-width="2" />
+                            <circle cx="18" cy="8" r="2" stroke="#8b5cf6" stroke-width="2" />
+                            <circle cx="6" cy="16" r="2" stroke="#8b5cf6" stroke-width="2" />
+                            <circle cx="18" cy="16" r="2" stroke="#8b5cf6" stroke-width="2" />
+                            <path d="M9.5 10.5L7.5 9M14.5 10.5L16.5 9M9.5 13.5L7.5 15M14.5 13.5L16.5 15"
+                                stroke="#8b5cf6" stroke-width="1.5" />
                         </svg>
                         <div class="flex-1">
                             <h3 class="text-xl font-bold text-code-purple mb-3">Machine Learning & AI</h3>
@@ -341,172 +366,214 @@
                     <div class="tech-scroll">
                         <!-- First set of technologies -->
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                                alt="Python" class="tech-icon">
                             <span class="font-mono text-sm">Python</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React.js" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                                alt="React.js" class="tech-icon">
                             <span class="font-mono text-sm">React.js</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                                alt="Node.js" class="tech-icon">
                             <span class="font-mono text-sm">Node.js</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+                                alt="TensorFlow" class="tech-icon">
                             <span class="font-mono text-sm">TensorFlow</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                                alt="Docker" class="tech-icon">
                             <span class="font-mono text-sm">Docker</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
+                                class="tech-icon">
                             <span class="font-mono text-sm">Git</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+                                alt="AWS" class="tech-icon">
                             <span class="font-mono text-sm">AWS</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg"
+                                alt="Azure" class="tech-icon">
                             <span class="font-mono text-sm">Azure</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                                alt="PostgreSQL" class="tech-icon">
                             <span class="font-mono text-sm">PostgreSQL</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                                alt="HTML" class="tech-icon">
                             <span class="font-mono text-sm">HTML</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                                alt="CSS" class="tech-icon">
                             <span class="font-mono text-sm">CSS</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                                alt="JavaScript" class="tech-icon">
                             <span class="font-mono text-sm">JavaScript</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg"
+                                alt="Kubernetes" class="tech-icon">
                             <span class="font-mono text-sm">Kubernetes</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg"
+                                alt="Flask" class="tech-icon">
                             <span class="font-mono text-sm">Flask</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"
+                                alt="FastAPI" class="tech-icon">
                             <span class="font-mono text-sm">FastAPI</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"
+                                alt="Google Cloud" class="tech-icon">
                             <span class="font-mono text-sm">Google Cloud</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg"
+                                alt="PyTorch" class="tech-icon">
                             <span class="font-mono text-sm">PyTorch</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg"
+                                alt="OpenCV" class="tech-icon">
                             <span class="font-mono text-sm">OpenCV</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" alt="Scikit-Learn" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg"
+                                alt="Scikit-Learn" class="tech-icon">
                             <span class="font-mono text-sm">Scikit-Learn</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" class="tech-icon">
+                            <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
+                                alt="Hugging Face" class="tech-icon">
                             <span class="font-mono text-sm">Hugging Face</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Transformers" class="tech-icon">
+                            <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
+                                alt="Transformers" class="tech-icon">
                             <span class="font-mono text-sm">Transformers</span>
                         </div>
                         <!-- Duplicate set for seamless loop -->
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                                alt="Python" class="tech-icon">
                             <span class="font-mono text-sm">Python</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React.js" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                                alt="React.js" class="tech-icon">
                             <span class="font-mono text-sm">React.js</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                                alt="Node.js" class="tech-icon">
                             <span class="font-mono text-sm">Node.js</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+                                alt="TensorFlow" class="tech-icon">
                             <span class="font-mono text-sm">TensorFlow</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                                alt="Docker" class="tech-icon">
                             <span class="font-mono text-sm">Docker</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
+                                class="tech-icon">
                             <span class="font-mono text-sm">Git</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+                                alt="AWS" class="tech-icon">
                             <span class="font-mono text-sm">AWS</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg"
+                                alt="Azure" class="tech-icon">
                             <span class="font-mono text-sm">Azure</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                                alt="PostgreSQL" class="tech-icon">
                             <span class="font-mono text-sm">PostgreSQL</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                                alt="HTML" class="tech-icon">
                             <span class="font-mono text-sm">HTML</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                                alt="CSS" class="tech-icon">
                             <span class="font-mono text-sm">CSS</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                                alt="JavaScript" class="tech-icon">
                             <span class="font-mono text-sm">JavaScript</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg"
+                                alt="Kubernetes" class="tech-icon">
                             <span class="font-mono text-sm">Kubernetes</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg"
+                                alt="Flask" class="tech-icon">
                             <span class="font-mono text-sm">Flask</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"
+                                alt="FastAPI" class="tech-icon">
                             <span class="font-mono text-sm">FastAPI</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"
+                                alt="Google Cloud" class="tech-icon">
                             <span class="font-mono text-sm">Google Cloud</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg"
+                                alt="PyTorch" class="tech-icon">
                             <span class="font-mono text-sm">PyTorch</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg"
+                                alt="OpenCV" class="tech-icon">
                             <span class="font-mono text-sm">OpenCV</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" alt="Scikit-Learn" class="tech-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg"
+                                alt="Scikit-Learn" class="tech-icon">
                             <span class="font-mono text-sm">Scikit-Learn</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" class="tech-icon">
+                            <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
+                                alt="Hugging Face" class="tech-icon">
                             <span class="font-mono text-sm">Hugging Face</span>
                         </div>
                         <div class="tech-item">
-                            <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Transformers" class="tech-icon">
+                            <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
+                                alt="Transformers" class="tech-icon">
                             <span class="font-mono text-sm">Transformers</span>
                         </div>
                     </div>
@@ -531,20 +598,28 @@
                     <div class="terminal p-8 hover:border-matrix-green transition-all duration-300">
                         <div class="flex items-start justify-between mb-4">
                             <div>
-                                <h3 class="font-mono text-xl text-matrix-green mb-2">🤖 Autonomous Sales Agent Network</h3>
-                                <p class="text-gray-400 font-mono text-sm mb-4">AI agents that research leads, write emails, and book meetings automatically</p>
+                                <h3 class="font-mono text-xl text-matrix-green mb-2">🤖 Autonomous Sales Agent Network
+                                </h3>
+                                <p class="text-gray-400 font-mono text-sm mb-4">AI agents that research leads, write
+                                    emails, and book meetings automatically</p>
                             </div>
                             <div class="font-mono text-sm text-gray-500">2024</div>
                         </div>
                         <div class="font-mono text-sm text-gray-400 mb-4">
-                            <div class="mb-2"><span class="text-code-purple">Challenge:</span> Sales team spending 80% time on admin, low conversion rates</div>
-                            <div class="mb-2"><span class="text-code-purple">Solution:</span> Agentic AI system handling lead research, outreach & scheduling</div>
-                            <div class="mb-4"><span class="text-code-purple">Result:</span> 300% increase in qualified leads, 24/7 operation</div>
+                            <div class="mb-2"><span class="text-code-purple">Challenge:</span> Sales team spending 80%
+                                time on admin, low conversion rates</div>
+                            <div class="mb-2"><span class="text-code-purple">Solution:</span> Agentic AI system handling
+                                lead research, outreach & scheduling</div>
+                            <div class="mb-4"><span class="text-code-purple">Result:</span> 300% increase in qualified
+                                leads, 24/7 operation</div>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-matrix-green/20 text-matrix-green px-3 py-1 font-mono text-xs">Agentic AI</span>
-                            <span class="bg-terminal-blue/20 text-terminal-blue px-3 py-1 font-mono text-xs">Sales Automation</span>
-                            <span class="bg-code-purple/20 text-code-purple px-3 py-1 font-mono text-xs">Lead Generation</span>
+                            <span class="bg-matrix-green/20 text-matrix-green px-3 py-1 font-mono text-xs">Agentic
+                                AI</span>
+                            <span class="bg-terminal-blue/20 text-terminal-blue px-3 py-1 font-mono text-xs">Sales
+                                Automation</span>
+                            <span class="bg-code-purple/20 text-code-purple px-3 py-1 font-mono text-xs">Lead
+                                Generation</span>
                         </div>
                     </div>
                 </a>
@@ -554,20 +629,28 @@
                     <div class="terminal p-8 hover:border-terminal-blue transition-all duration-300">
                         <div class="flex items-start justify-between mb-4">
                             <div>
-                                <h3 class="font-mono text-xl text-terminal-blue mb-2">🌐 SaaS Platform & Web Application</h3>
-                                <p class="text-gray-400 font-mono text-sm mb-4">Full-stack React/Node.js platform serving 50K+ users with real-time features</p>
+                                <h3 class="font-mono text-xl text-terminal-blue mb-2">🌐 SaaS Platform & Web Application
+                                </h3>
+                                <p class="text-gray-400 font-mono text-sm mb-4">Full-stack React/Node.js platform
+                                    serving 50K+ users with real-time features</p>
                             </div>
                             <div class="font-mono text-sm text-gray-500">2024</div>
                         </div>
                         <div class="font-mono text-sm text-gray-400 mb-4">
-                            <div class="mb-2"><span class="text-code-purple">Challenge:</span> Legacy system slow, no mobile support, frequent crashes</div>
-                            <div class="mb-2"><span class="text-code-purple">Solution:</span> Modern React/Next.js frontend, Node.js APIs, cloud infrastructure</div>
-                            <div class="mb-4"><span class="text-code-purple">Result:</span> 5x faster load times, 99.9% uptime, mobile-first experience</div>
+                            <div class="mb-2"><span class="text-code-purple">Challenge:</span> Legacy system slow, no
+                                mobile support, frequent crashes</div>
+                            <div class="mb-2"><span class="text-code-purple">Solution:</span> Modern React/Next.js
+                                frontend, Node.js APIs, cloud infrastructure</div>
+                            <div class="mb-4"><span class="text-code-purple">Result:</span> 5x faster load times, 99.9%
+                                uptime, mobile-first experience</div>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-matrix-green/20 text-matrix-green px-3 py-1 font-mono text-xs">React/Next.js</span>
-                            <span class="bg-terminal-blue/20 text-terminal-blue px-3 py-1 font-mono text-xs">Full-Stack</span>
-                            <span class="bg-code-purple/20 text-code-purple px-3 py-1 font-mono text-xs">SaaS Platform</span>
+                            <span
+                                class="bg-matrix-green/20 text-matrix-green px-3 py-1 font-mono text-xs">React/Next.js</span>
+                            <span
+                                class="bg-terminal-blue/20 text-terminal-blue px-3 py-1 font-mono text-xs">Full-Stack</span>
+                            <span class="bg-code-purple/20 text-code-purple px-3 py-1 font-mono text-xs">SaaS
+                                Platform</span>
                         </div>
                     </div>
                 </a>
@@ -577,27 +660,35 @@
                     <div class="terminal p-8 hover:border-code-purple transition-all duration-300">
                         <div class="flex items-start justify-between mb-4">
                             <div>
-                                <h3 class="font-mono text-xl text-code-purple mb-2">📊 ML-Powered Content Creation System</h3>
-                                <p class="text-gray-400 font-mono text-sm mb-4">AI agents creating blogs, social media, and marketing content at scale</p>
+                                <h3 class="font-mono text-xl text-code-purple mb-2">📊 ML-Powered Content Creation
+                                    System</h3>
+                                <p class="text-gray-400 font-mono text-sm mb-4">AI agents creating blogs, social media,
+                                    and marketing content at scale</p>
                             </div>
                             <div class="font-mono text-sm text-gray-500">2024</div>
                         </div>
                         <div class="font-mono text-sm text-gray-400 mb-4">
-                            <div class="mb-2"><span class="text-code-purple">Challenge:</span> Content team bottleneck, inconsistent quality, SEO optimization</div>
-                            <div class="mb-2"><span class="text-code-purple">Solution:</span> ML models + agentic workflow for research, writing & optimization</div>
-                            <div class="mb-4"><span class="text-code-purple">Result:</span> 100+ articles/month, 400% organic traffic increase</div>
+                            <div class="mb-2"><span class="text-code-purple">Challenge:</span> Content team bottleneck,
+                                inconsistent quality, SEO optimization</div>
+                            <div class="mb-2"><span class="text-code-purple">Solution:</span> ML models + agentic
+                                workflow for research, writing & optimization</div>
+                            <div class="mb-4"><span class="text-code-purple">Result:</span> 100+ articles/month, 400%
+                                organic traffic increase</div>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-matrix-green/20 text-matrix-green px-3 py-1 font-mono text-xs">Content AI</span>
-                            <span class="bg-terminal-blue/20 text-terminal-blue px-3 py-1 font-mono text-xs">SEO Optimization</span>
-                            <span class="bg-code-purple/20 text-code-purple px-3 py-1 font-mono text-xs">Marketing ML</span>
+                            <span class="bg-matrix-green/20 text-matrix-green px-3 py-1 font-mono text-xs">Content
+                                AI</span>
+                            <span class="bg-terminal-blue/20 text-terminal-blue px-3 py-1 font-mono text-xs">SEO
+                                Optimization</span>
+                            <span class="bg-code-purple/20 text-code-purple px-3 py-1 font-mono text-xs">Marketing
+                                ML</span>
                         </div>
                     </div>
                 </a>
             </div>
         </div>
     </section>
-    
+
     <!-- How We Work Section -->
     <section id="pipeline" class="py-20" style="background-color: var(--bg-secondary);">
         <div class="max-w-7xl mx-auto px-6">
@@ -608,7 +699,7 @@
                 <p class="text-center text-gray-400 text-lg mb-4">From your idea to a thriving business solution</p>
                 <p class="text-center text-gray-500 font-mono text-sm">Simple, transparent, results-driven</p>
             </div>
-            
+
             <!-- Business-Friendly Process Display -->
             <div class="terminal p-8 mb-12">
                 <div class="terminal-header mb-6">
@@ -623,7 +714,7 @@
                         <div class="text-matrix-green">Let's build something amazing together →</div>
                     </div>
                 </div>
-                
+
                 <!-- Business-Friendly Pipeline Steps -->
                 <div class="pipeline-container">
                     <div class="space-y-8">
@@ -631,7 +722,8 @@
                         <div class="pipeline-step-enhanced group" data-step="1">
                             <div class="flex items-center space-x-4">
                                 <div class="step-indicator">
-                                    <div class="w-12 h-12 border-2 border-matrix-green rounded-full flex items-center justify-center font-mono text-matrix-green font-bold bg-matrix-green/10 group-hover:bg-matrix-green/20 transition-all duration-300">
+                                    <div
+                                        class="w-12 h-12 border-2 border-matrix-green rounded-full flex items-center justify-center font-mono text-matrix-green font-bold bg-matrix-green/10 group-hover:bg-matrix-green/20 transition-all duration-300">
                                         01
                                     </div>
                                 </div>
@@ -640,7 +732,8 @@
                                         <div class="font-mono text-matrix-green text-sm mb-2"># STEP 1: Let's Talk</div>
                                         <div class="text-2xl font-bold text-white mb-3">Discovery & Strategy</div>
                                         <div class="text-gray-300 text-lg mb-4">
-                                            We start with a conversation about <strong>your vision, goals, and challenges</strong>. 
+                                            We start with a conversation about <strong>your vision, goals, and
+                                                challenges</strong>.
                                             No technical jargon - just understanding what success looks like for you.
                                         </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -663,25 +756,30 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="step-time font-mono text-xs text-gray-500 bg-matrix-green/10 px-3 py-2 rounded">1-2 weeks</div>
+                                <div
+                                    class="step-time font-mono text-xs text-gray-500 bg-matrix-green/10 px-3 py-2 rounded">
+                                    1-2 weeks</div>
                             </div>
                             <div class="pipeline-connector"></div>
                         </div>
-                        
+
                         <!-- Step 2: Planning -->
                         <div class="pipeline-step-enhanced group" data-step="2">
                             <div class="flex items-center space-x-4">
                                 <div class="step-indicator">
-                                    <div class="w-12 h-12 border-2 border-terminal-blue rounded-full flex items-center justify-center font-mono text-terminal-blue font-bold bg-terminal-blue/10 group-hover:bg-terminal-blue/20 transition-all duration-300">
+                                    <div
+                                        class="w-12 h-12 border-2 border-terminal-blue rounded-full flex items-center justify-center font-mono text-terminal-blue font-bold bg-terminal-blue/10 group-hover:bg-terminal-blue/20 transition-all duration-300">
                                         02
                                     </div>
                                 </div>
                                 <div class="flex-1">
                                     <div class="terminal-output">
-                                        <div class="font-mono text-terminal-blue text-sm mb-2"># STEP 2: Blueprint Creation</div>
+                                        <div class="font-mono text-terminal-blue text-sm mb-2"># STEP 2: Blueprint
+                                            Creation</div>
                                         <div class="text-2xl font-bold text-white mb-3">Planning & Design</div>
                                         <div class="text-gray-300 text-lg mb-4">
-                                            We create a detailed plan and visual mockups so <strong>you can see exactly what we'll build</strong>
+                                            We create a detailed plan and visual mockups so <strong>you can see exactly
+                                                what we'll build</strong>
                                             before we write any code. No surprises, just clarity.
                                         </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -694,7 +792,8 @@
                                                 </div>
                                             </div>
                                             <div class="bg-terminal-blue/10 border border-terminal-blue/20 rounded p-3">
-                                                <div class="text-terminal-blue font-semibold mb-1">Your Involvement</div>
+                                                <div class="text-terminal-blue font-semibold mb-1">Your Involvement
+                                                </div>
                                                 <div class="text-gray-400">
                                                     • Collaborative review sessions with real-time feedback<br>
                                                     • Design iterations until it's exactly right<br>
@@ -704,25 +803,30 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="step-time font-mono text-xs text-gray-500 bg-terminal-blue/10 px-3 py-2 rounded">2-3 weeks</div>
+                                <div
+                                    class="step-time font-mono text-xs text-gray-500 bg-terminal-blue/10 px-3 py-2 rounded">
+                                    2-3 weeks</div>
                             </div>
                             <div class="pipeline-connector"></div>
                         </div>
-                        
+
                         <!-- Step 3: Building -->
                         <div class="pipeline-step-enhanced group" data-step="3">
                             <div class="flex items-center space-x-4">
                                 <div class="step-indicator">
-                                    <div class="w-12 h-12 border-2 border-code-purple rounded-full flex items-center justify-center font-mono text-code-purple font-bold bg-code-purple/10 group-hover:bg-code-purple/20 transition-all duration-300">
+                                    <div
+                                        class="w-12 h-12 border-2 border-code-purple rounded-full flex items-center justify-center font-mono text-code-purple font-bold bg-code-purple/10 group-hover:bg-code-purple/20 transition-all duration-300">
                                         03
                                     </div>
                                 </div>
                                 <div class="flex-1">
                                     <div class="terminal-output">
-                                        <div class="font-mono text-code-purple text-sm mb-2"># STEP 3: Building Your Solution</div>
+                                        <div class="font-mono text-code-purple text-sm mb-2"># STEP 3: Building Your
+                                            Solution</div>
                                         <div class="text-2xl font-bold text-white mb-3">Development & Testing</div>
                                         <div class="text-gray-300 text-lg mb-4">
-                                            We build your solution in short sprints, <strong>showing you progress every week</strong>.
+                                            We build your solution in short sprints, <strong>showing you progress every
+                                                week</strong>.
                                             You'll see your project come to life and can request changes along the way.
                                         </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -735,7 +839,8 @@
                                                 </div>
                                             </div>
                                             <div class="bg-code-purple/10 border border-code-purple/20 rounded p-3">
-                                                <div class="text-code-purple font-semibold mb-1">Your Peace of Mind</div>
+                                                <div class="text-code-purple font-semibold mb-1">Your Peace of Mind
+                                                </div>
                                                 <div class="text-gray-400">
                                                     • Real-time access to staging environments<br>
                                                     • Direct communication channel for questions or changes<br>
@@ -745,26 +850,32 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="step-time font-mono text-xs text-gray-500 bg-code-purple/10 px-3 py-2 rounded">4-10 weeks</div>
+                                <div
+                                    class="step-time font-mono text-xs text-gray-500 bg-code-purple/10 px-3 py-2 rounded">
+                                    4-10 weeks</div>
                             </div>
                             <div class="pipeline-connector"></div>
                         </div>
-                        
+
                         <!-- Step 4: Launch -->
                         <div class="pipeline-step-enhanced group" data-step="4">
                             <div class="flex items-center space-x-4">
                                 <div class="step-indicator">
-                                    <div class="w-12 h-12 border-2 border-syntax-orange rounded-full flex items-center justify-center font-mono text-syntax-orange font-bold bg-syntax-orange/10 group-hover:bg-syntax-orange/20 transition-all duration-300">
+                                    <div
+                                        class="w-12 h-12 border-2 border-syntax-orange rounded-full flex items-center justify-center font-mono text-syntax-orange font-bold bg-syntax-orange/10 group-hover:bg-syntax-orange/20 transition-all duration-300">
                                         04
                                     </div>
                                 </div>
                                 <div class="flex-1">
                                     <div class="terminal-output">
-                                        <div class="font-mono text-syntax-orange text-sm mb-2"># STEP 4: Go Live & Grow</div>
+                                        <div class="font-mono text-syntax-orange text-sm mb-2"># STEP 4: Go Live & Grow
+                                        </div>
                                         <div class="text-2xl font-bold text-white mb-3">Launch & Support</div>
                                         <div class="text-gray-300 text-lg mb-4">
-                                            We launch your solution and <strong>make sure everything runs smoothly</strong>.
-                                            Plus, we train your team and provide ongoing support so you're never left hanging.
+                                            We launch your solution and <strong>make sure everything runs
+                                                smoothly</strong>.
+                                            Plus, we train your team and provide ongoing support so you're never left
+                                            hanging.
                                         </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                                             <div class="bg-syntax-orange/10 border border-syntax-orange/20 rounded p-3">
@@ -786,41 +897,41 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="step-time font-mono text-xs text-gray-500 bg-syntax-orange/10 px-3 py-2 rounded">1-2 weeks</div>
+                                <div
+                                    class="step-time font-mono text-xs text-gray-500 bg-syntax-orange/10 px-3 py-2 rounded">
+                                    1-2 weeks</div>
                             </div>
                         </div>
-                        
+
                         <!-- Deployment Status -->
                         <div class="mt-12 terminal p-6 border transition-all duration-300"
-                             style="border-color: var(--border-color); background: var(--surface-bg);">
+                            style="border-color: var(--border-color); background: var(--surface-bg);">
                             <div class="space-y-4">
                                 <!-- Status Header -->
                                 <div class="flex items-center justify-between border-b pb-3"
-                                     style="border-color: var(--border-color);">
-                                    <h3 class="font-bold text-lg tracking-tight"
-                                        style="color: var(--text-primary);">
+                                    style="border-color: var(--border-color);">
+                                    <h3 class="font-bold text-lg tracking-tight" style="color: var(--text-primary);">
                                         Deployment Complete
                                     </h3>
                                     <div class="flex items-center space-x-2">
                                         <div class="w-2 h-2 rounded-full bg-matrix-green animate-pulse-subtle"></div>
                                         <span class="font-mono text-xs uppercase tracking-wider"
-                                              style="color: var(--text-muted);">
+                                            style="color: var(--text-muted);">
                                             Live
                                         </span>
                                     </div>
                                 </div>
 
                                 <!-- Status Description -->
-                                <p class="text-sm leading-relaxed"
-                                   style="color: var(--text-secondary);">
-                                    Your business solution is now live and operational. Systems are running autonomously with continuous monitoring and support.
+                                <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
+                                    Your business solution is now live and operational. Systems are running autonomously
+                                    with continuous monitoring and support.
                                 </p>
 
                                 <!-- System Status Line -->
-                                <div class="pt-3 border-t"
-                                     style="border-color: var(--border-color);">
+                                <div class="pt-3 border-t" style="border-color: var(--border-color);">
                                     <div class="font-mono text-sm flex items-center space-x-2"
-                                         style="color: var(--text-muted);">
+                                        style="color: var(--text-muted);">
                                         <span>status:</span>
                                         <span class="text-matrix-green">running</span>
                                         <span class="text-matrix-green">✓</span>
@@ -831,13 +942,13 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Business Benefits Stats -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 benefit-grid">
 
                 <!-- Card 1: ROI Focus -->
                 <article class="benefit-card group relative overflow-hidden terminal"
-                         style="border-color: var(--border-color); background: var(--surface-bg);">
+                    style="border-color: var(--border-color); background: var(--surface-bg);">
                     <!-- Accent Border Indicator -->
                     <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-matrix-green to-transparent
                                 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -847,7 +958,7 @@
                         <!-- Numerical Badge -->
                         <div class="w-12 h-12 rounded-lg border-2 flex items-center justify-center font-mono text-xl font-bold
                                     transition-all duration-300 group-hover:scale-110"
-                             style="border-color: #00ff41; color: #00ff41; background: rgba(0, 255, 65, 0.05);">
+                            style="border-color: #00ff41; color: #00ff41; background: rgba(0, 255, 65, 0.05);">
                             01
                         </div>
 
@@ -861,15 +972,15 @@
 
                         <!-- Description -->
                         <p class="text-sm leading-relaxed transition-colors duration-300"
-                           style="color: var(--text-secondary);">
-                            Every feature and system is engineered to drive measurable revenue growth and operational efficiency.
+                            style="color: var(--text-secondary);">
+                            Every feature and system is engineered to drive measurable revenue growth and operational
+                            efficiency.
                         </p>
 
                         <!-- Meta Label -->
                         <div class="pt-2 border-t transition-colors duration-300"
-                             style="border-color: var(--border-color);">
-                            <span class="font-mono text-xs uppercase tracking-wider"
-                                  style="color: var(--text-muted);">
+                            style="border-color: var(--border-color);">
+                            <span class="font-mono text-xs uppercase tracking-wider" style="color: var(--text-muted);">
                                 Strategic Implementation
                             </span>
                         </div>
@@ -877,18 +988,19 @@
 
                     <!-- Hover Glow Effect -->
                     <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                         style="background: radial-gradient(circle at 50% 50%, rgba(0, 255, 65, 0.03), transparent 70%);"></div>
+                        style="background: radial-gradient(circle at 50% 50%, rgba(0, 255, 65, 0.03), transparent 70%);">
+                    </div>
                 </article>
 
                 <!-- Card 2: Partnership -->
                 <article class="benefit-card group relative overflow-hidden terminal"
-                         style="border-color: var(--border-color); background: var(--surface-bg);">
+                    style="border-color: var(--border-color); background: var(--surface-bg);">
                     <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-terminal-blue to-transparent
                                 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div class="relative z-10 p-6 space-y-4">
                         <div class="w-12 h-12 rounded-lg border-2 flex items-center justify-center font-mono text-xl font-bold
                                     transition-all duration-300 group-hover:scale-110"
-                             style="border-color: #64ffda; color: #64ffda; background: rgba(100, 255, 218, 0.05);">
+                            style="border-color: #64ffda; color: #64ffda; background: rgba(100, 255, 218, 0.05);">
                             02
                         </div>
                         <header>
@@ -897,7 +1009,8 @@
                             </h3>
                         </header>
                         <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
-                            Committed to sustained collaboration and strategic alignment with your organizational objectives.
+                            Committed to sustained collaboration and strategic alignment with your organizational
+                            objectives.
                         </p>
                         <div class="pt-2 border-t" style="border-color: var(--border-color);">
                             <span class="font-mono text-xs uppercase tracking-wider" style="color: var(--text-muted);">
@@ -906,18 +1019,19 @@
                         </div>
                     </div>
                     <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                         style="background: radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.03), transparent 70%);"></div>
+                        style="background: radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.03), transparent 70%);">
+                    </div>
                 </article>
 
                 <!-- Card 3: Rapid Delivery -->
                 <article class="benefit-card group relative overflow-hidden terminal"
-                         style="border-color: var(--border-color); background: var(--surface-bg);">
+                    style="border-color: var(--border-color); background: var(--surface-bg);">
                     <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-code-purple to-transparent
                                 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div class="relative z-10 p-6 space-y-4">
                         <div class="w-12 h-12 rounded-lg border-2 flex items-center justify-center font-mono text-xl font-bold
                                     transition-all duration-300 group-hover:scale-110"
-                             style="border-color: #bb86fc; color: #bb86fc; background: rgba(187, 134, 252, 0.05);">
+                            style="border-color: #bb86fc; color: #bb86fc; background: rgba(187, 134, 252, 0.05);">
                             03
                         </div>
                         <header>
@@ -935,18 +1049,19 @@
                         </div>
                     </div>
                     <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                         style="background: radial-gradient(circle at 50% 50%, rgba(187, 134, 252, 0.03), transparent 70%);"></div>
+                        style="background: radial-gradient(circle at 50% 50%, rgba(187, 134, 252, 0.03), transparent 70%);">
+                    </div>
                 </article>
 
                 <!-- Card 4: Quality Assurance -->
                 <article class="benefit-card group relative overflow-hidden terminal"
-                         style="border-color: var(--border-color); background: var(--surface-bg);">
+                    style="border-color: var(--border-color); background: var(--surface-bg);">
                     <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-syntax-orange to-transparent
                                 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div class="relative z-10 p-6 space-y-4">
                         <div class="w-12 h-12 rounded-lg border-2 flex items-center justify-center font-mono text-xl font-bold
                                     transition-all duration-300 group-hover:scale-110"
-                             style="border-color: #ffab40; color: #ffab40; background: rgba(255, 171, 64, 0.05);">
+                            style="border-color: #ffab40; color: #ffab40; background: rgba(255, 171, 64, 0.05);">
                             04
                         </div>
                         <header>
@@ -955,7 +1070,8 @@
                             </h3>
                         </header>
                         <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
-                            Transparent pricing models with comprehensive testing protocols ensuring production-grade reliability.
+                            Transparent pricing models with comprehensive testing protocols ensuring production-grade
+                            reliability.
                         </p>
                         <div class="pt-2 border-t" style="border-color: var(--border-color);">
                             <span class="font-mono text-xs uppercase tracking-wider" style="color: var(--text-muted);">
@@ -964,26 +1080,30 @@
                         </div>
                     </div>
                     <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                         style="background: radial-gradient(circle at 50% 50%, rgba(255, 171, 64, 0.03), transparent 70%);"></div>
+                        style="background: radial-gradient(circle at 50% 50%, rgba(255, 171, 64, 0.03), transparent 70%);">
+                    </div>
                 </article>
 
             </div>
-            
+
             <!-- Call to Action -->
             <div class="mt-12 text-center">
                 <div class="terminal p-8 max-w-2xl mx-auto">
                     <div class="mb-6">
                         <h3 class="text-2xl font-bold text-white mb-3">Ready to Start Your Success Story?</h3>
                         <p class="text-gray-300 text-lg">
-                            Let's have a no-pressure conversation about your business goals. 
-                            <strong class="text-matrix-green">Free consultation, honest advice, clear next steps.</strong>
+                            Let's have a no-pressure conversation about your business goals.
+                            <strong class="text-matrix-green">Free consultation, honest advice, clear next
+                                steps.</strong>
                         </p>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="#contact" class="bg-matrix-green text-dark-bg font-semibold px-8 py-4 hover:bg-terminal-blue transition-all duration-300 font-mono text-center">
+                        <a href="#contact"
+                            class="bg-matrix-green text-dark-bg font-semibold px-8 py-4 hover:bg-terminal-blue transition-all duration-300 font-mono text-center">
                             Start Free Consultation
                         </a>
-                        <a href="#experience" class="border border-matrix-green text-matrix-green font-semibold px-8 py-4 hover:bg-matrix-green hover:text-dark-bg transition-all duration-300 font-mono text-center">
+                        <a href="#experience"
+                            class="border border-matrix-green text-matrix-green font-semibold px-8 py-4 hover:bg-matrix-green hover:text-dark-bg transition-all duration-300 font-mono text-center">
                             See Our Work
                         </a>
                     </div>
@@ -1002,24 +1122,26 @@
                 </h2>
                 <p class="text-gray-400 font-mono text-sm">Ready to transform your business with AI?</p>
             </div>
-            
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div>
                     <div class="terminal p-8 mb-8">
                         <div class="font-mono text-sm text-gray-400 mb-4">
                             <div class="mb-2"><span class="text-matrix-green">Name:</span> The Thunderbolts</div>
-                            <div class="mb-2"><span class="text-terminal-blue">Specialization:</span> Agentic AI, Web Dev & ML</div>
+                            <div class="mb-2"><span class="text-terminal-blue">Specialization:</span> Agentic AI, Web
+                                Dev & ML</div>
                             <div class="mb-2"><span class="text-code-purple">Location:</span> Remote-First Team</div>
-                            <div class="mb-2"><span class="text-syntax-orange">Availability:</span> Ready for Your Project</div>
+                            <div class="mb-2"><span class="text-syntax-orange">Availability:</span> Ready for Your
+                                Project</div>
                         </div>
                         <div class="font-mono text-xs text-gray-500">// Ready for your next challenge</div>
                     </div>
-                    
+
                     <div class="space-y-6">
                         <div class="flex items-center space-x-4">
                             <div class="w-2 h-2 bg-matrix-green rounded-full animate-pulse-subtle"></div>
                             <div class="font-mono text-sm text-gray-400">
-                                <span class="text-matrix-green">Email:</span> 
+                                <span class="text-matrix-green">Email:</span>
                                 <a href="mailto:hello@thunderbolts.dev" class="text-terminal-blue hover:underline">
                                     hello@thunderbolts.dev
                                 </a>
@@ -1028,7 +1150,7 @@
                         <div class="flex items-center space-x-4">
                             <div class="w-2 h-2 bg-terminal-blue rounded-full animate-pulse-subtle"></div>
                             <div class="font-mono text-sm text-gray-400">
-                                <span class="text-terminal-blue">LinkedIn:</span> 
+                                <span class="text-terminal-blue">LinkedIn:</span>
                                 <a href="#" class="text-code-purple hover:underline">
                                     /company/thunderbolts-ai
                                 </a>
@@ -1037,7 +1159,7 @@
                         <div class="flex items-center space-x-4">
                             <div class="w-2 h-2 bg-code-purple rounded-full animate-pulse-subtle"></div>
                             <div class="font-mono text-sm text-gray-400">
-                                <span class="text-code-purple">GitHub:</span> 
+                                <span class="text-code-purple">GitHub:</span>
                                 <a href="#" class="text-syntax-orange hover:underline">
                                     github.com/thunderbolts-ai
                                 </a>
@@ -1045,7 +1167,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div>
                     <div class="terminal p-8">
                         <div class="mb-6">
@@ -1056,37 +1178,53 @@
 
                             <form id="enterpriseForm" class="space-y-4">
                                 <div>
-                                    <label class="font-mono text-sm text-gray-400 block mb-2">Name: <span class="text-red-500">*</span></label>
-                                    <input type="text" id="name" name="name" placeholder="Your full name" required class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-matrix-green focus:outline-none">
+                                    <label class="font-mono text-sm text-gray-400 block mb-2">Name: <span
+                                            class="text-red-500">*</span></label>
+                                    <input type="text" id="name" name="name" placeholder="Your full name" required
+                                        class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-matrix-green focus:outline-none">
                                 </div>
                                 <div>
-                                    <label class="font-mono text-sm text-gray-400 block mb-2">Phone Number: <span class="text-red-500">*</span></label>
-                                    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" required class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-matrix-green focus:outline-none">
+                                    <label class="font-mono text-sm text-gray-400 block mb-2">Phone Number: <span
+                                            class="text-red-500">*</span></label>
+                                    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" required
+                                        class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-matrix-green focus:outline-none">
                                 </div>
                                 <div>
-                                    <label class="font-mono text-sm text-gray-400 block mb-2">Email Address: <span class="text-red-500">*</span></label>
-                                    <input type="email" id="email" name="email" placeholder="you@company.com" required class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-matrix-green focus:outline-none">
+                                    <label class="font-mono text-sm text-gray-400 block mb-2">Email Address: <span
+                                            class="text-red-500">*</span></label>
+                                    <input type="email" id="email" name="email" placeholder="you@company.com" required
+                                        class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-matrix-green focus:outline-none">
                                 </div>
                                 <div>
-                                    <label class="font-mono text-sm text-gray-400 block mb-2">Project Scope: <span class="text-red-500">*</span></label>
-                                    <select id="projectScope" name="projectScope" required class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-matrix-green focus:outline-none">
+                                    <label class="font-mono text-sm text-gray-400 block mb-2">Project Scope: <span
+                                            class="text-red-500">*</span></label>
+                                    <select id="projectScope" name="projectScope" required
+                                        class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-matrix-green focus:outline-none">
                                         <option value="">Select a service...</option>
-                                        <option value="Web & E-commerce Development">Web & E-commerce Development</option>
-                                        <option value="Full Stack Software Development">Full Stack Software Development</option>
-                                        <option value="AI & Machine Learning Solutions">AI & Machine Learning Solutions</option>
+                                        <option value="Web & E-commerce Development">Web & E-commerce Development
+                                        </option>
+                                        <option value="Full Stack Software Development">Full Stack Software Development
+                                        </option>
+                                        <option value="AI & Machine Learning Solutions">AI & Machine Learning Solutions
+                                        </option>
                                         <option value="Agentic AI & Automation">Agentic AI & Automation</option>
-                                        <option value="Comprehensive Project Consultation">Comprehensive Project Consultation</option>
+                                        <option value="Comprehensive Project Consultation">Comprehensive Project
+                                            Consultation</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label class="font-mono text-sm text-gray-400 block mb-2">Timeline:</label>
-                                    <input type="text" id="timeline" name="timeline" placeholder="e.g., 3-6 months" class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-terminal-blue focus:outline-none">
+                                    <input type="text" id="timeline" name="timeline" placeholder="e.g., 3-6 months"
+                                        class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-terminal-blue focus:outline-none">
                                 </div>
                                 <div>
                                     <label class="font-mono text-sm text-gray-400 block mb-2">Project Details:</label>
-                                    <textarea id="requirements" name="requirements" rows="4" placeholder="Tell us about your project goals and requirements..." class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-code-purple focus:outline-none resize-none"></textarea>
+                                    <textarea id="requirements" name="requirements" rows="4"
+                                        placeholder="Tell us about your project goals and requirements..."
+                                        class="w-full bg-dark-bg border border-dark-border px-4 py-2 font-mono text-sm text-gray-300 focus:border-code-purple focus:outline-none resize-none"></textarea>
                                 </div>
-                                <button type="submit" id="submitBtn" class="w-full bg-matrix-green text-dark-bg font-mono font-semibold py-3 hover:bg-terminal-blue transition-all duration-300">
+                                <button type="submit" id="submitBtn"
+                                    class="w-full bg-matrix-green text-dark-bg font-mono font-semibold py-3 hover:bg-terminal-blue transition-all duration-300">
                                     Send Inquiry
                                 </button>
                             </form>
@@ -1102,7 +1240,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center">
                 <div class="font-mono text-gray-500 text-sm mb-4">
-                    <span class="text-matrix-green">© 2024 The Thunderbolts</span> 
+                    <span class="text-matrix-green">© 2024 The Thunderbolts</span>
                     · Built with precision and performance in mind
                 </div>
                 <div class="flex justify-center space-x-8 font-mono text-xs text-gray-600">
@@ -1116,4 +1254,5 @@
 
     <script src="assets/js/script.js"></script>
 </body>
+
 </html>

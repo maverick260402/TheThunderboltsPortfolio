@@ -32,6 +32,19 @@
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
+/* Softer green color override for better readability */
+.text-matrix-green {
+    color: #22dd77 !important;
+}
+
+.border-matrix-green {
+    border-color: #22dd77 !important;
+}
+
+.bg-matrix-green {
+    background-color: #22dd77 !important;
+}
+
 /* Navigation bar theme support */
 .nav-bg {
     background: var(--bg-primary);
