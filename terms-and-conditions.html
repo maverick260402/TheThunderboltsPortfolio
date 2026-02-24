@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms &amp; Conditions - The Thunderbolts</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <script>
+        // Prevent flash of dark theme - set theme immediately before page renders
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+            document.body?.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="font-sans overflow-x-hidden" style="background-color: var(--bg-primary); color: var(--text-primary);">
+    <!-- Matrix Background Effect -->
+    <div class="matrix-bg" id="matrixBg"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-bg backdrop-blur-md border-b" style="border-bottom-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="terminal px-4 py-2 hover:border-matrix-green transition-all duration-300">
+                        <span class="font-mono text-matrix-green text-sm">&larr; back to portfolio</span>
+                    </a>
+                </div>
+                <!-- Mobile Theme Toggle -->
+                <div class="md:hidden">
+                    <div class="mobile-theme-switch-container">
+                        <span id="mobileLightLabel" class="theme-switch-label active">Light</span>
+                        <div class="mobile-theme-switch" id="mobileThemeSwitch">
+                            <span class="mobile-theme-switch-pointer"></span>
+                        </div>
+                        <span id="mobileDarkLabel" class="theme-switch-label">Dark</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#tech" class="font-mono text-sm hover:text-matrix-green transition-all duration-300" style="color: var(--text-muted);">capabilities</a>
+                    <a href="index.html#experience" class="font-mono text-sm hover:text-terminal-blue transition-all duration-300" style="color: var(--text-muted);">projects</a>
+                    <div class="theme-switch-container">
+                        <span id="lightLabel" class="theme-switch-label active">Light Mode</span>
+                        <div class="theme-switch" id="themeSwitch">
+                            <span class="theme-switch-pointer"></span>
+                        </div>
+                        <span id="darkLabel" class="theme-switch-label">Dark Mode</span>
+                    </div>
+                    <a href="index.html#contact" class="bg-matrix-green text-dark-bg font-mono text-sm font-semibold px-6 py-2 hover:bg-terminal-blue transition-all duration-300">contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Terms & Conditions Content -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="terminal p-8 md:p-12">
+                <div class="flex items-center gap-2 mb-8">
+                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    <span class="font-mono text-xs ml-2" style="color: var(--text-muted);">terms-and-conditions.md</span>
+                </div>
+
+                <h1 class="font-mono text-3xl md:text-4xl font-bold mb-2 text-matrix-green">Terms &amp; Conditions</h1>
+                <p class="font-mono text-sm mb-12" style="color: var(--text-muted);">Last Updated: February 24, 2026</p>
+
+                <div class="legal-content space-y-8">
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">1. Introduction</h2>
+                        <p class="font-mono text-sm leading-relaxed" style="color: var(--text-secondary);">
+                            These Terms &amp; Conditions ("Terms") govern your use of the website
+                            <a href="https://thethunderbolts.tech" class="text-matrix-green hover:underline">thethunderbolts.tech</a>
+                            and the services provided by The Thunderbolts ("we," "us," or "our"). By accessing our website or engaging our services, you agree to be bound by these Terms.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">2. Services</h2>
+                        <p class="font-mono text-sm leading-relaxed mb-3" style="color: var(--text-secondary);">
+                            The Thunderbolts provides technology consulting and development services including, but not limited to:
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 font-mono text-sm" style="color: var(--text-secondary);">
+                            <li>Web &amp; E-commerce Development</li>
+                            <li>Full Stack Software Development</li>
+                            <li>AI &amp; Machine Learning Solutions</li>
+                            <li>Agentic AI &amp; Automation</li>
+                            <li>Comprehensive Project Consultation</li>
+                        </ul>
+                        <p class="font-mono text-sm leading-relaxed mt-3" style="color: var(--text-secondary);">
+                            Specific deliverables, timelines, and pricing are determined on a per-project basis and will be outlined in a separate service agreement or proposal.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">3. Messaging Policy</h2>
+                        <p class="font-mono text-sm leading-relaxed mb-3" style="color: var(--text-secondary);">
+                            By providing your phone number through our website contact form and checking the consent checkbox, you agree to receive the following types of messages from The Thunderbolts via <strong>WhatsApp</strong>:
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 font-mono text-sm" style="color: var(--text-secondary);">
+                            <li><strong>Transactional updates</strong> &mdash; project milestones, delivery confirmations, and status reports</li>
+                            <li><strong>Service communications</strong> &mdash; responses to your inquiries, scheduling confirmations, and consultation follow-ups</li>
+                            <li><strong>Account notifications</strong> &mdash; important information about your engagement with us</li>
+                        </ul>
+                        <p class="font-mono text-sm leading-relaxed mt-4 mb-3" style="color: var(--text-secondary);">
+                            <strong>Important:</strong>
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 font-mono text-sm" style="color: var(--text-secondary);">
+                            <li>We will <strong>not</strong> send unsolicited marketing or promotional messages via WhatsApp without separate, explicit consent.</li>
+                            <li>You may opt out of WhatsApp messages at any time by replying <strong>"STOP"</strong> to any message from us or by contacting us at <a href="mailto:hello@thunderbolts.dev" class="text-matrix-green hover:underline">hello@thunderbolts.dev</a>.</li>
+                            <li>Standard data rates from your mobile carrier may apply to WhatsApp messages.</li>
+                            <li>Our use of WhatsApp is governed by <a href="https://www.whatsapp.com/legal/terms-of-service" class="text-matrix-green hover:underline" target="_blank" rel="noopener">WhatsApp's Terms of Service</a> and <a href="https://www.whatsapp.com/legal/privacy-policy" class="text-matrix-green hover:underline" target="_blank" rel="noopener">Privacy Policy</a>.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">4. User Responsibilities</h2>
+                        <p class="font-mono text-sm leading-relaxed mb-3" style="color: var(--text-secondary);">When using our website and services, you agree to:</p>
+                        <ul class="list-disc list-inside space-y-2 font-mono text-sm" style="color: var(--text-secondary);">
+                            <li>Provide accurate and complete information in all forms and communications</li>
+                            <li>Not use our website for any unlawful or unauthorized purpose</li>
+                            <li>Not attempt to interfere with or disrupt the operation of our website</li>
+                            <li>Comply with all applicable laws and regulations</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">5. Intellectual Property</h2>
+                        <p class="font-mono text-sm leading-relaxed" style="color: var(--text-secondary);">
+                            All content on this website, including text, graphics, logos, icons, images, and software, is the property of The Thunderbolts or its content suppliers and is protected by applicable intellectual property laws. You may not reproduce, distribute, modify, or create derivative works from any content on this website without our prior written consent.
+                        </p>
+                        <p class="font-mono text-sm leading-relaxed mt-3" style="color: var(--text-secondary);">
+                            Intellectual property rights for custom development work will be defined in the specific service agreement for each project.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">6. Limitation of Liability</h2>
+                        <p class="font-mono text-sm leading-relaxed" style="color: var(--text-secondary);">
+                            To the fullest extent permitted by applicable law, The Thunderbolts shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or relating to your use of our website or services. Our total liability for any claim related to our services shall not exceed the amount paid by you for the specific service giving rise to the claim.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">7. Disclaimer</h2>
+                        <p class="font-mono text-sm leading-relaxed" style="color: var(--text-secondary);">
+                            Our website and services are provided on an "as is" and "as available" basis. We make no warranties, express or implied, regarding the operation of our website or the accuracy, completeness, or reliability of any information provided.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">8. Third-Party Links</h2>
+                        <p class="font-mono text-sm leading-relaxed" style="color: var(--text-secondary);">
+                            Our website may contain links to third-party websites or services. We are not responsible for the content, privacy policies, or practices of any third-party sites. Your use of such sites is at your own risk.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">9. Governing Law</h2>
+                        <p class="font-mono text-sm leading-relaxed" style="color: var(--text-secondary);">
+                            These Terms shall be governed by and construed in accordance with the laws of India. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts in Ahmedabad, Gujarat, India.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">10. Changes to These Terms</h2>
+                        <p class="font-mono text-sm leading-relaxed" style="color: var(--text-secondary);">
+                            We reserve the right to modify these Terms at any time. Changes will be posted on this page with an updated "Last Updated" date. Your continued use of our website after changes are posted constitutes your acceptance of the revised Terms.
+                        </p>
+                    </div>
+
+                    <div class="border-t pt-8" style="border-top-color: var(--border-color);">
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">11. Contact Us</h2>
+                        <p class="font-mono text-sm leading-relaxed mb-4" style="color: var(--text-secondary);">
+                            If you have any questions about these Terms &amp; Conditions, please contact us:
+                        </p>
+                        <div class="font-mono text-sm space-y-2" style="color: var(--text-secondary);">
+                            <p><strong class="text-matrix-green">The Thunderbolts</strong></p>
+                            <p>A 63 SUR SAGAR, Behind Prenatirth Derasar, Mhabaleshwar Road,</p>
+                            <p>Jodhpur, Satellite, Ahmedabad 380015, Gujarat, India</p>
+                            <p>Email: <a href="mailto:hello@thunderbolts.dev" class="text-matrix-green hover:underline">hello@thunderbolts.dev</a></p>
+                            <p>Phone: <a href="tel:+917573859706" class="text-matrix-green hover:underline">+91 75738 59706</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 border-t" style="background-color: var(--bg-secondary); border-top-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <h3 class="font-mono text-lg font-bold mb-4 text-matrix-green">The Thunderbolts</h3>
+                    <p class="font-mono text-sm mb-6" style="color: var(--text-muted);">AI &amp; ML Engineering Studio. Built with precision and performance in mind.</p>
+                    <div class="flex space-x-6 font-mono text-xs" style="color: var(--text-muted);">
+                        <span>Senior Engineers</span>
+                        <span>Enterprise Ready</span>
+                        <span>Production Tested</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-mono text-sm font-bold mb-4" style="color: var(--text-secondary);">Quick Links</h3>
+                    <ul class="space-y-3 font-mono text-sm">
+                        <li><a href="index.html#tech" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">Capabilities</a></li>
+                        <li><a href="index.html#experience" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">Projects</a></li>
+                        <li><a href="index.html#contact" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">Contact</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">Privacy Policy</a></li>
+                        <li><a href="terms-and-conditions.html" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-mono text-sm font-bold mb-4" style="color: var(--text-secondary);">Contact Details</h3>
+                    <div class="space-y-3 font-mono text-sm" style="color: var(--text-muted);">
+                        <p><span style="color: var(--text-secondary);">Legal Name:</span> The Thunderbolts</p>
+                        <p><span style="color: var(--text-secondary);">Address:</span> A 63 SUR SAGAR, Behind Prenatirth Derasar, Mhabaleshwar Road, Jodhpur, Satellite, Ahmedabad 380015, Gujarat, India</p>
+                        <p><span style="color: var(--text-secondary);">Phone:</span> <a href="tel:+917573859706" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">+91 75738 59706</a></p>
+                        <p><span style="color: var(--text-secondary);">Email:</span> <a href="mailto:hello@thunderbolts.dev" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">hello@thunderbolts.dev</a></p>
+                        <p><span style="color: var(--text-secondary);">Website:</span> <a href="https://thethunderbolts.tech" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">thethunderbolts.tech</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4" style="border-top-color: var(--border-color);">
+                <div class="font-mono text-sm" style="color: var(--text-muted);"><span class="text-matrix-green">&copy; 2024&ndash;2026 The Thunderbolts.</span> All rights reserved.</div>
+                <div class="flex space-x-6 font-mono text-xs" style="color: var(--text-muted);">
+                    <a href="privacy-policy.html" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">Privacy Policy</a>
+                    <a href="terms-and-conditions.html" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

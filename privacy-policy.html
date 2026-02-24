@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - The Thunderbolts</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <script>
+        // Prevent flash of dark theme - set theme immediately before page renders
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+            document.body?.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="font-sans overflow-x-hidden" style="background-color: var(--bg-primary); color: var(--text-primary);">
+    <!-- Matrix Background Effect -->
+    <div class="matrix-bg" id="matrixBg"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-bg backdrop-blur-md border-b" style="border-bottom-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="terminal px-4 py-2 hover:border-matrix-green transition-all duration-300">
+                        <span class="font-mono text-matrix-green text-sm">&larr; back to portfolio</span>
+                    </a>
+                </div>
+                <!-- Mobile Theme Toggle -->
+                <div class="md:hidden">
+                    <div class="mobile-theme-switch-container">
+                        <span id="mobileLightLabel" class="theme-switch-label active">Light</span>
+                        <div class="mobile-theme-switch" id="mobileThemeSwitch">
+                            <span class="mobile-theme-switch-pointer"></span>
+                        </div>
+                        <span id="mobileDarkLabel" class="theme-switch-label">Dark</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#tech" class="font-mono text-sm hover:text-matrix-green transition-all duration-300" style="color: var(--text-muted);">capabilities</a>
+                    <a href="index.html#experience" class="font-mono text-sm hover:text-terminal-blue transition-all duration-300" style="color: var(--text-muted);">projects</a>
+                    <div class="theme-switch-container">
+                        <span id="lightLabel" class="theme-switch-label active">Light Mode</span>
+                        <div class="theme-switch" id="themeSwitch">
+                            <span class="theme-switch-pointer"></span>
+                        </div>
+                        <span id="darkLabel" class="theme-switch-label">Dark Mode</span>
+                    </div>
+                    <a href="index.html#contact" class="bg-matrix-green text-dark-bg font-mono text-sm font-semibold px-6 py-2 hover:bg-terminal-blue transition-all duration-300">contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Privacy Policy Content -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="terminal p-8 md:p-12">
+                <div class="flex items-center gap-2 mb-8">
+                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    <span class="font-mono text-xs ml-2" style="color: var(--text-muted);">privacy-policy.md</span>
+                </div>
+
+                <h1 class="font-mono text-3xl md:text-4xl font-bold mb-2 text-matrix-green">Privacy Policy</h1>
+                <p class="font-mono text-sm mb-12" style="color: var(--text-muted);">Last Updated: February 24, 2026</p>
+
+                <div class="legal-content space-y-8">
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">1. Introduction</h2>
+                        <p class="font-mono text-sm leading-relaxed" style="color: var(--text-secondary);">
+                            The Thunderbolts ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website
+                            <a href="https://thethunderbolts.tech" class="text-matrix-green hover:underline">thethunderbolts.tech</a>
+                            and use our services, including communications via the WhatsApp Business API.
+                        </p>
+                        <p class="font-mono text-sm leading-relaxed mt-3" style="color: var(--text-secondary);">
+                            By using our website or services, you consent to the practices described in this Privacy Policy.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">2. Information We Collect</h2>
+                        <p class="font-mono text-sm leading-relaxed mb-3" style="color: var(--text-secondary);">We collect information that you voluntarily provide to us when you:</p>
+                        <ul class="list-disc list-inside space-y-2 font-mono text-sm" style="color: var(--text-secondary);">
+                            <li>Fill out our contact or inquiry form</li>
+                            <li>Subscribe to our communications</li>
+                            <li>Engage with us via WhatsApp or other messaging platforms</li>
+                        </ul>
+                        <p class="font-mono text-sm leading-relaxed mt-4 mb-2 font-semibold" style="color: var(--text-primary);">Personal information we may collect includes:</p>
+                        <ul class="list-disc list-inside space-y-2 font-mono text-sm" style="color: var(--text-secondary);">
+                            <li><strong>Full Name</strong> &mdash; to identify and address you</li>
+                            <li><strong>Email Address</strong> &mdash; to respond to inquiries and send project updates</li>
+                            <li><strong>Phone Number</strong> &mdash; to communicate via WhatsApp and telephone</li>
+                            <li><strong>Project Details</strong> &mdash; to understand your requirements and provide relevant services</li>
+                            <li><strong>Company/Organization Name</strong> &mdash; if voluntarily provided</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">3. WhatsApp Business API Usage</h2>
+                        <p class="font-mono text-sm leading-relaxed mb-3" style="color: var(--text-secondary);">
+                            We use the <strong>WhatsApp Business API</strong> to communicate with users who have explicitly opted in to receive messages from us. This includes:
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 font-mono text-sm" style="color: var(--text-secondary);">
+                            <li><strong>Transactional updates</strong> &mdash; project status, milestones, and delivery notifications</li>
+                            <li><strong>Service communications</strong> &mdash; responses to your inquiries and consultation scheduling</li>
+                            <li><strong>Project-related messages</strong> &mdash; relevant updates about your engagement with us</li>
+                        </ul>
+                        <p class="font-mono text-sm leading-relaxed mt-4" style="color: var(--text-secondary);">
+                            We will <strong>never</strong> send promotional or marketing messages via WhatsApp without your explicit, separate consent.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">4. Opt-In Consent</h2>
+                        <p class="font-mono text-sm leading-relaxed mb-3" style="color: var(--text-secondary);">
+                            We collect phone numbers and WhatsApp messaging consent through the following mechanism:
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 font-mono text-sm" style="color: var(--text-secondary);">
+                            <li><strong>Website Contact Form</strong> &mdash; When you submit our inquiry form, you are required to check a consent box confirming that you agree to receive transactional messages via WhatsApp.</li>
+                            <li><strong>Explicit Opt-In</strong> &mdash; Consent is never assumed or pre-checked. You must actively select the opt-in checkbox before submitting your inquiry.</li>
+                        </ul>
+                        <p class="font-mono text-sm leading-relaxed mt-4" style="color: var(--text-secondary);">
+                            You may withdraw your consent at any time by contacting us at
+                            <a href="mailto:hello@thunderbolts.dev" class="text-matrix-green hover:underline">hello@thunderbolts.dev</a>
+                            or by replying "STOP" to any WhatsApp message from us.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">5. How We Use Your Information</h2>
+                        <p class="font-mono text-sm leading-relaxed mb-3" style="color: var(--text-secondary);">We use the information we collect to:</p>
+                        <ul class="list-disc list-inside space-y-2 font-mono text-sm" style="color: var(--text-secondary);">
+                            <li>Respond to your inquiries and provide customer support</li>
+                            <li>Deliver project updates and transactional communications via WhatsApp</li>
+                            <li>Manage our business relationship with you</li>
+                            <li>Improve our website and services</li>
+                            <li>Comply with legal obligations</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">6. Data Sharing &amp; Third Parties</h2>
+                        <p class="font-mono text-sm leading-relaxed mb-3" style="color: var(--text-secondary);">
+                            We do <strong>not</strong> sell, rent, or share your personal data with third parties for their marketing purposes without your explicit consent.
+                        </p>
+                        <p class="font-mono text-sm leading-relaxed mb-3" style="color: var(--text-secondary);">We may share your data only in the following circumstances:</p>
+                        <ul class="list-disc list-inside space-y-2 font-mono text-sm" style="color: var(--text-secondary);">
+                            <li><strong>WhatsApp / Meta Platforms</strong> &mdash; Messages sent via the WhatsApp Business API are processed by Meta Platforms, Inc. in accordance with <a href="https://www.whatsapp.com/legal/privacy-policy" class="text-matrix-green hover:underline" target="_blank" rel="noopener">WhatsApp's Privacy Policy</a>.</li>
+                            <li><strong>Service Providers</strong> &mdash; Trusted third-party tools (e.g., hosting, analytics) that help us operate our website, bound by confidentiality agreements.</li>
+                            <li><strong>Legal Requirements</strong> &mdash; When required by law, regulation, or legal process.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">7. Data Retention</h2>
+                        <p class="font-mono text-sm leading-relaxed" style="color: var(--text-secondary);">
+                            We retain your personal information only for as long as necessary to fulfill the purposes outlined in this Privacy Policy, or as required by law. When your data is no longer needed, we will securely delete or anonymize it.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">8. Data Security</h2>
+                        <p class="font-mono text-sm leading-relaxed" style="color: var(--text-secondary);">
+                            We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">9. Your Rights</h2>
+                        <p class="font-mono text-sm leading-relaxed mb-3" style="color: var(--text-secondary);">You have the right to:</p>
+                        <ul class="list-disc list-inside space-y-2 font-mono text-sm" style="color: var(--text-secondary);">
+                            <li><strong>Access</strong> the personal data we hold about you</li>
+                            <li><strong>Correct</strong> any inaccurate or incomplete data</li>
+                            <li><strong>Delete</strong> your personal data (subject to legal obligations)</li>
+                            <li><strong>Withdraw consent</strong> for WhatsApp messaging at any time</li>
+                            <li><strong>Opt out</strong> of any communications by contacting us</li>
+                        </ul>
+                        <p class="font-mono text-sm leading-relaxed mt-4" style="color: var(--text-secondary);">
+                            To exercise any of these rights, please contact us using the details provided below.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">10. Changes to This Policy</h2>
+                        <p class="font-mono text-sm leading-relaxed" style="color: var(--text-secondary);">
+                            We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated "Last Updated" date. We encourage you to review this policy periodically.
+                        </p>
+                    </div>
+
+                    <div class="border-t pt-8" style="border-top-color: var(--border-color);">
+                        <h2 class="font-mono text-xl font-bold mb-4" style="color: var(--text-primary);">11. Contact Us</h2>
+                        <p class="font-mono text-sm leading-relaxed mb-4" style="color: var(--text-secondary);">
+                            If you have any questions about this Privacy Policy or our data practices, please contact us:
+                        </p>
+                        <div class="font-mono text-sm space-y-2" style="color: var(--text-secondary);">
+                            <p><strong class="text-matrix-green">The Thunderbolts</strong></p>
+                            <p>A 63 SUR SAGAR, Behind Prenatirth Derasar, Mhabaleshwar Road,</p>
+                            <p>Jodhpur, Satellite, Ahmedabad 380015, Gujarat, India</p>
+                            <p>Email: <a href="mailto:hello@thunderbolts.dev" class="text-matrix-green hover:underline">hello@thunderbolts.dev</a></p>
+                            <p>Phone: <a href="tel:+917573859706" class="text-matrix-green hover:underline">+91 75738 59706</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 border-t" style="background-color: var(--bg-secondary); border-top-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <h3 class="font-mono text-lg font-bold mb-4 text-matrix-green">The Thunderbolts</h3>
+                    <p class="font-mono text-sm mb-6" style="color: var(--text-muted);">AI &amp; ML Engineering Studio. Built with precision and performance in mind.</p>
+                    <div class="flex space-x-6 font-mono text-xs" style="color: var(--text-muted);">
+                        <span>Senior Engineers</span>
+                        <span>Enterprise Ready</span>
+                        <span>Production Tested</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-mono text-sm font-bold mb-4" style="color: var(--text-secondary);">Quick Links</h3>
+                    <ul class="space-y-3 font-mono text-sm">
+                        <li><a href="index.html#tech" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">Capabilities</a></li>
+                        <li><a href="index.html#experience" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">Projects</a></li>
+                        <li><a href="index.html#contact" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">Contact</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">Privacy Policy</a></li>
+                        <li><a href="terms-and-conditions.html" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-mono text-sm font-bold mb-4" style="color: var(--text-secondary);">Contact Details</h3>
+                    <div class="space-y-3 font-mono text-sm" style="color: var(--text-muted);">
+                        <p><span style="color: var(--text-secondary);">Legal Name:</span> The Thunderbolts</p>
+                        <p><span style="color: var(--text-secondary);">Address:</span> A 63 SUR SAGAR, Behind Prenatirth Derasar, Mhabaleshwar Road, Jodhpur, Satellite, Ahmedabad 380015, Gujarat, India</p>
+                        <p><span style="color: var(--text-secondary);">Phone:</span> <a href="tel:+917573859706" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">+91 75738 59706</a></p>
+                        <p><span style="color: var(--text-secondary);">Email:</span> <a href="mailto:hello@thunderbolts.dev" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">hello@thunderbolts.dev</a></p>
+                        <p><span style="color: var(--text-secondary);">Website:</span> <a href="https://thethunderbolts.tech" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">thethunderbolts.tech</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4" style="border-top-color: var(--border-color);">
+                <div class="font-mono text-sm" style="color: var(--text-muted);"><span class="text-matrix-green">&copy; 2024&ndash;2026 The Thunderbolts.</span> All rights reserved.</div>
+                <div class="flex space-x-6 font-mono text-xs" style="color: var(--text-muted);">
+                    <a href="privacy-policy.html" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">Privacy Policy</a>
+                    <a href="terms-and-conditions.html" class="hover:text-matrix-green transition-colors" style="color: var(--text-muted);">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
