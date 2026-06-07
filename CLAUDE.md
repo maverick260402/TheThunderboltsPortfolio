@@ -1,7 +1,9 @@
 # Claude Instructions for Thunderbolts Portfolio
 
 ## Project Overview
-This is a structured portfolio website for "The Thunderbolts" - an AI & ML engineering showcase with a dark matrix theme. The project is organized with separate HTML, CSS, and JavaScript files for better maintainability and scalability.
+This is a structured portfolio website for "The Thunderbolts" - an AI & ML engineering showcase with a **monochrome luxury theme** (clean, minimal, Apple/Linear-inspired: near-black/white neutrals, one restrained accent, Inter typography, soft depth and generous whitespace). The project is organized with separate HTML, CSS, and JavaScript files for better maintainability and scalability.
+
+> **2026 Redesign note:** The site was redesigned from a dark "matrix/terminal" aesthetic (green code-rain, glitch text, 4 neon accent colors, mono everywhere) to the current monochrome-minimal system. See **"Monochrome Design System (2026 Redesign)"** below for how the old visual language was retired. The matrix rain, glitch effects, and terminal CLI chrome no longer exist.
 
 ## Project Structure
 ```
@@ -22,7 +24,7 @@ Portfolio/
 - **Styles**: `assets/css/styles.css` - Complete theme system and responsive design
 - **Scripts**: `assets/js/script.js` - Interactive functionality and animations
 - **Dependencies**: Uses external CDNs only (Tailwind CSS, Google Fonts)
-- **Theme**: Dark matrix/terminal aesthetic with green accents
+- **Theme**: Monochrome luxury — neutral light/dark palette with one restrained accent
 - **Technology**: Pure HTML5, CSS3, Vanilla JavaScript with Tailwind CSS
 
 ## External Dependencies
@@ -36,12 +38,12 @@ Portfolio/
 4. **Testing**: Open `index.html` directly in browser or use simple HTTP server
 
 ## Key Components
-- **Tech Stack Ribbon** - Scrolling banner in Capabilities section with 21 technologies (lines ~440-700+)
-- **Matrix Background** - Animated falling characters effect
-- **Terminal Windows** - CLI-styled containers with dark theme
-- **Glitch Text Effects** - Cyberpunk-style animations
-- **Interactive Hover States** - Matrix-green color transitions
-- **Business Process Pipeline** - Interactive 4-step process visualizer designed for non-technical audiences (lines ~563-750+)
+- **Tech Stack Ribbon** - Scrolling banner in Capabilities section (now neutral pill chips, soft fade edges)
+- **Ambient Backdrop** - `.matrix-bg` is now a quiet fixed gradient mesh (matrix rain removed)
+- **Glass Cards** - `.terminal` is restyled as a rounded card with hairline border + soft shadow (terminal/CLI chrome removed)
+- **Interactive Hover States** - subtle lift + shadow, neutral (no neon color transitions)
+- **Scroll Reveal & Counters** - IntersectionObserver fade-ins and animated stat counters (`prefers-reduced-motion` safe)
+- **Business Process Pipeline** - Interactive 4-step process visualizer with a neutral timeline/progress line
 
 ## Common Tasks
 - **Content Updates**: Modify HTML sections in `index.html`
@@ -100,7 +102,36 @@ open index.html
 
 ---
 
+## Warm Editorial Design System (2026 Redesign — Xaneur-inspired)
+
+The entire visual language was rebuilt in `assets/css/styles.css` and `assets/js/script.js`, modeled on xaneur.com (warm, editorial, serif display, buttery scroll motion). Read this before making style changes.
+
+### Design tokens (`:root` = dark, `[data-theme="light"]` = light)
+- **Warm neutrals**: light = cream `#f4f1ea` bg, `#0e0e0e` text, warm taupe `#61605d`/`#817e73`; dark = near-black `#0e0e0e` bg, cream `#f4f1ea` text. Tokens: `--bg-primary/secondary`, `--surface-bg/-2`, `--border-color/-strong`, `--text-primary/secondary/muted`.
+- **Blue accent**: `--accent` (light `#0077dd`, dark `#0099ff`), `--accent-strong`, `--accent-soft`. Used on one word in headlines, links, focus rings, status dots, the numbered-label `[NN]`.
+- **Primary action**: `--btn-bg` / `--btn-text` (near-black button in light, cream button in dark). Pill-shaped with hover lift.
+- **Type**: `--font-display` = **Instrument Serif** (h1, h2, `.glitch`, `.font-display`/`.serif`, weight 400) for large elegant headlines; `--font-sans` = **Inter** for body + h3+ subheads. `.font-mono` is remapped to Inter.
+- **Shape/motion**: bigger radii `--radius-sm/-/-lg/-xl(40px)/-pill`, `--ease` + `--ease-out` easings. `.section-label[data-num]` renders the `[NN] LABEL` eyebrows (add `.no-num` to hide the number).
+
+### How the old palette was retired (the bridge layer)
+The HTML still contains hundreds of legacy utility classes (`text-matrix-green`, `font-mono`, `.terminal`, `bg-matrix-green`, `terminal-blue/code-purple/syntax-orange`, `bg-dark-*`). Rather than edit every reference, `styles.css` **remaps** them with `!important`:
+- `text-matrix-green` / `text-terminal-blue` / `text-code-purple` / `text-syntax-orange` → neutral `--text-primary` emphasis.
+- `bg-matrix-green` → the high-contrast primary button.
+- `font-mono` → Inter (`--font-sans`).
+- `.terminal` → premium glass card; terminal "traffic-light" dots are hidden via CSS.
+- `.glitch` → static bold text (`::before/::after` disabled); `.typing` cursor removed; `.matrix-bg` → gradient mesh.
+- Tailwind config color names (in `script.js`) are repointed to neutral fallbacks.
+
+**Implication:** to recolor globally, edit the tokens and the remap block — do NOT reintroduce the green/blue/purple/orange palette. New hardcoded hex colors in HTML/SVG should use `currentColor` or `var(--…)` tokens, never raw neon hex.
+
+### JavaScript (`assets/js/script.js`)
+Modules: `initThemeToggle` (unchanged contract), `initMobileMenu`, `initDropdowns`, `initScrollReveal` (auto-tags a curated selector set with `.reveal` and staggers siblings via `--reveal-delay` — no HTML classes needed), `initParallax` (`[data-parallax="<speed>"]` → sets `--parallax`; keep off `.reveal` elements to avoid transform conflicts), `initCounters` (`[data-count]` + `data-prefix`/`data-suffix`), `initSmoothScroll`, `initPipelineInteractivity` (neutral timeline), `initFormSubmission`. `createMatrixEffect` and the glitch/typing restart loops were removed. All motion respects `prefers-reduced-motion`.
+
+---
+
 ## Dark Mode & Light Mode System Documentation
+
+> ⚠️ **Pre-redesign reference.** The light/dark **architecture below is still accurate** (default `light`, `data-theme` on `<html>`, inline flash-prevention script, localStorage). However, the specific **hex values, line numbers, and "matrix"/green details are outdated** — the actual token values now live in the Monochrome Design System section above and in `styles.css`.
 
 ### **Architecture Overview**
 - **Default Theme**: Light Mode (Changed from Dark Mode)
