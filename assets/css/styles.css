@@ -142,17 +142,30 @@ h1, h2, h3, h4, h5 {
     line-height: 1.08;
 }
 
-/* Big display headings = elegant Instrument Serif.
+/* TYPOGRAPHY POLICY:
+   Display serif (Instrument Serif) = all titles + the big stat numbers:
+   the hero <h1>, project-page .glitch titles, every section <h2> (all pages),
+   and the bento .bento-stat / .pill-stat figures. Body copy, eyebrows, card
+   sub-titles (h3) and labels stay Inter.
    NOTE: !important is required because the Tailwind CDN injects a preflight
    reset (h1..h6 { font-size: inherit; font-weight: inherit }) after this file,
    which would otherwise shrink every headline to body-text size. */
-h1, h2 {
+h1 {
     font-family: var(--font-display) !important;
     font-weight: 400 !important;
     letter-spacing: -0.01em;
+    font-size: clamp(2.9rem, 6.5vw, 5.5rem) !important;
 }
-h1 { font-size: clamp(2.9rem, 6.5vw, 5.5rem) !important; }
-h2 { font-size: clamp(2rem, 4.5vw, 3.6rem) !important; }
+/* Section titles (all pages) = hero serif. h2.font-mono is listed so it beats
+   the .font-mono->Inter remap, letting even the code-style / legal h2 labels
+   pick up the serif. */
+h2, h2.font-mono {
+    font-family: var(--font-display) !important;
+    font-weight: 400 !important;
+    letter-spacing: -0.01em;
+    line-height: 1.12;
+    font-size: clamp(2rem, 4.5vw, 3.6rem) !important;
+}
 
 /* Sub-heads stay crisp Inter */
 h3, h4, h5 {
@@ -162,13 +175,13 @@ h3, h4, h5 {
 }
 h3 { font-size: clamp(1.2rem, 2vw, 1.55rem) !important; }
 
-/* Serif helper for statement titles. !important so it beats the
-   .font-mono remap and Tailwind's font-bold utility. */
+/* .font-display / .serif helpers now resolve to Inter too, so content
+   elements that still carry these legacy classes stay uniform. */
 .font-display, .serif {
-    font-family: var(--font-display) !important;
-    font-weight: 400 !important;
-    letter-spacing: -0.01em;
-    line-height: 1.1;
+    font-family: var(--font-sans) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
 }
 
 /* Section eyebrow / numbered label */
@@ -884,5 +897,265 @@ a.link-accent:hover, .prose a:hover { color: var(--accent-strong); }
     .step-indicator > div { width: 42px; height: 42px; font-size: 0.95rem; }
     .terminal { padding: 18px; }
     .terminal.p-6, .terminal.p-8 { padding: 18px; }
+}
+
+/* ----- 14. OUTCOMES — BENTO BENEFIT GRID ----- */
+/* A warm-editorial, asymmetric tile wall of measurable outcomes.
+   Tiles reuse the .benefit-card reveal hook (free scroll stagger) and
+   [data-count] stat counters — no JS changes needed. */
+
+.bento-section {
+    position: relative;
+    overflow: hidden;
+}
+/* Quiet gradient-mesh atmosphere (no raster image) */
+.bento-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(40% 55% at 18% 12%, var(--accent-soft), transparent 70%),
+        radial-gradient(38% 50% at 88% 90%, var(--accent-soft), transparent 72%);
+    opacity: 0.7;
+}
+.bento-section > .max-w-7xl { position: relative; z-index: 1; }
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+    grid-auto-flow: row dense;
+    gap: 18px;
+}
+
+.bento-tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 200px;
+    padding: 28px;
+    background: var(--surface-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease),
+        border-color 0.45s var(--ease);
+}
+.bento-tile:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--border-strong);
+}
+
+.bento-tile.is-wide { grid-column: span 2; }
+.bento-tile.is-feature {
+    grid-column: span 2;
+    grid-row: span 2;
+    background:
+        linear-gradient(150deg, var(--accent-soft), transparent 60%),
+        var(--surface-bg);
+    border-color: var(--border-strong);
+}
+
+.bento-tile.is-full { grid-column: 1 / -1; }
+
+.bento-body { display: flex; flex-direction: column; }
+
+/* Big stat number — hero serif (Instrument Serif) */
+.bento-stat {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    font-size: clamp(2.4rem, 3.6vw, 3.1rem);
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.bento-label {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.02rem;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+}
+
+.bento-desc {
+    margin-top: 8px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+}
+
+/* ----- Feature tile: chat mockup ----- */
+.bento-chat {
+    background:
+        linear-gradient(155deg, var(--accent-soft), transparent 55%),
+        var(--surface-bg);
+    border-color: var(--border-strong);
+    justify-content: flex-start;
+}
+.bento-chat .bento-label { font-size: 1.22rem; }
+.chat-thread {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 8px;
+}
+.chat-row { display: flex; }
+.chat-row.in { justify-content: flex-start; }
+.chat-row.out { justify-content: flex-end; }
+.chat-bubble {
+    max-width: 78%;
+    padding: 11px 15px;
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    line-height: 1.4;
+    border-radius: 18px;
+    box-shadow: var(--shadow-sm);
+}
+.chat-row.in .chat-bubble {
+    background: var(--surface-bg-2);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-bottom-left-radius: 5px;
+}
+.chat-row.out .chat-bubble {
+    background: var(--accent);
+    color: #fff;
+    border-bottom-right-radius: 5px;
+}
+/* Typing indicator */
+.chat-bubble.typing {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 14px 16px;
+}
+.chat-bubble.typing span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.75);
+    animation: chatTyping 1.2s var(--ease) infinite;
+}
+.chat-bubble.typing span:nth-child(2) { animation-delay: 0.2s; }
+.chat-bubble.typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes chatTyping {
+    0%, 60%, 100% { opacity: 0.35; transform: translateY(0); }
+    30% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* ----- Statement tile ----- */
+.bento-statement { justify-content: center; gap: 6px; }
+.statement-lead {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+.bento-statement .bento-stat {
+    font-size: clamp(3rem, 5vw, 4.4rem);
+    color: var(--accent);
+}
+
+/* ----- Metric tiles with charts ----- */
+.bento-metric { justify-content: space-between; }
+.metric-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+}
+.bento-metric .bento-stat {
+    font-size: clamp(1.8rem, 2.6vw, 2.3rem);
+    color: var(--accent);
+}
+.bento-chart {
+    width: 100%;
+    height: 56px;
+    display: block;
+    overflow: visible;
+}
+.bento-chart .bar { fill: var(--accent); }
+.bento-chart .bar:nth-of-type(1) { opacity: 0.30; }
+.bento-chart .bar:nth-of-type(2) { opacity: 0.42; }
+.bento-chart .bar:nth-of-type(3) { opacity: 0.52; }
+.bento-chart .bar:nth-of-type(4) { opacity: 0.66; }
+.bento-chart .bar:nth-of-type(5) { opacity: 0.82; }
+.bento-chart .bar.is-peak { opacity: 1; }
+.spark-area { fill: url(#sparkFill); }
+.spark-line {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+.spark-dot { fill: var(--accent); stroke: var(--surface-bg); stroke-width: 2; }
+
+/* ----- Presence pill tile ----- */
+.bento-presence { gap: 22px; }
+.presence-head { display: flex; flex-direction: column; }
+.presence-head .bento-desc { margin-top: 4px; }
+.presence-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+}
+.presence-pill {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 14px;
+    background: var(--surface-bg-2);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.presence-pill:hover { transform: translateY(-4px); border-color: var(--border-strong); }
+.pill-stat {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.7rem;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+.pill-label {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 1023px) {
+    .bento-grid { grid-template-columns: repeat(2, 1fr); }
+    .bento-tile.is-feature { grid-row: span 1; }
+    .presence-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Mobile: single column stack */
+@media (max-width: 639px) {
+    .bento-grid { grid-template-columns: 1fr; gap: 14px; }
+    .bento-tile.is-wide,
+    .bento-tile.is-feature,
+    .bento-tile.is-full { grid-column: span 1; }
+    .bento-tile { min-height: 0; padding: 22px; }
+    .presence-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .chat-bubble.typing span { animation: none; }
 }
 
